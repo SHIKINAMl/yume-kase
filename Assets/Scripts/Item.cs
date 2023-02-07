@@ -1,0 +1,274 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.EventSystems;
+using System;
+
+public class Item : MonoBehaviour, IPointerClickHandler
+{
+    public string itemName;
+
+    public bool disableAttribute = false;
+    public bool ownableAttribute = false;
+    public bool eventAttribute = false;
+
+    public int numberOfEvent = 1;
+
+    [SerializeField]
+    public ItemEvent[] events;
+
+    private StageManager stagemanager;
+    private GetItemWindow getitemwindow;
+
+    private SpriteRenderer spriterenderer;
+    private Collider2D collider;
+
+    private bool isClicked = false;
+
+    private bool isMoving = false;
+    private Vector2 initialPosition;
+    private Vector2 destinationPosition;
+    private float moveSpeed;
+
+    private bool isChanging = false;
+    private Vector2 initialScale;
+    private float changeSizeRate;
+    private float changeSpeed;
+
+    public void Start()
+    {
+        stagemanager = GameObject.Find("StageManager").GetComponent<StageManager>();
+        getitemwindow = GameObject.Find("GetItemWindow").GetComponent<GetItemWindow>();
+
+        spriterenderer = GetComponent<SpriteRenderer>();
+        collider = GetComponent<Collider2D>();
+
+        foreach (var i in events)
+        {
+            i.eventTrigger = true;
+        }
+    }
+
+    public void FixedUpdate()
+    {
+        CheckCondition(events);
+        ChangeEnableImage();
+        MoveItem();
+        ChangeSizeItem();
+    }
+
+    public void OnPointerClick(PointerEventData pointer)
+    {
+        StartCoroutine("ClickSwitch");
+
+        if (ownableAttribute)
+        {
+            stagemanager.itemList.Add(name);
+            getitemwindow.GetItem(spriterenderer.sprite, itemName);
+            ownableAttribute = false;
+            disableAttribute = true;
+        }
+    }
+
+    private IEnumerator ClickSwitch()
+    {
+        isClicked = true;
+
+        yield return new WaitForSeconds(0.5f);
+
+        isClicked = false;
+    }
+
+    private void ChangeEnableImage()
+    {
+        if (disableAttribute)
+        {
+            spriterenderer.enabled = false;
+            collider.enabled = false;
+        }
+        else
+        {
+            spriterenderer.enabled = true;
+            collider.enabled = true;
+        }
+    }
+
+    private void MoveItem()
+    {
+        if (isMoving)
+        {
+            this.transform.position += (Vector3)destinationPosition / destinationPosition.magnitude * moveSpeed;
+
+            if (((Vector2)this.transform.position - initialPosition).magnitude >= destinationPosition.magnitude)
+            {
+                isMoving = false;
+            }
+        }
+    }
+
+    private void ChangeSizeItem()
+    {
+        if (isChanging)
+        {
+            this.transform.localScale += (new Vector3(1, 1, 0)) * changeSpeed;
+
+            if (((Vector2)this.transform.localScale).magnitude >= (initialScale * changeSizeRate).magnitude)
+            {
+                isChanging = false;
+            }
+        }
+    }
+
+    private void CheckCondition(ItemEvent[] events)
+    {
+        if (eventAttribute)
+        {
+            foreach (var i in events)
+            {
+                List<bool> sumBool = new List<bool>();
+
+                foreach (var j in i.conditions)
+                {
+                    sumBool.Add((!j.ifThisClicked || (j.ifThisClicked && isClicked)) &&
+                        (!j.ifFlag || (j.ifFlag && stagemanager.GetFlagByName(j.stoodFlagName))) &&
+                        (!j.ifHoldItem || (j.ifHoldItem && stagemanager.itemList.Contains(j.holdItemName))));
+                }
+
+
+                if (sumBool.Contains(true) && i.eventTrigger && !isMoving)
+                {
+                    RaiseEvent(i);
+                    i.eventTrigger = false;
+                }
+            }
+        }
+    }
+    
+    private void RaiseEvent(ItemEvent itemEvent)
+    {
+        
+        if (itemEvent.beToAppear)
+        {
+            switch (itemEvent.appearingOption)
+            {
+                case 1: 
+                    disableAttribute = false;
+                    break;
+                case 2: 
+                    disableAttribute = true;
+                    break;
+                case 3: 
+                    disableAttribute = !disableAttribute;
+                    break;
+            }
+        }
+                    
+        if (itemEvent.beAvailable)
+        {
+            ownableAttribute = true;
+        }
+
+        if (itemEvent.beToMove)
+        {
+            initialPosition = (Vector2)this.transform.position;
+            destinationPosition = (Vector2)this.transform.position + itemEvent.moveVector;
+
+            if (itemEvent.moveType == 1)
+            {
+                this.transform.position = destinationPosition;
+            }
+            else
+            {
+                moveSpeed = itemEvent.moveSpeed * Time.deltaTime;
+                isMoving = true;
+            }
+        }
+
+        if (itemEvent.beToChangeSize)
+        {
+            initialScale = (Vector2)this.transform.localScale;
+            changeSizeRate = itemEvent.changeSizeRate;
+
+            if (itemEvent.changeType == 1)
+            {
+                this.transform.localScale *= changeSizeRate; 
+            }
+            else
+            {
+                changeSpeed = itemEvent.changeSpeed * Time.deltaTime;
+                isChanging = true;
+            }
+        }
+
+        /*
+        if (itemEvent.beToPopUpText)
+        {
+        }
+        */
+
+        if (itemEvent.beToFlag)
+        {
+            stagemanager.SetFlagByName(stagemanager.eventFlagList, itemEvent.standingFlagName);
+        }  
+
+        if (itemEvent.beToFlagClear)
+        {
+            stagemanager.SetFlagByName(stagemanager.clearFlagList, itemEvent.standingClearFlagName);
+        }
+    }
+}
+
+
+[Serializable]
+public class ItemEvent
+{
+    public int conditionType = 1;
+
+    [SerializeField]
+    public ItemCondition[] conditions;
+
+    public bool eventTrigger = true;
+
+    public bool beToAppear = false;
+
+    public bool beAvailable = false;
+    public int appearingOption = 1;
+
+    public bool beToMove = false;
+    public Vector2 moveVector = new Vector2(0, 0);
+    public int moveType = 0;
+    public float moveSpeed = 1;
+
+    public bool beToChangeSize = false;
+    public float changeSizeRate = 1;
+    public int changeType = 0;
+    public float changeSpeed = 1;
+
+    //ポップアップテキスト表示の処理未実装
+    public bool beToPopUpText = false;
+    public string poppingUpText;
+    
+    //効果音の処理未実装
+    public bool beToSoundEffect = false;
+    public string soundType; 
+
+    public bool beToFlag = false;
+    public string standingFlagName;
+
+    public bool beToFlagClear = false;
+    public string standingClearFlagName;
+
+    //image画像変わるevent必要？
+}
+
+[Serializable]
+public class ItemCondition
+{
+    public bool ifThisClicked = false;
+
+    public bool ifFlag = false;
+    public string stoodFlagName;
+
+    public bool ifHoldItem = false;
+    public string holdItemName;
+}
