@@ -14,6 +14,8 @@ public class StageManagerEditor : Editor
 
     private bool BGMButton;
 
+    private bool SoundEffectButton;
+
     public override void OnInspectorGUI()
     {
         StageManager stagemanager = target as StageManager;        
@@ -154,6 +156,43 @@ public class StageManagerEditor : Editor
 
                     EditorGUILayout.Space(5);
                     EditorGUI.indentLevel--;
+                }
+            }
+        }
+
+        EditorGUI.indentLevel--;
+        EditorGUILayout.Space(10);
+        EditorGUILayout.LabelField("効果音");
+
+        EditorGUILayout.BeginHorizontal();
+
+        if (stagemanager.soundEffectList.Length != stagemanager.numberOfSoundEffect)
+        {
+            Array.Resize<SoundEffectData>(ref stagemanager.soundEffectList, stagemanager.numberOfSoundEffect);
+        }
+        else
+        {
+            if (!SoundEffectButton)
+            {
+                SoundEffectButton = GUILayout.Button(EditorGUIUtility.TrIconContent("d_forward"), "RL FooterButton", GUILayout.Width(16));
+                stagemanager.numberOfSoundEffect = EditorGUILayout.IntField("効果音の種類->", stagemanager.numberOfSoundEffect);
+                EditorGUILayout.EndHorizontal ();
+                EditorGUI.indentLevel++;
+            }
+            else
+            {
+                SoundEffectButton = !GUILayout.Button(EditorGUIUtility.TrIconContent("icon dropdown"), "RL FooterButton", GUILayout.Width(16));
+                stagemanager.numberOfSoundEffect = EditorGUILayout.IntField("効果音の種類->", stagemanager.numberOfSoundEffect);
+                EditorGUILayout.EndHorizontal ();
+                EditorGUI.indentLevel++;
+
+                foreach (var i in stagemanager.soundEffectList)
+                {
+                    EditorGUI.indentLevel++;
+                    i.soundEffect = (AudioClip)EditorGUILayout.ObjectField("効果音", i.soundEffect, typeof(AudioClip));
+                    i.soundName = EditorGUILayout.TextField("効果音の名前", i.soundName);
+                    EditorGUI.indentLevel--;
+                    EditorGUILayout.Space(5);
                 }
             }
         }
@@ -341,9 +380,8 @@ public class ItemEditor : Editor
                         if (item.events[i].beToSoundEffect)
                         {
                             EditorGUI.indentLevel++;
-                            item.events[i].soundType = EditorGUILayout.TextField("鳴らす効果音の種類->", item.events[i].soundType);
+                            item.events[i].soundType = EditorGUILayout.IntPopup("効果音の種類->", item.events[i].soundType, (from j in item.soundEffectList select j.soundName).ToArray(), Enumerable.Range(0, item.soundEffectList.Length).ToArray());
 
-                            //その他の場合、ドラッグ＆ドロップで音声ファイルを指定できるようにする。
                             EditorGUI.indentLevel--;
                         }
 

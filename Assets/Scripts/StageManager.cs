@@ -24,6 +24,11 @@ public class StageManager : MonoBehaviour
     [SerializeField]
     public BGMData[] BGMList = new BGMData[1];
 
+    public int numberOfSoundEffect;
+
+    [SerializeField]
+    public SoundEffectData[] soundEffectList = new SoundEffectData[1];
+
     public List<string> itemList = new List<string>();
 
     public void Update()
@@ -95,5 +100,19 @@ public class BGMData
     {
         BGM = this.BGM;
         flagName = this.flagName;
+    }
+}
+
+[Serializable]
+public class SoundEffectData
+{
+    [SerializeField]
+    public AudioClip soundEffect;
+    public string soundName;
+
+    public SoundEffectData(AudioClip soundEffect, string soundName)
+    {
+        soundEffect = this.soundEffect;
+        soundName = this.soundName;
     }
 }

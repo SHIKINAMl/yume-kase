@@ -17,11 +17,14 @@ public class Item : MonoBehaviour, IPointerClickHandler
     [SerializeField]
     public ItemEvent[] events;
 
+    public SoundEffectData[] soundEffectList => GameObject.Find("StageManager").GetComponent<StageManager>().soundEffectList;
+
     private StageManager stagemanager;
     private GetItemWindow getitemwindow;
 
     private SpriteRenderer spriterenderer;
     private Collider2D collider;
+    private AudioSource audiosource;
 
     private bool isClicked = false;
 
@@ -35,6 +38,7 @@ public class Item : MonoBehaviour, IPointerClickHandler
     private float changeSizeRate;
     private float changeSpeed;
 
+
     public void Start()
     {
         stagemanager = GameObject.Find("StageManager").GetComponent<StageManager>();
@@ -42,6 +46,7 @@ public class Item : MonoBehaviour, IPointerClickHandler
 
         spriterenderer = GetComponent<SpriteRenderer>();
         collider = GetComponent<Collider2D>();
+        audiosource = GetComponent<AudioSource>();
 
         foreach (var i in events)
         {
@@ -205,6 +210,11 @@ public class Item : MonoBehaviour, IPointerClickHandler
             GameObject.Find("TextWindow").GetComponent<TextWindow>().SetTexts(itemEvent.poppingUpTexts);
         }
 
+        if (itemEvent.beToSoundEffect)
+        {
+            audiosource.PlayOneShot(stagemanager.soundEffectList[itemEvent.soundType].soundEffect);
+        }
+
         if (itemEvent.beToFlag)
         {
             stagemanager.SetFlagByName(stagemanager.eventFlagList, itemEvent.standingFlagName);
@@ -243,13 +253,11 @@ public class ItemEvent
     public int changeType = 0;
     public float changeSpeed = 1;
 
-    //ポップアップテキスト表示の処理未実装
     public bool beToPopUpText = false;
     public string[] poppingUpTexts;
     
-    //効果音の処理未実装
     public bool beToSoundEffect = false;
-    public string soundType; 
+    public int soundType; 
 
     public bool beToFlag = false;
     public string standingFlagName;
