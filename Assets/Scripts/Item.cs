@@ -200,11 +200,10 @@ public class Item : MonoBehaviour, IPointerClickHandler
             }
         }
 
-        /*
         if (itemEvent.beToPopUpText)
         {
+            GameObject.Find("TextWindow").GetComponent<TextWindow>().SetTexts(itemEvent.poppingUpTexts);
         }
-        */
 
         if (itemEvent.beToFlag)
         {
@@ -246,7 +245,7 @@ public class ItemEvent
 
     //ポップアップテキスト表示の処理未実装
     public bool beToPopUpText = false;
-    public string poppingUpText;
+    public string[] poppingUpTexts;
     
     //効果音の処理未実装
     public bool beToSoundEffect = false;

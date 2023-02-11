@@ -316,7 +316,22 @@ public class ItemEditor : Editor
                         if (item.events[i].beToPopUpText)
                         {
                             EditorGUI.indentLevel++;
-                            item.events[i].poppingUpText = EditorGUILayout.TextField("表示するテキスト->", item.events[i].poppingUpText);
+
+                            int listSize = item.events[i].poppingUpTexts.Length;
+
+                            listSize = EditorGUILayout.IntField("文章の大きさ", listSize);
+
+                            if (item.events[i].poppingUpTexts.Length != listSize)
+                            {
+                                item.events[i].poppingUpTexts = new string[listSize];
+                            }
+                            else
+                            {
+                                for (int j = 0; j < listSize; j++)
+                                {
+                                    item.events[i].poppingUpTexts[j] = EditorGUILayout.TextField($"表示する文章（その{j+1}）->", item.events[i].poppingUpTexts[j]);
+                                }
+                            }
 
                             EditorGUI.indentLevel--;
                         }
