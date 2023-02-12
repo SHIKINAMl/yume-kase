@@ -1078,13 +1078,16 @@ MonoBehaviour:
   eventAttribute: 1
   numberOfEvent: 1
   events:
-  - conditionType: 1
+  - eventType: 1
+    conditionType: 1
     conditions:
-    - ifThisClicked: 1
+    - ifThisClicked: 0
       ifFlag: 0
       stoodFlagName: 
+      flagDown: 1
       ifHoldItem: 0
       holdItemName: 
+      dropItem: 0
     eventTrigger: 0
     beToAppear: 0
     beAvailable: 0
@@ -1100,10 +1103,11 @@ MonoBehaviour:
     beToPopUpText: 0
     poppingUpTexts:
     - 
-    beToSoundEffect: 1
+    beToSoundEffect: 0
     soundType: 0
     beToFlag: 0
     standingFlagName: 
+    flagOption: 1
     beToFlagClear: 0
     standingClearFlagName: 
 --- !u!58 &978893597
@@ -1187,7 +1191,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &978893600
 AudioSource:
@@ -1533,7 +1537,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1408251188
 GameObject:

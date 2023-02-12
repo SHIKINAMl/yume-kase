@@ -143,7 +143,11 @@ public class Item : MonoBehaviour, IPointerClickHandler
                 if (sumBool.Contains(true) && i.eventTrigger && !isMoving)
                 {
                     RaiseEvent(i);
-                    i.eventTrigger = false;
+
+                    if (i.eventType == 1)
+                    {
+                        i.eventTrigger = false;
+                    }
 
                     foreach (var j in i.conditions)
                     {
@@ -255,6 +259,7 @@ public class Item : MonoBehaviour, IPointerClickHandler
 [Serializable]
 public class ItemEvent
 {
+    public int eventType = 1;
     public int conditionType = 1;
 
     [SerializeField]

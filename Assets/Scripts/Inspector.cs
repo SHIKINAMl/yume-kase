@@ -253,6 +253,8 @@ public class ItemEditor : Editor
                     EditorGUILayout.HelpBox($"\nイベント{i+1}\n", MessageType.None);
                     EditorGUI.indentLevel++;
 
+                    item.events[i].eventType = EditorGUILayout.IntPopup("イベントの実行可能回数", item.events[i].eventType, new string[]{"１回", "無限"}, new int[]{1, 2});
+
                     item.events[i].conditionType = EditorGUILayout.IntPopup("条件のタイプ", item.events[i].conditionType, new string[]{"and条件のみ", "(and条件) or (and条件)", "(and条件) or (and条件) or　(and条件)"}, new int[]{1, 2, 3});
 
                     if (item.events[i].conditions.Length != item.events[i].conditionType)
