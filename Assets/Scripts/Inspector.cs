@@ -284,6 +284,7 @@ public class ItemEditor : Editor
                             {
                                 EditorGUI.indentLevel++; 
                                 item.events[i].conditions[j].stoodFlagName = EditorGUILayout.TextField("そのフラグの名前->", item.events[i].conditions[j].stoodFlagName);
+                                item.events[i].conditions[j].flagDown = EditorGUILayout.Toggle("そのフラグを折る", item.events[i].conditions[j].flagDown);
                                 EditorGUI.indentLevel--;
                             }
 
@@ -293,6 +294,7 @@ public class ItemEditor : Editor
                             {
                                 EditorGUI.indentLevel++; 
                                 item.events[i].conditions[j].holdItemName = EditorGUILayout.TextField("そのアイテムの名前->", item.events[i].conditions[j].holdItemName);
+                                item.events[i].conditions[j].dropItem = EditorGUILayout.Toggle("そのアイテムを消費する", item.events[i].conditions[j].dropItem);
                                 EditorGUI.indentLevel--;
                             }
 
@@ -385,16 +387,17 @@ public class ItemEditor : Editor
                             EditorGUI.indentLevel--;
                         }
 
-                        item.events[i].beToFlag = EditorGUILayout.Toggle("特定のフラグがたつ", item.events[i].beToFlag);
+                        item.events[i].beToFlag = EditorGUILayout.Toggle("特定のフラグが立つ/折れる", item.events[i].beToFlag);
 
                         if (item.events[i].beToFlag)
                         {
                             EditorGUI.indentLevel++; 
                             item.events[i].standingFlagName = EditorGUILayout.TextField("そのフラグの名前->", item.events[i].standingFlagName);
+                            item.events[i].flagOption = EditorGUILayout.IntPopup("オプション->", item.events[i].flagOption, new string[]{"立つ", "折れる", "反転する"}, new int[]{1, 2, 3});
                             EditorGUI.indentLevel--;
                         }
 
-                        item.events[i].beToFlagClear = EditorGUILayout.Toggle("特定のクリアフラグがたつ", item.events[i].beToFlagClear);
+                        item.events[i].beToFlagClear = EditorGUILayout.Toggle("特定のクリアフラグが立つ", item.events[i].beToFlagClear);
 
                         if (item.events[i].beToFlagClear)
                         {

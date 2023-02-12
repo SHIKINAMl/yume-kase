@@ -68,7 +68,7 @@ public class Item : MonoBehaviour, IPointerClickHandler
 
         if (ownableAttribute)
         {
-            stagemanager.itemList.Add(name);
+            stagemanager.itemList.Add(itemName);
             getitemwindow.GetItem(spriterenderer.sprite, itemName);
             ownableAttribute = false;
             disableAttribute = true;
@@ -144,6 +144,19 @@ public class Item : MonoBehaviour, IPointerClickHandler
                 {
                     RaiseEvent(i);
                     i.eventTrigger = false;
+
+                    foreach (var j in i.conditions)
+                    {
+                        if (j.ifFlag && j.flagDown)
+                        {
+                            stagemanager.SetFlagByName(stagemanager.eventFlagList, j.stoodFlagName, false);
+                        }
+
+                        if (j.ifHoldItem && j.dropItem)
+                        {
+                            stagemanager.itemList.Remove(j.holdItemName);
+                        }
+                    }
                 }
             }
         }
@@ -217,12 +230,23 @@ public class Item : MonoBehaviour, IPointerClickHandler
 
         if (itemEvent.beToFlag)
         {
-            stagemanager.SetFlagByName(stagemanager.eventFlagList, itemEvent.standingFlagName);
+            switch (itemEvent.flagOption)
+            {
+                case 1:
+                    stagemanager.SetFlagByName(stagemanager.eventFlagList, itemEvent.standingFlagName, true);
+                    break;
+                case 2:
+                    stagemanager.SetFlagByName(stagemanager.eventFlagList, itemEvent.standingFlagName, false);
+                    break;
+                case 3:
+                    stagemanager.SetFlagByName(stagemanager.eventFlagList, itemEvent.standingFlagName, !stagemanager.GetFlagByName(itemEvent.standingFlagName));
+                    break;
+            }
         }  
 
         if (itemEvent.beToFlagClear)
         {
-            stagemanager.SetFlagByName(stagemanager.clearFlagList, itemEvent.standingClearFlagName);
+            stagemanager.SetFlagByName(stagemanager.clearFlagList, itemEvent.standingClearFlagName, true);
         }
     }
 }
@@ -261,6 +285,7 @@ public class ItemEvent
 
     public bool beToFlag = false;
     public string standingFlagName;
+    public int flagOption;
 
     public bool beToFlagClear = false;
     public string standingClearFlagName;
@@ -275,7 +300,9 @@ public class ItemCondition
 
     public bool ifFlag = false;
     public string stoodFlagName;
+    public bool flagDown = true;
 
     public bool ifHoldItem = false;
     public string holdItemName;
+    public bool dropItem = true;
 }

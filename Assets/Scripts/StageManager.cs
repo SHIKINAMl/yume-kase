@@ -56,13 +56,13 @@ public class StageManager : MonoBehaviour
         return false;
     }
 
-    public void SetFlagByName(FlagData[] flaglist, string flagName)
+    public void SetFlagByName(FlagData[] flaglist, string flagName, bool boolean)
     {
         foreach(var flag in flaglist)
         {
             if (flag.flagName == flagName)
             {
-                flag.SetFlag();
+                flag.SetFlag(boolean);
             }
         }
     }
@@ -80,11 +80,11 @@ public class FlagData
         flag = this.flag;
     }
 
-    public void SetFlag()
+    public void SetFlag(bool boolean)
     {
         if (!flag)
         {
-            flag = true;
+            flag = boolean;
         }
     }
 }
