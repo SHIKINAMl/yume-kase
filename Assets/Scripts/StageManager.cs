@@ -29,7 +29,10 @@ public class StageManager : MonoBehaviour
     [SerializeField]
     public SoundEffectData[] soundEffectList = new SoundEffectData[1];
 
-    public List<string> itemList = new List<string>();
+    [SerializeField]
+    public Dictionary<string, Sprite> itemList = new Dictionary<string, Sprite>();
+
+    public int inventorySize = 6;
 
     public void Update()
     {

@@ -21,6 +21,7 @@ public class Item : MonoBehaviour, IPointerClickHandler
 
     private StageManager stagemanager;
     private GetItemWindow getitemwindow;
+    private ItemInventory iteminventory;
 
     private SpriteRenderer spriterenderer;
     private Collider2D collider;
@@ -43,6 +44,7 @@ public class Item : MonoBehaviour, IPointerClickHandler
     {
         stagemanager = GameObject.Find("StageManager").GetComponent<StageManager>();
         getitemwindow = GameObject.Find("GetItemWindow").GetComponent<GetItemWindow>();
+        iteminventory = GameObject.Find("ItemInventory").GetComponent<ItemInventory>();
 
         spriterenderer = GetComponent<SpriteRenderer>();
         collider = GetComponent<Collider2D>();
@@ -66,10 +68,11 @@ public class Item : MonoBehaviour, IPointerClickHandler
     {
         StartCoroutine("ClickSwitch");
 
-        if (ownableAttribute)
+        if (ownableAttribute && stagemanager.itemList.Count <= stagemanager.inventorySize)
         {
-            stagemanager.itemList.Add(itemName);
-            getitemwindow.GetItem(spriterenderer.sprite, itemName);
+            stagemanager.itemList.Add(itemName, spriterenderer.sprite);
+            getitemwindow.GetItem(itemName, spriterenderer.sprite);
+            iteminventory.DisplayItem();
             ownableAttribute = false;
             disableAttribute = true;
         }
@@ -136,7 +139,7 @@ public class Item : MonoBehaviour, IPointerClickHandler
                 {
                     sumBool.Add((!j.ifThisClicked || (j.ifThisClicked && isClicked)) &&
                         (!j.ifFlag || (j.ifFlag && stagemanager.GetFlagByName(j.stoodFlagName))) &&
-                        (!j.ifHoldItem || (j.ifHoldItem && stagemanager.itemList.Contains(j.holdItemName))));
+                        (!j.ifHoldItem || (j.ifHoldItem && stagemanager.itemList.ContainsKey(j.holdItemName))));
                 }
 
 
@@ -159,6 +162,7 @@ public class Item : MonoBehaviour, IPointerClickHandler
                         if (j.ifHoldItem && j.dropItem)
                         {
                             stagemanager.itemList.Remove(j.holdItemName);
+                            iteminventory.DisplayItem();
                         }
                     }
                 }

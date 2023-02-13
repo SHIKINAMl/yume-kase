@@ -12,7 +12,7 @@ public class GetItemWindow : MonoBehaviour
         image = GetComponent<Image>();
     }
 
-    public void GetItem(Sprite itemImage, string itemName)
+    public void GetItem(string itemName, Sprite itemImage)
     {
         Time.timeScale = 0;
 

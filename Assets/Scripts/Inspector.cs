@@ -203,13 +203,22 @@ public class StageManagerEditor : Editor
         EditorGUILayout.LabelField("入手アイテム一覧");
         EditorGUI.indentLevel++;
         
+        int n = 1;
+
         foreach (var i in stagemanager.itemList)
         {
-            if (!string.IsNullOrEmpty(i))
-            {
-                EditorGUILayout.TextField(i);
-            }
+            EditorGUILayout.HelpBox($"\nアイテム{n}\n", MessageType.None);
+            EditorGUI.indentLevel++;
+            EditorGUILayout.TextField(i.Key);
+            EditorGUILayout.ObjectField(i.Value, typeof(Sprite));
+            EditorGUI.indentLevel--;
+            n++;
         }
+
+        EditorGUI.indentLevel--;
+        EditorGUILayout.Space(10);
+
+        stagemanager.inventorySize = (int)EditorGUILayout.Slider("アイテムインベントリの大きさ->", stagemanager.inventorySize, 2, 6);
     }
 }
 
