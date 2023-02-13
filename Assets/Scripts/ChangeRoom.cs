@@ -13,12 +13,12 @@ public class ChangeRoom : MonoBehaviour, IPointerClickHandler
     public bool isFlagType;
     public string flagName;
 
-    private Camera camera;
+    private CameraMove cameramove;
     private StageManager stagemanager;
 
     public void Start()
     {
-        camera = GameObject.Find("MainCamera").GetComponent<Camera>();
+        cameramove = GameObject.Find("MainCamera").GetComponent<CameraMove>();
         stagemanager = GameObject.Find("StageManager").GetComponent<StageManager>();
         
         if (isFlagType)
@@ -39,6 +39,6 @@ public class ChangeRoom : MonoBehaviour, IPointerClickHandler
 
     public void OnPointerClick(PointerEventData pointer)
     {
-        camera.OnClickChangeRoom(destinationRoom);
+        cameramove.OnClickChangeRoom(destinationRoom);
     }
 } 

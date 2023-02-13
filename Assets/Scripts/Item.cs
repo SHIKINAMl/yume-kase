@@ -72,7 +72,7 @@ public class Item : MonoBehaviour, IPointerClickHandler
         {
             stagemanager.itemList.Add(itemName, spriterenderer.sprite);
             getitemwindow.GetItem(itemName, spriterenderer.sprite);
-            iteminventory.DisplayItem();
+            StartCoroutine(iteminventory.DisplayItem());
             ownableAttribute = false;
             disableAttribute = true;
         }
@@ -162,7 +162,7 @@ public class Item : MonoBehaviour, IPointerClickHandler
                         if (j.ifHoldItem && j.dropItem)
                         {
                             stagemanager.itemList.Remove(j.holdItemName);
-                            iteminventory.DisplayItem();
+                            StartCoroutine(iteminventory.DisplayItem());
                         }
                     }
                 }

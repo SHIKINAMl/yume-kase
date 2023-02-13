@@ -4,7 +4,7 @@ using UnityEngine;
 using System;
 using System.Linq;
 
-public class Camera : MonoBehaviour
+public class CameraMove : MonoBehaviour
 {
     private StageManager stagemanager;
     private BGMData[] BGMList;

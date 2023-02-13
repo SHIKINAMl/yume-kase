@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.EventSystems;
 using System.Linq;
 
 public class ItemInventory : MonoBehaviour
@@ -15,23 +14,31 @@ public class ItemInventory : MonoBehaviour
     {
         stagemanager = GameObject.Find("StageManager").GetComponent<StageManager>();
 
-        DisplayItem();
+        StartCoroutine(DisplayItem());
     }
 
-    public void DisplayItem()
+    public IEnumerator DisplayItem()
     {
         RectTransform parent = this.GetComponent<RectTransform>();
+
+        foreach (Transform child in this.transform)
+        {
+            Destroy(child.gameObject);
+        }
+
+        yield return null;
 
         for (int i = 0; i < stagemanager.inventorySize; i++)
         {
             RectTransform child = Instantiate(itemWindow).GetComponent<RectTransform>();
             child.SetParent(parent);
-            child.localPosition = new Vector3(-parent.sizeDelta.x/2 + (150 + 300*(float)i)/(float)stagemanager.inventorySize , 0, 0);
+            child.localScale = new Vector3(1, 1, 1);
+            child.localPosition = new Vector3(((-parent.sizeDelta.x/2) + ((300 + (600*(float)i))/(float)stagemanager.inventorySize)), 0, 0);
         }
 
         int n = 0;
 
-        foreach (Transform child in this.GetComponentInChildren<Transform>())
+        foreach (Transform child in this.transform)
         {
             GameObject childObject = child.transform.GetChild(0).gameObject;
             Image childBackImage = child.GetComponent<Image>();
@@ -51,5 +58,11 @@ public class ItemInventory : MonoBehaviour
 
             n++;
         }
+
+        for(int i = 1; i <= this.transform.childCount; i++)
+        {
+            this.transform.GetChild(0).transform.SetSiblingIndex(this.transform.childCount - i);
+        }
+
     }
 }
