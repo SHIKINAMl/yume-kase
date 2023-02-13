@@ -1,3 +1,5 @@
+#pragma warning disable 0618
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -450,6 +452,54 @@ public class ChangeRoomEditor : Editor
         {
             EditorGUI.indentLevel++;
             changeRoom.flagName = EditorGUILayout.TextField("そのフラグ->", changeRoom.flagName);
+        }
+    }
+}
+
+[CustomEditor (typeof(ItemInventory))]
+public class ItemInventoryEditor : Editor
+{
+    public override void OnInspectorGUI()
+    {
+        ItemInventory iteminventory = target as ItemInventory;
+
+        var events = serializedObject.FindProperty("inventoryEvents");
+
+        iteminventory.numberOfEvent = EditorGUILayout.IntField("イベントの数->", iteminventory.numberOfEvent);
+
+        if (events.arraySize != iteminventory.numberOfEvent)
+        {
+            events.arraySize = iteminventory.numberOfEvent;
+
+            serializedObject.ApplyModifiedProperties();
+            serializedObject.Update();
+
+            iteminventory.numberOfEvent = events.arraySize;
+        }
+        else
+        {
+            for (int i = 0; i < iteminventory.numberOfEvent; i++)
+            {
+                EditorGUILayout.HelpBox($"\nイベント：合成その{i+1}\n", MessageType.None);
+                EditorGUI.indentLevel++;
+
+                ItemData[] itemList = iteminventory.inventoryEvents[i].combinationItemList;
+                            
+                for (int j = 0; j < itemList.Length; j++)
+                {
+                    if (j != itemList.Length-1)
+                    {
+                        EditorGUILayout.LabelField($"合成素材その{j+1}");
+                    }
+                    else
+                    {
+                        EditorGUILayout.LabelField($"合成先のアイテム");
+                    }
+
+                    itemList[j].itemName = EditorGUILayout.TextField("アイテムの名前->", itemList[j].itemName);
+                    itemList[j].itemImage = (Sprite)EditorGUILayout.ObjectField("アイテムの画像->", itemList[j].itemImage, typeof(Sprite));
+                }
+            }
         }
     }
 }

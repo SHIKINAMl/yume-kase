@@ -2,16 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System;
 using System.Linq;
 
 public class ItemInventory : MonoBehaviour
 {
+    [SerializeField]
+    public InventoryEvent[] inventoryEvents;
+
+    public int numberOfEvent;
+
+    private GetItemWindow getitemwindow;
     private StageManager stagemanager;
 
     public GameObject itemWindow;
 
     public void Start()
     {
+        getitemwindow = GameObject.Find("GetItemWindow").GetComponent<GetItemWindow>();
         stagemanager = GameObject.Find("StageManager").GetComponent<StageManager>();
 
         StartCoroutine(DisplayItem());
@@ -26,8 +34,11 @@ public class ItemInventory : MonoBehaviour
             Destroy(child.gameObject);
         }
 
+        Debug.Log(1);
+
         yield return null;
 
+        Debug.Log(2);
         for (int i = 0; i < stagemanager.inventorySize; i++)
         {
             RectTransform child = Instantiate(itemWindow).GetComponent<RectTransform>();
@@ -48,6 +59,7 @@ public class ItemInventory : MonoBehaviour
             {
                 childBackImage.color = new Color(0.9f, 0.9f, 0.9f, 1f);
                 childIconImage.enabled = true;
+                childObject.GetComponent<ItemIcon>().itemName = stagemanager.itemList.Keys.ToArray()[n];
                 childIconImage.sprite = stagemanager.itemList.Values.ToArray()[n];
             }
             else
@@ -58,11 +70,49 @@ public class ItemInventory : MonoBehaviour
 
             n++;
         }
+    }
 
-        for(int i = 1; i <= this.transform.childCount; i++)
+    public void ChackEvents(GameObject item1, GameObject item2)
+    {
+        foreach (var i in inventoryEvents)
         {
-            this.transform.GetChild(0).transform.SetSiblingIndex(this.transform.childCount - i);
+            if ((i.combinationItemList[0].itemName == item1.GetComponent<ItemIcon>().itemName && i.combinationItemList[1].itemName == item2.GetComponent<ItemIcon>().itemName) ||
+                (i.combinationItemList[0].itemName == item2.GetComponent<ItemIcon>().itemName && i.combinationItemList[1].itemName == item1.GetComponent<ItemIcon>().itemName))
+            {
+                stagemanager.itemList.Remove(item1.GetComponent<ItemIcon>().itemName);
+                stagemanager.itemList.Remove(item2.GetComponent<ItemIcon>().itemName);
+                stagemanager.itemList.Add(i.combinationItemList[2].itemName, i.combinationItemList[2].itemImage);
+                getitemwindow.GetItem(i.combinationItemList[2].itemName, i.combinationItemList[2].itemImage);
+                StartCoroutine(DisplayItem());
+                i.eventTrigger = false;
+            }
         }
+    }
+}
 
+[Serializable]
+public class InventoryEvent
+{
+    //インベントリ内のイベントが増える場合使用
+    //public int EventType = 1;
+
+    public bool eventTrigger = true;
+
+    [SerializeField]
+    public ItemData[] combinationItemList = new ItemData[3];
+}
+
+[Serializable]
+public class ItemData
+{
+    public string itemName;
+
+    [SerializeField]
+    public Sprite itemImage;
+
+    public ItemData(string itemName, Sprite itemImage)
+    {
+        itemName = this.itemName;
+        itemImage = this.itemImage;
     }
 }
