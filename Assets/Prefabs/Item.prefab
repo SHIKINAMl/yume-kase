@@ -115,10 +115,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c80f2437d863984fa35de87d2eb2ec4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemName: 
   disableAttribute: 0
   ownableAttribute: 0
   eventAttribute: 1
+  itemName: 
+  itemText: 
   numberOfEvent: 1
   events:
   - eventType: 1
@@ -126,11 +127,11 @@ MonoBehaviour:
     conditions:
     - ifThisClicked: 1
       ifFlag: 0
-      stoodFlagName: 
-      flagDown: 1
+      numberOfFlag: 0
+      stoodFlagNames: []
       ifHoldItem: 0
-      holdItemName: 
-      dropItem: 0
+      numberOfItem: 0
+      holdItemNames: []
     eventTrigger: 0
     beToAppear: 0
     beAvailable: 0
@@ -143,12 +144,12 @@ MonoBehaviour:
     changeSizeRate: 3
     changeType: 2
     changeSpeed: 5
-    beToPopUpText: 0
+    beToPopUpText: 1
     poppingUpTexts:
     - 
     beToSoundEffect: 0
     soundType: 0
-    beToFlag: 1
+    beToFlag: 0
     standingFlagName: 
     flagOption: 1
     beToFlagClear: 0

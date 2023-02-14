@@ -1,3 +1,5 @@
+#pragma warning disable 0108
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -139,8 +141,8 @@ public class Item : MonoBehaviour, IPointerClickHandler
                 foreach (var j in i.conditions)
                 {
                     sumBool.Add((!j.ifThisClicked || (j.ifThisClicked && isClicked)) &&
-                        (!j.ifFlag || (j.ifFlag && stagemanager.GetFlagByName(j.stoodFlagName))) &&
-                        (!j.ifHoldItem || (j.ifHoldItem && stagemanager.checkItemName(j.holdItemName))));
+                        (!j.ifFlag || (j.ifFlag && CheckFlags(j.stoodFlagNames))) &&
+                        (!j.ifHoldItem || (j.ifHoldItem && CheckItems(j.holdItemNames))));
                 }
 
 
@@ -155,14 +157,27 @@ public class Item : MonoBehaviour, IPointerClickHandler
 
                     foreach (var j in i.conditions)
                     {
-                        if (j.ifFlag && j.flagDown)
+                        if (j.ifFlag)
                         {
-                            stagemanager.SetFlagByName(stagemanager.eventFlagList, j.stoodFlagName, false);
+                            foreach (var k in j.stoodFlagNames)
+                            {
+                                if (k.boolean)
+                                {
+                                    stagemanager.SetFlagByName(stagemanager.eventFlagList, k.name, false);
+                                }
+                            }
                         }
 
-                        if (j.ifHoldItem && j.dropItem)
+                        if (j.ifHoldItem)
                         {
-                            stagemanager.itemList.RemoveAt(stagemanager.GetItemIndex(j.holdItemName));
+                            foreach (var k in j.holdItemNames)
+                            {
+                                if (k.boolean)
+                                {
+                                    stagemanager.itemList.RemoveAt(stagemanager.GetItemIndex(k.name));
+                                }
+                            }      
+
                             StartCoroutine(iteminventory.DisplayItem());
                         }
                     }
@@ -258,6 +273,32 @@ public class Item : MonoBehaviour, IPointerClickHandler
             stagemanager.SetFlagByName(stagemanager.clearFlagList, itemEvent.standingClearFlagName, true);
         }
     }
+
+    private bool CheckFlags(SetData[] flagList)
+    {
+        foreach (var flagData in flagList)
+        {
+            if (!stagemanager.GetFlagByName(flagData.name))
+            {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    private bool CheckItems(SetData[] itemList)
+    {
+        foreach (var itemData in itemList)
+        {
+            if (!stagemanager.CheckItemName(itemData.name))
+            {
+                return false;
+            }
+        }
+
+        return true;
+    }
 }
 
 
@@ -309,10 +350,24 @@ public class ItemCondition
     public bool ifThisClicked = false;
 
     public bool ifFlag = false;
-    public string stoodFlagName;
-    public bool flagDown = true;
+    public int numberOfFlag;
+    public SetData[] stoodFlagNames;
 
     public bool ifHoldItem = false;
-    public string holdItemName;
-    public bool dropItem = true;
+    public int numberOfItem;
+    public SetData[] holdItemNames;
+}
+
+[Serializable]
+public class SetData
+{
+    public string name;
+
+    public bool boolean;
+
+    public SetData(string name, bool boolean)
+    {
+        this.name = name;
+        this.boolean = boolean;
+    }
 }

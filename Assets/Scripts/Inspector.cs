@@ -318,9 +318,24 @@ public class ItemEditor : Editor
 
                             if (item.events[i].conditions[j].ifFlag)
                             {
-                                EditorGUI.indentLevel++; 
-                                item.events[i].conditions[j].stoodFlagName = EditorGUILayout.TextField("そのフラグの名前->", item.events[i].conditions[j].stoodFlagName);
-                                item.events[i].conditions[j].flagDown = EditorGUILayout.Toggle("そのフラグを折る", item.events[i].conditions[j].flagDown);
+                                EditorGUI.indentLevel++;
+                                item.events[i].conditions[j].numberOfFlag = EditorGUILayout.IntField("条件フラグの数->", item.events[i].conditions[j].numberOfFlag);
+
+                                if (item.events[i].conditions[j].stoodFlagNames.Length != item.events[i].conditions[j].numberOfFlag)
+                                {
+                                    Array.Resize<SetData>(ref item.events[i].conditions[j].stoodFlagNames, item.events[i].conditions[j].numberOfFlag);
+                                }
+                                else
+                                {
+                                    for (var k = 0; k < item.events[i].conditions[j].numberOfFlag; k++)
+                                    {
+                                        EditorGUILayout.LabelField($"フラグその{k+1}");
+                                        EditorGUI.indentLevel++;
+                                        item.events[i].conditions[j].stoodFlagNames[k].name = EditorGUILayout.TextField("そのフラグの名前->", item.events[i].conditions[j].stoodFlagNames[k].name);
+                                        item.events[i].conditions[j].stoodFlagNames[k].boolean = EditorGUILayout.Toggle("そのフラグを折る->", item.events[i].conditions[j].stoodFlagNames[k].boolean);
+                                        EditorGUI.indentLevel--;
+                                    }
+                                }
                                 EditorGUI.indentLevel--;
                             }
 
@@ -329,11 +344,26 @@ public class ItemEditor : Editor
                             if (item.events[i].conditions[j].ifHoldItem)
                             {
                                 EditorGUI.indentLevel++; 
-                                item.events[i].conditions[j].holdItemName = EditorGUILayout.TextField("そのアイテムの名前->", item.events[i].conditions[j].holdItemName);
-                                item.events[i].conditions[j].dropItem = EditorGUILayout.Toggle("そのアイテムを消費する", item.events[i].conditions[j].dropItem);
+                                item.events[i].conditions[j].numberOfItem = EditorGUILayout.IntField("条件アイテムの数->", item.events[i].conditions[j].numberOfItem);
+                                
+                                if (item.events[i].conditions[j].holdItemNames.Length != item.events[i].conditions[j].numberOfItem)
+                                {
+                                    Array.Resize<SetData>(ref item.events[i].conditions[j].holdItemNames, item.events[i].conditions[j].numberOfItem);
+                                }
+                                else
+                                {
+                                    for (var k = 0; k < item.events[i].conditions[j].numberOfItem; k++)
+                                    {
+                                        EditorGUILayout.LabelField($"アイテムその{k+1}");
+                                        EditorGUI.indentLevel++;
+                                        item.events[i].conditions[j].holdItemNames[k].name = EditorGUILayout.TextField("そのアイテムの名前->", item.events[i].conditions[j].holdItemNames[k].name);
+                                        item.events[i].conditions[j].holdItemNames[k].boolean = EditorGUILayout.Toggle("そのアイテムを消費する->", item.events[i].conditions[j].holdItemNames[k].boolean);
+                                        EditorGUI.indentLevel--;
+                                    }
+                                }
+
                                 EditorGUI.indentLevel--;
                             }
-
 
                             EditorGUILayout.Space(5);
                         }
@@ -396,7 +426,7 @@ public class ItemEditor : Editor
 
                             int listSize = item.events[i].poppingUpTexts.Length;
 
-                            listSize = EditorGUILayout.IntField("文章の大きさ", listSize);
+                            listSize = EditorGUILayout.IntField("文章の数->", listSize);
 
                             if (item.events[i].poppingUpTexts.Length != listSize)
                             {

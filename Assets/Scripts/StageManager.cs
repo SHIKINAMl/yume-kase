@@ -70,7 +70,7 @@ public class StageManager : MonoBehaviour
         }
     }
 
-    public bool checkItemName(string itemName)
+    public bool CheckItemName(string itemName)
     {
         foreach(var itemData in itemList)
         {
