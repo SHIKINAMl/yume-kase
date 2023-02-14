@@ -79,7 +79,7 @@ public class ItemInventory : MonoBehaviour
                 stagemanager.itemList.RemoveAt(stagemanager.GetItemIndex(item1.GetComponent<ItemIcon>().itemName));
                 stagemanager.itemList.RemoveAt(stagemanager.GetItemIndex(item2.GetComponent<ItemIcon>().itemName));
                 stagemanager.itemList.Add(new ItemData(i.combinationItem.itemName, i.combinationItem.itemImage, i.combinationItem.itemText));
-                getitemwindow.GetItem(i.combinationItem.itemName, i.combinationItem.itemImage);
+                getitemwindow.DisplayGetItem(i.combinationItem.itemName, i.combinationItem.itemImage);
                 StartCoroutine(DisplayItem());
                 i.eventTrigger = false;
             }

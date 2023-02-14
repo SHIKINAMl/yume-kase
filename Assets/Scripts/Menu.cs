@@ -8,14 +8,20 @@ public class Menu : MonoBehaviour
 {
     private StageManager stagemanager;
 
+    private Image blinderPanel;
+
     public void Start()
     {
         stagemanager = GameObject.Find("StageManager").GetComponent<StageManager>();
+
+        blinderPanel = GameObject.Find("BlinderPanel").GetComponent<Image>();
     }
 
     public void OnClickOpenMenu()
     {
         this.GetComponent<Image>().enabled = true;
+
+        blinderPanel.enabled = true;
 
         foreach (Transform child in this.gameObject.transform)
         {
@@ -27,6 +33,8 @@ public class Menu : MonoBehaviour
     public void OnClickRestartStage()
     {
         this.GetComponent<Image>().enabled = false;
+
+        blinderPanel.enabled = false;
 
         foreach (Transform child in this.gameObject.transform)
         {

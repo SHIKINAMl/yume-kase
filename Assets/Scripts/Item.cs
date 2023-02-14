@@ -72,7 +72,7 @@ public class Item : MonoBehaviour, IPointerClickHandler
         if (ownableAttribute && stagemanager.itemList.Count <= stagemanager.inventorySize)
         {
             stagemanager.itemList.Add(new ItemData(itemName, spriterenderer.sprite, itemText));
-            getitemwindow.GetItem(itemName, spriterenderer.sprite);
+            getitemwindow.DisplayGetItem(itemName, spriterenderer.sprite);
             StartCoroutine(iteminventory.DisplayItem());
             ownableAttribute = false;
             disableAttribute = true;

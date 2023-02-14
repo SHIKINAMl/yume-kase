@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class GetItemWindow : MonoBehaviour
+public class ItemInfoWindow : MonoBehaviour
 {
     private Image image;
 
@@ -37,7 +37,7 @@ public class GetItemWindow : MonoBehaviour
         }
     }
 
-    public void DisplayGetItem(string itemName, Sprite itemImage)
+    public void DisplayItemInfo(string itemName, Sprite itemImage, string itemText)
     {
         Time.timeScale = 0;
 
@@ -52,7 +52,8 @@ public class GetItemWindow : MonoBehaviour
             child.gameObject.SetActive(true);
         }
 
+        transform.Find("ItemName").GetComponent<Text>().text = itemName;
         transform.Find("ItemImage").GetComponent<Image>().sprite = itemImage;
-        transform.Find("ItemText").GetComponent<Text>().text = itemName + "を入手した。";
+        transform.Find("ItemText").GetComponent<Text>().text = itemText;
     }
 }
