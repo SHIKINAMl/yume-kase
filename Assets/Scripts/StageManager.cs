@@ -30,7 +30,7 @@ public class StageManager : MonoBehaviour
     public SoundEffectData[] soundEffectList = new SoundEffectData[1];
 
     [SerializeField]
-    public Dictionary<string, Sprite> itemList = new Dictionary<string, Sprite>();
+    public List<ItemData> itemList = new List<ItemData>();
 
     public int inventorySize = 6;
 
@@ -68,6 +68,32 @@ public class StageManager : MonoBehaviour
                 flag.SetFlag(boolean);
             }
         }
+    }
+
+    public bool checkItemName(string itemName)
+    {
+        foreach(var itemData in itemList)
+        {
+            if (itemData.itemName == itemName)
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    public int GetItemIndex(string itemName)
+    {
+        for (int i = 0; i < itemList.Count; i++)
+        {
+            if (itemList[i].itemName == itemName)
+            {
+                return i;
+            }
+        }
+
+        return -1;
     }
 }
 
@@ -117,5 +143,23 @@ public class SoundEffectData
     {
         soundEffect = this.soundEffect;
         soundName = this.soundName;
+    }
+}
+
+[Serializable]
+public class ItemData
+{
+    public string itemName;
+
+    [SerializeField]
+    public Sprite itemImage;
+
+    public string itemText;
+
+    public ItemData(string itemName, Sprite itemImage, string itemText)
+    {
+        this.itemName = itemName;
+        this.itemImage = itemImage;
+        this.itemText = itemText;
     }
 }

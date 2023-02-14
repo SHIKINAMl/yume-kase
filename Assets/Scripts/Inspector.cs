@@ -211,8 +211,15 @@ public class StageManagerEditor : Editor
         {
             EditorGUILayout.HelpBox($"\nアイテム{n}\n", MessageType.None);
             EditorGUI.indentLevel++;
-            EditorGUILayout.TextField(i.Key);
-            EditorGUILayout.ObjectField(i.Value, typeof(Sprite));
+            EditorGUILayout.TextField(i.itemName);
+            EditorGUILayout.ObjectField(i.itemImage, typeof(Sprite));
+
+            var style = new GUIStyle(EditorStyles.textArea)
+            {
+                wordWrap = true
+            };
+
+            EditorGUILayout.TextArea(i.itemText, style);
             EditorGUI.indentLevel--;
             n++;
         }
@@ -232,14 +239,30 @@ public class ItemEditor : Editor
         Item item = target as Item;
         var events = serializedObject.FindProperty("events");
 
-        item.itemName = EditorGUILayout.TextField("アイテムの名前->", item.itemName);
 
         EditorGUILayout.Space(20);
 
         item.disableAttribute = EditorGUILayout.Toggle("画像を非表示->", item.disableAttribute);
         item.ownableAttribute = EditorGUILayout.Toggle("入手出来る->", item.ownableAttribute);
-        item.eventAttribute = EditorGUILayout.Toggle("イベントを起こす->", item.eventAttribute);
 
+        if (item.ownableAttribute)
+        {
+            EditorGUI.indentLevel++; 
+            item.itemName = EditorGUILayout.TextField("アイテムの名前->", item.itemName);
+
+            var style = new GUIStyle(EditorStyles.textArea)
+            {
+                wordWrap = true
+            };
+
+            EditorGUILayout.LabelField("アイテムの説明");
+            item.itemText = EditorGUILayout.TextArea(item.itemText, style);
+
+            EditorGUI.indentLevel--;
+            EditorGUILayout.Space(10);
+        }
+
+        item.eventAttribute = EditorGUILayout.Toggle("イベントを起こす->", item.eventAttribute);
 
         if (item.eventAttribute)
         {
@@ -435,23 +458,24 @@ public class ChangeRoomEditor : Editor
 {
     public override void OnInspectorGUI()
     {
-        ChangeRoom changeRoom = target as ChangeRoom;
+        ChangeRoom changeroom = target as ChangeRoom;
 
-        int[] numberOfRoomInt = Enumerable.Range(1, changeRoom.numberOfRoom).ToArray();
+        int[] numberOfRoomInt = Enumerable.Range(1, changeroom.numberOfRoom).ToArray();
         string[] numberOfRoomString = (from i in numberOfRoomInt select i.ToString()).ToArray();
 
         EditorGUILayout.Space(10);
        
-        changeRoom.destinationRoom = EditorGUILayout.IntPopup("移動先の部屋番号->", changeRoom.destinationRoom, numberOfRoomString, numberOfRoomInt);
+        changeroom.destinationRoom = EditorGUILayout.IntPopup("移動先の部屋番号->", changeroom.destinationRoom, numberOfRoomString, numberOfRoomInt);
        
         EditorGUILayout.Space(10);
 
-        changeRoom.isFlagType = EditorGUILayout.Toggle("特定のフラグが立つまで非表示->", changeRoom.isFlagType);
+        changeroom.isFlagType = EditorGUILayout.Toggle("特定のフラグが立つまで非表示->", changeroom.isFlagType);
 
-        if (changeRoom.isFlagType)
+        if (changeroom.isFlagType)
         {
             EditorGUI.indentLevel++;
-            changeRoom.flagName = EditorGUILayout.TextField("そのフラグ->", changeRoom.flagName);
+            changeroom.flagName = EditorGUILayout.TextField("そのフラグ->", changeroom.flagName);
+            EditorGUI.indentLevel--;
         }
     }
 }
@@ -465,7 +489,8 @@ public class ItemInventoryEditor : Editor
 
         var events = serializedObject.FindProperty("inventoryEvents");
 
-        iteminventory.numberOfEvent = EditorGUILayout.IntField("イベントの数->", iteminventory.numberOfEvent);
+        int numberOfEvent = EditorGUILayout.IntField("イベントの数->", iteminventory.numberOfEvent);
+        iteminventory.numberOfEvent = numberOfEvent;
 
         if (events.arraySize != iteminventory.numberOfEvent)
         {
@@ -483,22 +508,30 @@ public class ItemInventoryEditor : Editor
                 EditorGUILayout.HelpBox($"\nイベント：合成その{i+1}\n", MessageType.None);
                 EditorGUI.indentLevel++;
 
-                ItemData[] itemList = iteminventory.inventoryEvents[i].combinationItemList;
-                            
-                for (int j = 0; j < itemList.Length; j++)
-                {
-                    if (j != itemList.Length-1)
-                    {
-                        EditorGUILayout.LabelField($"合成素材その{j+1}");
-                    }
-                    else
-                    {
-                        EditorGUILayout.LabelField($"合成先のアイテム");
-                    }
+                EditorGUILayout.LabelField("合成素材その1");
+                EditorGUI.indentLevel++;
+                iteminventory.inventoryEvents[i].combinationItem.materialItemName1 = EditorGUILayout.TextField("アイテムの名前->", iteminventory.inventoryEvents[i].combinationItem.materialItemName1);
+                EditorGUI.indentLevel--;
+                
+                EditorGUILayout.LabelField("合成素材その2");
+                EditorGUI.indentLevel++;
+                iteminventory.inventoryEvents[i].combinationItem.materialItemName2 = EditorGUILayout.TextField("アイテムの名前->", iteminventory.inventoryEvents[i].combinationItem.materialItemName2);
+                EditorGUI.indentLevel--;
 
-                    itemList[j].itemName = EditorGUILayout.TextField("アイテムの名前->", itemList[j].itemName);
-                    itemList[j].itemImage = (Sprite)EditorGUILayout.ObjectField("アイテムの画像->", itemList[j].itemImage, typeof(Sprite));
-                }
+                EditorGUILayout.LabelField($"合成先のアイテム");
+                EditorGUI.indentLevel++;
+
+                iteminventory.inventoryEvents[i].combinationItem.itemName = EditorGUILayout.TextField("アイテムの名前->", iteminventory.inventoryEvents[i].combinationItem.itemName);
+                
+                var style = new GUIStyle(EditorStyles.textArea)
+                {
+                    wordWrap = true
+                };
+
+                EditorGUILayout.LabelField("アイテムの説明");
+                iteminventory.inventoryEvents[i].combinationItem.itemText = EditorGUILayout.TextArea(iteminventory.inventoryEvents[i].combinationItem.itemText, style);
+
+                iteminventory.inventoryEvents[i].combinationItem.itemImage = (Sprite)EditorGUILayout.ObjectField("アイテムの画像->", iteminventory.inventoryEvents[i].combinationItem.itemImage, typeof(Sprite));
             }
         }
     }

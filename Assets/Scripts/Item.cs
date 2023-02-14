@@ -6,11 +6,12 @@ using System;
 
 public class Item : MonoBehaviour, IPointerClickHandler
 {
-    public string itemName;
-
     public bool disableAttribute = false;
     public bool ownableAttribute = false;
     public bool eventAttribute = false;
+
+    public string itemName;
+    public string itemText;
 
     public int numberOfEvent = 1;
 
@@ -70,7 +71,7 @@ public class Item : MonoBehaviour, IPointerClickHandler
 
         if (ownableAttribute && stagemanager.itemList.Count <= stagemanager.inventorySize)
         {
-            stagemanager.itemList.Add(itemName, spriterenderer.sprite);
+            stagemanager.itemList.Add(new ItemData(itemName, spriterenderer.sprite, itemText));
             getitemwindow.GetItem(itemName, spriterenderer.sprite);
             StartCoroutine(iteminventory.DisplayItem());
             ownableAttribute = false;
@@ -139,7 +140,7 @@ public class Item : MonoBehaviour, IPointerClickHandler
                 {
                     sumBool.Add((!j.ifThisClicked || (j.ifThisClicked && isClicked)) &&
                         (!j.ifFlag || (j.ifFlag && stagemanager.GetFlagByName(j.stoodFlagName))) &&
-                        (!j.ifHoldItem || (j.ifHoldItem && stagemanager.itemList.ContainsKey(j.holdItemName))));
+                        (!j.ifHoldItem || (j.ifHoldItem && stagemanager.checkItemName(j.holdItemName))));
                 }
 
 
@@ -161,7 +162,7 @@ public class Item : MonoBehaviour, IPointerClickHandler
 
                         if (j.ifHoldItem && j.dropItem)
                         {
-                            stagemanager.itemList.Remove(j.holdItemName);
+                            stagemanager.itemList.RemoveAt(stagemanager.GetItemIndex(j.holdItemName));
                             StartCoroutine(iteminventory.DisplayItem());
                         }
                     }

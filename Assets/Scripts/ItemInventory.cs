@@ -34,11 +34,8 @@ public class ItemInventory : MonoBehaviour
             Destroy(child.gameObject);
         }
 
-        Debug.Log(1);
-
         yield return null;
 
-        Debug.Log(2);
         for (int i = 0; i < stagemanager.inventorySize; i++)
         {
             RectTransform child = Instantiate(itemWindow).GetComponent<RectTransform>();
@@ -59,8 +56,8 @@ public class ItemInventory : MonoBehaviour
             {
                 childBackImage.color = new Color(0.9f, 0.9f, 0.9f, 1f);
                 childIconImage.enabled = true;
-                childObject.GetComponent<ItemIcon>().itemName = stagemanager.itemList.Keys.ToArray()[n];
-                childIconImage.sprite = stagemanager.itemList.Values.ToArray()[n];
+                childObject.GetComponent<ItemIcon>().itemName = stagemanager.itemList[n].itemName;
+                childIconImage.sprite = stagemanager.itemList[n].itemImage;
             }
             else
             {
@@ -76,13 +73,13 @@ public class ItemInventory : MonoBehaviour
     {
         foreach (var i in inventoryEvents)
         {
-            if ((i.combinationItemList[0].itemName == item1.GetComponent<ItemIcon>().itemName && i.combinationItemList[1].itemName == item2.GetComponent<ItemIcon>().itemName) ||
-                (i.combinationItemList[0].itemName == item2.GetComponent<ItemIcon>().itemName && i.combinationItemList[1].itemName == item1.GetComponent<ItemIcon>().itemName))
+            if ((i.combinationItem.materialItemName1 == item1.GetComponent<ItemIcon>().itemName && i.combinationItem.materialItemName2 == item2.GetComponent<ItemIcon>().itemName) ||
+                (i.combinationItem.materialItemName1 == item2.GetComponent<ItemIcon>().itemName && i.combinationItem.materialItemName2 == item1.GetComponent<ItemIcon>().itemName))
             {
-                stagemanager.itemList.Remove(item1.GetComponent<ItemIcon>().itemName);
-                stagemanager.itemList.Remove(item2.GetComponent<ItemIcon>().itemName);
-                stagemanager.itemList.Add(i.combinationItemList[2].itemName, i.combinationItemList[2].itemImage);
-                getitemwindow.GetItem(i.combinationItemList[2].itemName, i.combinationItemList[2].itemImage);
+                stagemanager.itemList.RemoveAt(stagemanager.GetItemIndex(item1.GetComponent<ItemIcon>().itemName));
+                stagemanager.itemList.RemoveAt(stagemanager.GetItemIndex(item2.GetComponent<ItemIcon>().itemName));
+                stagemanager.itemList.Add(new ItemData(i.combinationItem.itemName, i.combinationItem.itemImage, i.combinationItem.itemText));
+                getitemwindow.GetItem(i.combinationItem.itemName, i.combinationItem.itemImage);
                 StartCoroutine(DisplayItem());
                 i.eventTrigger = false;
             }
@@ -99,20 +96,19 @@ public class InventoryEvent
     public bool eventTrigger = true;
 
     [SerializeField]
-    public ItemData[] combinationItemList = new ItemData[3];
+    public CombinationItemData combinationItem = new CombinationItemData();
 }
 
 [Serializable]
-public class ItemData
+public class CombinationItemData
 {
+    public string materialItemName1;
+    public string materialItemName2;
+
     public string itemName;
 
     [SerializeField]
     public Sprite itemImage;
 
-    public ItemData(string itemName, Sprite itemImage)
-    {
-        itemName = this.itemName;
-        itemImage = this.itemImage;
-    }
+    public string itemText;
 }
