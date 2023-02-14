@@ -6,8 +6,9 @@ using UnityEngine.UI;
 public class TextWindow : MonoBehaviour
 {
     private Image image;
-    private Button button;
     private Text text;
+
+    private Image blinderPanel;
 
     private string[] poppingUpTexts;
     private int numberOfCurrent = 0;
@@ -16,51 +17,55 @@ public class TextWindow : MonoBehaviour
     public void Start()
     {
         image = GetComponent<Image>();
-        button = GetComponent<Button>();
         text = transform.Find("PopUpText").GetComponent<Text>();
+
+        blinderPanel = GameObject.Find("BlinderPanel").GetComponent<Image>();
     }
 
-    public void FixedUpdate()
+    public void Update()
     {
         timer += Time.deltaTime;
 
-        if (poppingUpTexts != null && timer >= 5)
+        if ((poppingUpTexts != null && timer >= 5) || Input.GetMouseButtonDown(0))
         {
-            IndicateTexts();
+            DisplayTexts();
         }
     }
 
     public void SetTexts(string[] texts)
     {
+        Time.timeScale = 0;
+
         image.enabled = true;
-        button.enabled = true;
         text.enabled = true;
+
+        blinderPanel.enabled = true;
+
         timer = 0;
         numberOfCurrent = 0;
         poppingUpTexts = texts;
         text.text = poppingUpTexts[0];
     }
 
-    private void IndicateTexts()
+    private void DisplayTexts()
     {
         timer = 0;
         numberOfCurrent++; 
 
         if (poppingUpTexts.Length == numberOfCurrent)
         {
+            Time.timeScale = 1;
+
             image.enabled = false;
-            button.enabled = false;
             text.enabled = false;
+
+            blinderPanel.enabled = false;
+
             poppingUpTexts = null;
         }
         else
         {
             text.text = poppingUpTexts[numberOfCurrent];
         }
-    }
-
-    public void OnClickToNextText()
-    {
-        IndicateTexts();
     }
 }
