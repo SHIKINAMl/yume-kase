@@ -13,6 +13,7 @@ public class TextWindow : MonoBehaviour
     private string[] poppingUpTexts;
     private int numberOfCurrent = 0;
     private float timer = 0;
+    private bool isOpening = false;
 
     public void Start()
     {
@@ -26,7 +27,7 @@ public class TextWindow : MonoBehaviour
     {
         timer += Time.deltaTime;
 
-        if ((poppingUpTexts != null && timer >= 5) || Input.GetMouseButtonDown(0))
+        if ((poppingUpTexts != null && timer >= 5) || (isOpening && Input.GetMouseButtonDown(0)))
         {
             DisplayTexts();
         }
@@ -35,6 +36,8 @@ public class TextWindow : MonoBehaviour
     public void SetTexts(string[] texts)
     {
         Time.timeScale = 0;
+
+        isOpening = true;
 
         image.enabled = true;
         text.enabled = true;
@@ -55,6 +58,8 @@ public class TextWindow : MonoBehaviour
         if (poppingUpTexts.Length == numberOfCurrent)
         {
             Time.timeScale = 1;
+
+            isOpening = false;
 
             image.enabled = false;
             text.enabled = false;

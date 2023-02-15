@@ -117,7 +117,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   disableAttribute: 0
   ownableAttribute: 0
-  eventAttribute: 0
+  eventAttribute: 1
   itemName: 
   itemText: 
   numberOfEvent: 1
@@ -145,8 +145,7 @@ MonoBehaviour:
     changeType: 2
     changeSpeed: 5
     beToPopUpText: 0
-    poppingUpTexts:
-    - 
+    poppingUpTexts: []
     beToSoundEffect: 0
     soundType: 0
     beToFlag: 0
