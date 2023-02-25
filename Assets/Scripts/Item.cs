@@ -61,7 +61,7 @@ public class Item : MonoBehaviour, IPointerClickHandler
 
     public void FixedUpdate()
     {
-        //CheckCondition(events);
+        CheckCondition(events);
         ChangeEnableImage();
         MoveItem();
         ChangeSizeItem();
