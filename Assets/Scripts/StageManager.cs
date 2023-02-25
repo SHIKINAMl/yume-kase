@@ -65,7 +65,7 @@ public class StageManager : MonoBehaviour
         {
             if (flag.flagName == flagName)
             {
-                flag.SetFlag(boolean);
+                flag.flag = boolean;
             }
         }
     }
@@ -107,14 +107,6 @@ public class FlagData
     {
         flagName = this.flagName;
         flag = this.flag;
-    }
-
-    public void SetFlag(bool boolean)
-    {
-        if (!flag)
-        {
-            flag = boolean;
-        }
     }
 }
 
