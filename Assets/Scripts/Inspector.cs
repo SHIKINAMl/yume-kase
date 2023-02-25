@@ -228,6 +228,8 @@ public class StageManagerEditor : Editor
         EditorGUILayout.Space(10);
 
         stagemanager.inventorySize = (int)EditorGUILayout.Slider("アイテムインベントリの大きさ->", stagemanager.inventorySize, 2, 6);
+
+        EditorUtility.SetDirty(target);
     }
 }
 
@@ -507,6 +509,8 @@ public class ChangeRoomEditor : Editor
             changeroom.flagName = EditorGUILayout.TextField("そのフラグ->", changeroom.flagName);
             EditorGUI.indentLevel--;
         }
+        
+        EditorUtility.SetDirty(target);
     }
 }
 
@@ -564,5 +568,7 @@ public class ItemInventoryEditor : Editor
                 iteminventory.inventoryEvents[i].combinationItem.itemImage = (Sprite)EditorGUILayout.ObjectField("アイテムの画像->", iteminventory.inventoryEvents[i].combinationItem.itemImage, typeof(Sprite));
             }
         }
+     
+        EditorUtility.SetDirty(target);
     }
 }
