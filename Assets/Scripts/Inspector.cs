@@ -228,6 +228,8 @@ public class StageManagerEditor : Editor
         EditorGUILayout.Space(10);
 
         stagemanager.inventorySize = (int)EditorGUILayout.Slider("アイテムインベントリの大きさ->", stagemanager.inventorySize, 2, 6);
+
+        EditorUtility.SetDirty(target);
     }
 }
 
@@ -507,6 +509,8 @@ public class ChangeRoomEditor : Editor
             changeroom.flagName = EditorGUILayout.TextField("そのフラグ->", changeroom.flagName);
             EditorGUI.indentLevel--;
         }
+        
+        EditorUtility.SetDirty(target);
     }
 }
 
@@ -566,5 +570,7 @@ public class ItemInventoryEditor : Editor
                 EditorGUI.indentLevel -= 2;
             }
         }
+     
+        EditorUtility.SetDirty(target);
     }
 }
