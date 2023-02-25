@@ -562,6 +562,8 @@ public class ItemInventoryEditor : Editor
                 iteminventory.inventoryEvents[i].combinationItem.itemText = EditorGUILayout.TextArea(iteminventory.inventoryEvents[i].combinationItem.itemText, style);
 
                 iteminventory.inventoryEvents[i].combinationItem.itemImage = (Sprite)EditorGUILayout.ObjectField("アイテムの画像->", iteminventory.inventoryEvents[i].combinationItem.itemImage, typeof(Sprite));
+            
+                EditorGUI.indentLevel -= 2;
             }
         }
     }

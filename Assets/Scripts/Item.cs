@@ -61,7 +61,7 @@ public class Item : MonoBehaviour, IPointerClickHandler
 
     public void FixedUpdate()
     {
-        CheckCondition(events);
+        //CheckCondition(events);
         ChangeEnableImage();
         MoveItem();
         ChangeSizeItem();
@@ -84,8 +84,9 @@ public class Item : MonoBehaviour, IPointerClickHandler
     private IEnumerator ClickSwitch()
     {
         isClicked = true;
+        CheckCondition(events);
 
-        yield return new WaitForSeconds(0.5f);
+        yield return null;
 
         isClicked = false;
     }
@@ -145,7 +146,6 @@ public class Item : MonoBehaviour, IPointerClickHandler
                         (!j.ifHoldItem || (j.ifHoldItem && CheckItems(j.holdItemNames))));
                 }
 
-
                 if (sumBool.Contains(true) && i.eventTrigger && !isMoving)
                 {
                     RaiseEvent(i);
@@ -188,7 +188,6 @@ public class Item : MonoBehaviour, IPointerClickHandler
     
     private void RaiseEvent(ItemEvent itemEvent)
     {
-        
         if (itemEvent.beToAppear)
         {
             switch (itemEvent.appearingOption)
