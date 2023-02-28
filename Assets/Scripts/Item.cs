@@ -146,9 +146,10 @@ public class Item : MonoBehaviour, IPointerClickHandler
                         (!j.ifHoldItem || (j.ifHoldItem && CheckItems(j.holdItemNames))));
                 }
 
-                if (sumBool.Contains(true) && i.eventTrigger && !isMoving)
+                if (sumBool.Contains(true) && i.eventTrigger && !isMoving && 
+                    (i.gettingOption != 2 || stagemanager.itemList.Count <= stagemanager.inventorySize))
                 {
-                    RaiseEvent(i);
+                    StartCoroutine(RaiseEvent(i));
 
                     if (i.eventType == 1)
                     {
@@ -186,8 +187,10 @@ public class Item : MonoBehaviour, IPointerClickHandler
         }
     }
     
-    private void RaiseEvent(ItemEvent itemEvent)
+    private IEnumerator RaiseEvent(ItemEvent itemEvent)
     {
+        yield return new WaitForSeconds(itemEvent.waittingTime);
+
         if (itemEvent.beToAppear)
         {
             switch (itemEvent.appearingOption)
@@ -206,7 +209,20 @@ public class Item : MonoBehaviour, IPointerClickHandler
                     
         if (itemEvent.beAvailable)
         {
-            ownableAttribute = true;
+            if (itemEvent.gettingOption == 1)
+            {
+                ownableAttribute = true;
+            }
+
+            else
+            {
+                Debug.Log(true);
+                stagemanager.itemList.Add(new ItemData(itemName, spriterenderer.sprite, itemText));
+                getitemwindow.DisplayGetItem(itemName, spriterenderer.sprite);
+                StartCoroutine(iteminventory.DisplayItem());
+                ownableAttribute = false;
+                disableAttribute = true;
+            }
         }
 
         if (itemEvent.beToMove)
@@ -306,6 +322,7 @@ public class ItemEvent
 {
     public int eventType = 1;
     public int conditionType = 1;
+    public float waittingTime = 0;
 
     [SerializeField]
     public ItemCondition[] conditions;
@@ -313,9 +330,10 @@ public class ItemEvent
     public bool eventTrigger = true;
 
     public bool beToAppear = false;
+    public int appearingOption = 1;
 
     public bool beAvailable = false;
-    public int appearingOption = 1;
+    public int gettingOption = 1;
 
     public bool beToMove = false;
     public Vector2 moveVector = new Vector2(0, 0);

@@ -293,6 +293,8 @@ public class ItemEditor : Editor
 
                     item.events[i].conditionType = EditorGUILayout.IntPopup("条件のタイプ", item.events[i].conditionType, new string[]{"and条件のみ", "(and条件) or (and条件)", "(and条件) or (and条件) or　(and条件)"}, new int[]{1, 2, 3});
 
+                    item.events[i].waittingTime = EditorGUILayout.Slider("イベント発生までの待機時間->", item.events[i].waittingTime, 0, 10f);
+
                     if (item.events[i].conditions.Length != item.events[i].conditionType)
                     {              
                         Array.Resize<ItemCondition>(ref item.events[i].conditions, item.events[i].conditionType);
@@ -384,6 +386,13 @@ public class ItemEditor : Editor
                         }
 
                         item.events[i].beAvailable = EditorGUILayout.Toggle("このアイテムが入手可能になる", item.events[i].beAvailable);
+
+                        if (item.events[i].beAvailable)
+                        {
+                            EditorGUI.indentLevel++;
+                            item.events[i].gettingOption = EditorGUILayout.IntPopup("オプション->", item.events[i].gettingOption, new string[]{"クリックで入手", "すぐに入手"}, new int[]{1, 2});
+                            EditorGUI.indentLevel--;
+                        }
 
                         item.events[i].beToMove = EditorGUILayout.Toggle("このアイテムが移動する", item.events[i].beToMove);
 
