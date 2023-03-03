@@ -70,6 +70,16 @@ public class CameraMove : MonoBehaviour
 
     public void OnClickChangeRoom(int roomNumber)
     {
-        this.transform.position = new Vector3(0, (roomNumber-1)*20, -10);
+        this.transform.position = new Vector3 (0, (roomNumber-1)*20, -10);
+    }
+
+    public void OnClickZoomIn(int zoomChannel)
+    {
+        this.transform.position = new Vector3 ((zoomChannel-1)*20, -20, -10);
+    }
+
+    public void OnClickZoomOut(Vector3 cameraPosition)
+    {
+        this.transform.position = cameraPosition;
     }
 }

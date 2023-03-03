@@ -3,15 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class ChangeRoom : MonoBehaviour, IPointerClickHandler
+public class Zoom : MonoBehaviour, IPointerClickHandler
 {
-    public int destinationRoom = 1;
-
-    [SerializeField]
-    public int numberOfRoom => GameObject.Find("StageManager").GetComponent<StageManager>().numberOfRoom;
+    public int destinationRoom = 0;
 
     public bool isFlagType;
     public string flagName;
+
+    private bool isZoomIn = false;
+
+    private Vector3 cameraPosition;
+    private Vector3 buttonPosition;
 
     private CameraMove cameramove;
     private StageManager stagemanager;
@@ -39,6 +41,27 @@ public class ChangeRoom : MonoBehaviour, IPointerClickHandler
 
     public void OnPointerClick(PointerEventData pointer)
     {
-        cameramove.OnClickChangeRoom(destinationRoom);
+        if (!isZoomIn)
+        {        
+            cameraPosition = GameObject.Find("MainCamera").transform.position;
+            buttonPosition = this.transform.position;
+
+            cameramove.OnClickZoomIn(destinationRoom);
+
+            this.transform.position = new Vector3 ((destinationRoom-1)*20, -22, 0);
+
+            //イメージの変更(UIが完成したら)
+
+            isZoomIn = true;
+        }
+
+        else
+        {
+            cameramove.OnClickZoomOut(cameraPosition);
+
+            this.transform.position = buttonPosition;
+
+            isZoomIn = false;
+        }
     }
-} 
+}

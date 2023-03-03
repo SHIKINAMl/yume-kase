@@ -523,6 +523,30 @@ public class ChangeRoomEditor : Editor
     }
 }
 
+[CustomEditor (typeof(Zoom))]
+public class ZoomEditor : Editor
+{
+    public override void OnInspectorGUI()
+    {
+        Zoom zoom = target as Zoom;
+       
+        zoom.destinationRoom = EditorGUILayout.IntField("ズーム先のチャンネル->", zoom.destinationRoom);
+       
+        EditorGUILayout.Space(10);
+
+        zoom.isFlagType = EditorGUILayout.Toggle("特定のフラグが立つまで非表示->", zoom.isFlagType);
+
+        if (zoom.isFlagType)
+        {
+            EditorGUI.indentLevel++;
+            zoom.flagName = EditorGUILayout.TextField("そのフラグ->", zoom.flagName);
+            EditorGUI.indentLevel--;
+        }
+        
+        EditorUtility.SetDirty(target);
+    }
+}
+
 [CustomEditor (typeof(ItemInventory))]
 public class ItemInventoryEditor : Editor
 {
