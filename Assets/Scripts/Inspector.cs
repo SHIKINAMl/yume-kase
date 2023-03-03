@@ -269,7 +269,7 @@ public class ItemEditor : Editor
         if (item.eventAttribute)
         {
             EditorGUI.indentLevel++; 
-            item.numberOfEvent = EditorGUILayout.IntPopup("イベントの数", item.numberOfEvent, new string[]{"one", "two", "three"}, new int[]{1, 2, 3});
+            item.numberOfEvent = EditorGUILayout.IntPopup("イベントの数", item.numberOfEvent, new string[]{"１個", "２個", "３個", "４個", "５個"}, new int[]{1, 2, 3, 4, 5});
             EditorGUI.indentLevel++; 
 
             if (events.arraySize != item.numberOfEvent)
