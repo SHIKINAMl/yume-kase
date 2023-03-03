@@ -272,6 +272,8 @@ public class Item : MonoBehaviour, IPointerClickHandler
                     break;
                 case 5:
                     isFadingIn = true;
+                    disableAttribute = false;
+                    spriterenderer.color -= new Color (0, 0, 0, spriterenderer.color.a);
                     break;
             }
         }
