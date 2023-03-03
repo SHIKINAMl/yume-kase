@@ -21,6 +21,8 @@ public class Item : MonoBehaviour, IPointerClickHandler
     [SerializeField]
     public ItemEvent[] events;
 
+    public bool waitEvent = false;
+
     public SoundEffectData[] soundEffectList => GameObject.Find("StageManager").GetComponent<StageManager>().soundEffectList;
 
     private StageManager stagemanager;
@@ -78,15 +80,19 @@ public class Item : MonoBehaviour, IPointerClickHandler
         FadeOutItem();
         fadeInItem();
 
-        if (isOnEvent && isOnEvent != wasOnEvent)
+        if (waitEvent)
         {
-            blinderPanel.enabled = true;
-            blinderPanel.color = new Color (0, 0, 0, 0);
-        }
 
-        else if (!isOnEvent && isOnEvent != wasOnEvent)
-        {
-            blinderPanel.enabled = false;
+            if (isOnEvent && isOnEvent != wasOnEvent)
+            {
+                blinderPanel.enabled = true;
+                blinderPanel.color = new Color (0, 0, 0, 0);
+            }
+
+            else if (!isOnEvent && isOnEvent != wasOnEvent)
+            {
+                blinderPanel.enabled = false;
+            }
         }
 
         wasOnEvent = isOnEvent;

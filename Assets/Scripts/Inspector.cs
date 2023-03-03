@@ -269,6 +269,7 @@ public class ItemEditor : Editor
         if (item.eventAttribute)
         {
             EditorGUI.indentLevel++; 
+            item.waitEvent = EditorGUILayout.Toggle("イベント中、操作をできないようにする", item.waitEvent);
             item.numberOfEvent = EditorGUILayout.IntPopup("イベントの数", item.numberOfEvent, new string[]{"１個", "２個", "３個", "４個", "５個"}, new int[]{1, 2, 3, 4, 5});
             EditorGUI.indentLevel++; 
 
