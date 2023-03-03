@@ -381,7 +381,7 @@ public class ItemEditor : Editor
                         if (item.events[i].beToAppear)
                         {
                             EditorGUI.indentLevel++; 
-                            item.events[i].appearingOption = EditorGUILayout.IntPopup("オプション->", item.events[i].appearingOption, new string[]{"現れる", "消える", "反転する"}, new int[]{1, 2, 3});
+                            item.events[i].appearingOption = EditorGUILayout.IntPopup("オプション->", item.events[i].appearingOption, new string[]{"現れる", "消える", "反転する", "フェイドアウト", "フェイドイン"}, new int[]{1, 2, 3, 4, 5});
                             EditorGUI.indentLevel--;        
                         }
 

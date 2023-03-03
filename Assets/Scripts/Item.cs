@@ -48,6 +48,9 @@ public class Item : MonoBehaviour, IPointerClickHandler
     private bool isOnEvent = false;
     private bool wasOnEvent = false;
 
+    private bool isFadingOut = false;
+    private bool isFadingIn = false;
+
     public void Start()
     {
         stagemanager = GameObject.Find("StageManager").GetComponent<StageManager>();
@@ -72,7 +75,8 @@ public class Item : MonoBehaviour, IPointerClickHandler
         ChangeEnableImage();
         MoveItem();
         ChangeSizeItem();
-
+        FadeOutItem();
+        fadeInItem();
 
         if (isOnEvent && isOnEvent != wasOnEvent)
         {
@@ -154,6 +158,34 @@ public class Item : MonoBehaviour, IPointerClickHandler
         }
     }
 
+    private void FadeOutItem()
+    {
+        if (isFadingOut)
+        {
+            spriterenderer.color -= new Color (0, 0, 0, 0.02f);
+
+            if (spriterenderer.color.a == 0)
+            {
+                isFadingOut = false;
+                isOnEvent = false;
+            }
+        }
+    }
+
+    private void fadeInItem()
+    {
+        if (isFadingIn)
+        {
+            spriterenderer.color += new Color (0, 0, 0, 0.02f);
+
+            if (spriterenderer.color.a == 1)
+            {
+                isFadingIn = false;
+                isOnEvent = false;
+            }
+        }
+    }
+
     private void CheckCondition(ItemEvent[] events)
     {
         if (eventAttribute)
@@ -228,6 +260,12 @@ public class Item : MonoBehaviour, IPointerClickHandler
                     break;
                 case 3: 
                     disableAttribute = !disableAttribute;
+                    break;
+                case 4:
+                    isFadingOut = true;
+                    break;
+                case 5:
+                    isFadingIn = true;
                     break;
             }
         }
@@ -313,7 +351,7 @@ public class Item : MonoBehaviour, IPointerClickHandler
             stagemanager.SetFlagByName(stagemanager.clearFlagList, itemEvent.standingClearFlagName, true);
         }
 
-        if (!itemEvent.beToMove && !itemEvent.beToChangeSize)
+        if (!itemEvent.beToMove && !itemEvent.beToChangeSize && (!itemEvent.beToAppear || !(itemEvent.appearingOption == 4 || itemEvent.appearingOption == 5)))
         {
             isOnEvent = false;
         }
