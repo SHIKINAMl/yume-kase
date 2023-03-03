@@ -18,10 +18,16 @@ public class Zoom : MonoBehaviour, IPointerClickHandler
     private CameraMove cameramove;
     private StageManager stagemanager;
 
+    private GameObject toLeftButton;
+    private GameObject toRightButton;
+
     public void Start()
     {
         cameramove = GameObject.Find("MainCamera").GetComponent<CameraMove>();
         stagemanager = GameObject.Find("StageManager").GetComponent<StageManager>();
+
+        toLeftButton = GameObject.Find("ToLeftButton");
+        toRightButton = GameObject.Find("ToRightButton");
         
         if (isFlagType)
         {
@@ -50,6 +56,9 @@ public class Zoom : MonoBehaviour, IPointerClickHandler
 
             this.transform.position = new Vector3 ((destinationRoom-1)*20, -22, 0);
 
+            toLeftButton.SetActive(false);
+            toRightButton.SetActive(false);
+
             //イメージの変更(UIが完成したら)
 
             isZoomIn = true;
@@ -60,6 +69,9 @@ public class Zoom : MonoBehaviour, IPointerClickHandler
             cameramove.OnClickZoomOut(cameraPosition);
 
             this.transform.position = buttonPosition;
+
+            toLeftButton.SetActive(true);
+            toRightButton.SetActive(true);
 
             isZoomIn = false;
         }
