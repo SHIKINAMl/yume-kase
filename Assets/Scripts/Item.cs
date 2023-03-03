@@ -172,6 +172,7 @@ public class Item : MonoBehaviour, IPointerClickHandler
 
             if (spriterenderer.color.a == 0)
             {
+                disableAttribute = true;
                 isFadingOut = false;
                 isOnEvent = false;
             }
