@@ -22,6 +22,7 @@ public class Menu : MonoBehaviour
         this.GetComponent<Image>().enabled = true;
 
         blinderPanel.enabled = true;
+        blinderPanel.color = new Color (0, 0, 0, 0.2f);
 
         foreach (Transform child in this.gameObject.transform)
         {

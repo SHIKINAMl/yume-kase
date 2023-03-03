@@ -3,6 +3,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using System;
 
@@ -30,6 +31,8 @@ public class Item : MonoBehaviour, IPointerClickHandler
     private Collider2D collider;
     private AudioSource audiosource;
 
+    private Image blinderPanel;
+
     private bool isClicked = false;
 
     private bool isMoving = false;
@@ -42,6 +45,8 @@ public class Item : MonoBehaviour, IPointerClickHandler
     private float changeSizeRate;
     private float changeSpeed;
 
+    private bool isOnEvent = false;
+    private bool wasOnEvent = false;
 
     public void Start()
     {
@@ -52,6 +57,8 @@ public class Item : MonoBehaviour, IPointerClickHandler
         spriterenderer = GetComponent<SpriteRenderer>();
         collider = GetComponent<Collider2D>();
         audiosource = GetComponent<AudioSource>();
+
+        blinderPanel = GameObject.Find("BlinderPanel").GetComponent<Image>();
 
         foreach (var i in events)
         {
@@ -65,6 +72,20 @@ public class Item : MonoBehaviour, IPointerClickHandler
         ChangeEnableImage();
         MoveItem();
         ChangeSizeItem();
+
+
+        if (isOnEvent && isOnEvent != wasOnEvent)
+        {
+            blinderPanel.enabled = true;
+            blinderPanel.color = new Color (0, 0, 0, 0);
+        }
+
+        else if (!isOnEvent && isOnEvent != wasOnEvent)
+        {
+            blinderPanel.enabled = false;
+        }
+
+        wasOnEvent = isOnEvent;
     }
 
     public void OnPointerClick(PointerEventData pointer)
@@ -114,6 +135,7 @@ public class Item : MonoBehaviour, IPointerClickHandler
             if (((Vector2)this.transform.position - initialPosition).magnitude >= destinationPosition.magnitude)
             {
                 isMoving = false;
+                isOnEvent = false;
             }
         }
     }
@@ -127,6 +149,7 @@ public class Item : MonoBehaviour, IPointerClickHandler
             if (((Vector2)this.transform.localScale).magnitude >= (initialScale * changeSizeRate).magnitude)
             {
                 isChanging = false;
+                isOnEvent = false;
             }
         }
     }
@@ -189,6 +212,8 @@ public class Item : MonoBehaviour, IPointerClickHandler
     
     private IEnumerator RaiseEvent(ItemEvent itemEvent)
     {
+        isOnEvent = true;
+
         yield return new WaitForSeconds(itemEvent.waittingTime);
 
         if (itemEvent.beToAppear)
@@ -286,6 +311,11 @@ public class Item : MonoBehaviour, IPointerClickHandler
         if (itemEvent.beToFlagClear)
         {
             stagemanager.SetFlagByName(stagemanager.clearFlagList, itemEvent.standingClearFlagName, true);
+        }
+
+        if (!itemEvent.beToMove && !itemEvent.beToChangeSize)
+        {
+            isOnEvent = false;
         }
     }
 

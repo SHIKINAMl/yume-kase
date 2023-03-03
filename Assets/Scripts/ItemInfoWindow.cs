@@ -46,6 +46,7 @@ public class ItemInfoWindow : MonoBehaviour
         image.enabled = true;
 
         blinderPanel.enabled = true;
+        blinderPanel.color = new Color (0, 0, 0, 0.2f);
 
         foreach (Transform child in this.gameObject.transform)
         {

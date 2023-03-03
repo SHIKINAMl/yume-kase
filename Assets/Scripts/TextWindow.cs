@@ -43,6 +43,7 @@ public class TextWindow : MonoBehaviour
         text.enabled = true;
 
         blinderPanel.enabled = true;
+        blinderPanel.color = new Color (0, 0, 0, 0.2f);
 
         timer = 0;
         numberOfCurrent = 0;
