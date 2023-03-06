@@ -41,7 +41,7 @@ public class ItemInventory : MonoBehaviour
             RectTransform child = Instantiate(itemWindow).GetComponent<RectTransform>();
             child.SetParent(parent);
             child.localScale = new Vector3(1, 1, 1);
-            child.localPosition = new Vector3(((-parent.sizeDelta.x/2) + ((300 + (600*(float)i))/(float)stagemanager.inventorySize)), 0, 0);
+            child.localPosition = new Vector3(((-parent.sizeDelta.x/2) + ((600 + (1200*(float)i))/(float)stagemanager.inventorySize)), 0, 0);
         }
 
         int n = 0;
@@ -54,14 +54,14 @@ public class ItemInventory : MonoBehaviour
             
             if (n < stagemanager.itemList.Count)
             {
-                childBackImage.color = new Color(0.9f, 0.9f, 0.9f, 1f);
+                childBackImage.color = new Color(1, 1, 1, 1f);
                 childIconImage.enabled = true;
                 childObject.GetComponent<ItemIcon>().itemName = stagemanager.itemList[n].itemName;
                 childIconImage.sprite = stagemanager.itemList[n].itemImage;
             }
             else
             {
-                childBackImage.color = new Color(0.8f, 0.8f, 0.8f, 1f);
+                childBackImage.color = new Color(0.9f, 0.9f, 0.9f, 1f);
                 childIconImage.enabled = false;
             }
 

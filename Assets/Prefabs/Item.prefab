@@ -139,6 +139,7 @@ MonoBehaviour:
     flagOption: 1
     beToFlagClear: 0
     standingClearFlagName: 
+  waitEvent: 0
 --- !u!82 &8224005722781285764
 AudioSource:
   m_ObjectHideFlags: 0

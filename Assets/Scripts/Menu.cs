@@ -22,12 +22,11 @@ public class Menu : MonoBehaviour
         this.GetComponent<Image>().enabled = true;
 
         blinderPanel.enabled = true;
-        blinderPanel.color = new Color (0, 0, 0, 0.2f);
+        blinderPanel.color = new Color (0, 0, 0, 0);
 
         foreach (Transform child in this.gameObject.transform)
         {
-            child.GetComponent<Image>().enabled = true;
-            child.GetComponent<Button>().enabled = true;
+            child.gameObject.SetActive(true);
         }
     }
 
@@ -39,14 +38,13 @@ public class Menu : MonoBehaviour
 
         foreach (Transform child in this.gameObject.transform)
         {
-            child.GetComponent<Image>().enabled = false;
-            child.GetComponent<Button>().enabled = false;
+            child.gameObject.SetActive(false);
         }
     }
 
-    public void OnClickRedoStage()
+    public void OnClickOpenOption()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        Debug.Log("オプションを設定できます。");
     }
 
     public void OnClickSaveStage()
