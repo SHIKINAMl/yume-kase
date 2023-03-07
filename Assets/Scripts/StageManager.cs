@@ -39,9 +39,8 @@ public class StageManager : MonoBehaviour
         foreach (var flag in clearFlagList)
         {
             if (flag.flag)
-            {
-                //SceneManager.LoadScene(flag.GetName());
-                Debug.Log(flag.flagName);
+            {   
+                GameObject.Find("SaveManager").GetComponent<SaveManager>().OnSave(flag.flagName, gameObject.scene.name, true);
             }
         }
     }
