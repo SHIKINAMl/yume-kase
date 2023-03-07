@@ -17,12 +17,30 @@ public class ItemInventory : MonoBehaviour
 
     public GameObject itemWindow;
 
+    private string[] currentItemList;
+    private string[] previousItemList;
+
     public void Start()
     {
         getitemwindow = GameObject.Find("GetItemWindow").GetComponent<GetItemWindow>();
         stagemanager = GameObject.Find("StageManager").GetComponent<StageManager>();
 
+        previousItemList = (from i in stagemanager.itemList select i.itemName).ToArray();
+
         StartCoroutine(DisplayItem());
+    }
+
+    public void Update()
+    {
+        currentItemList = (from i in stagemanager.itemList select i.itemName).ToArray();
+
+
+        if (!currentItemList.SequenceEqual(previousItemList))
+        {
+            StartCoroutine(DisplayItem());
+        }
+
+        previousItemList = currentItemList;
     }
 
     public IEnumerator DisplayItem()
@@ -80,7 +98,6 @@ public class ItemInventory : MonoBehaviour
                 stagemanager.itemList.RemoveAt(stagemanager.GetItemIndex(item2.GetComponent<ItemIcon>().itemName));
                 stagemanager.itemList.Add(new ItemData(i.combinationItem.itemName, i.combinationItem.itemImage, i.combinationItem.itemText));
                 getitemwindow.DisplayGetItem(i.combinationItem.itemName, i.combinationItem.itemImage);
-                StartCoroutine(DisplayItem());
                 i.eventTrigger = false;
             }
         }

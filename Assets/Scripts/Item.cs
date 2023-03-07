@@ -106,7 +106,6 @@ public class Item : MonoBehaviour, IPointerClickHandler
         {
             stagemanager.itemList.Add(new ItemData(itemName, spriterenderer.sprite, itemText));
             getitemwindow.DisplayGetItem(itemName, spriterenderer.sprite);
-            StartCoroutine(iteminventory.DisplayItem());
             ownableAttribute = false;
             disableAttribute = true;
         }
@@ -241,7 +240,7 @@ public class Item : MonoBehaviour, IPointerClickHandler
                                 }
                             }      
 
-                            StartCoroutine(iteminventory.DisplayItem());
+                            Debug.Log(true);
                         }
                     }
                 }
@@ -288,10 +287,8 @@ public class Item : MonoBehaviour, IPointerClickHandler
 
             else
             {
-                Debug.Log(true);
                 stagemanager.itemList.Add(new ItemData(itemName, spriterenderer.sprite, itemText));
                 getitemwindow.DisplayGetItem(itemName, spriterenderer.sprite);
-                StartCoroutine(iteminventory.DisplayItem());
                 ownableAttribute = false;
                 disableAttribute = true;
             }

@@ -2150,8 +2150,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   normalImage: {fileID: 21300000, guid: 895ef7d62f7900d4bbcc16304a85825c, type: 3}
-  hoverImage: {fileID: 21300000, guid: 4c9aa1fa01078754fb491977e4c8ca51, type: 3}
-  adjustPosition: {x: -2, y: 120, z: 0}
+  hoverImage: {fileID: 21300000, guid: 02d777ac7d15d574aa3c9c4e5756a4ad, type: 3}
+  adjustPosition: {x: -12, y: 120, z: 0}
 --- !u!1 &1480971557
 GameObject:
   m_ObjectHideFlags: 0
