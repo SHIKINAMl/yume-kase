@@ -370,6 +370,15 @@ public class ItemEditor : Editor
                                 EditorGUI.indentLevel--;
                             }
 
+                            item.events[i].conditions[j].ifAffordInventory = EditorGUILayout.Toggle("インベントリに空きがあったら", item.events[i].conditions[j].ifAffordInventory);
+
+                            if (item.events[i].conditions[j].ifAffordInventory)
+                            {
+                                EditorGUI.indentLevel++;
+                                item.events[i].conditions[j].numberOfEmpty = (int)EditorGUILayout.Slider("必要な空きの数->", item.events[i].conditions[j].numberOfEmpty, 1, 6);
+                                EditorGUI.indentLevel--;
+                            }
+
                             EditorGUILayout.Space(5);
                         }
 

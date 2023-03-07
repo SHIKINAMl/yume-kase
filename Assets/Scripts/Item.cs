@@ -102,7 +102,7 @@ public class Item : MonoBehaviour, IPointerClickHandler
     {
         StartCoroutine("ClickSwitch");
 
-        if (ownableAttribute && stagemanager.itemList.Count <= stagemanager.inventorySize)
+        if (ownableAttribute && stagemanager.itemList.Count < stagemanager.inventorySize)
         {
             stagemanager.itemList.Add(new ItemData(itemName, spriterenderer.sprite, itemText));
             getitemwindow.DisplayGetItem(itemName, spriterenderer.sprite);
@@ -204,11 +204,12 @@ public class Item : MonoBehaviour, IPointerClickHandler
                 {
                     sumBool.Add((!j.ifThisClicked || (j.ifThisClicked && isClicked)) &&
                         (!j.ifFlag || (j.ifFlag && CheckFlags(j.stoodFlagNames))) &&
-                        (!j.ifHoldItem || (j.ifHoldItem && CheckItems(j.holdItemNames))));
+                        (!j.ifHoldItem || (j.ifHoldItem && CheckItems(j.holdItemNames))) &&
+                        (!j.ifAffordInventory || (j.ifAffordInventory && stagemanager.itemList.Count <= stagemanager.inventorySize - j.numberOfEmpty)));
                 }
 
                 if (sumBool.Contains(true) && i.eventTrigger && !isMoving && 
-                    (i.gettingOption != 2 || stagemanager.itemList.Count <= stagemanager.inventorySize))
+                    (i.gettingOption != 2 || stagemanager.itemList.Count < stagemanager.inventorySize))
                 {
                     StartCoroutine(RaiseEvent(i));
 
@@ -239,8 +240,6 @@ public class Item : MonoBehaviour, IPointerClickHandler
                                     stagemanager.itemList.RemoveAt(stagemanager.GetItemIndex(k.name));
                                 }
                             }      
-
-                            Debug.Log(true);
                         }
                     }
                 }
@@ -447,6 +446,9 @@ public class ItemCondition
     public bool ifHoldItem = false;
     public int numberOfItem;
     public SetData[] holdItemNames;
+
+    public bool ifAffordInventory = false;
+    public int numberOfEmpty = 1;
 }
 
 [Serializable]
