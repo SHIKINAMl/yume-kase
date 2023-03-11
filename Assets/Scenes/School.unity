@@ -1311,10 +1311,10 @@ GameObject:
   m_Component:
   - component: {fileID: 371146770}
   - component: {fileID: 371146769}
-  - component: {fileID: 371146771}
   - component: {fileID: 371146773}
   - component: {fileID: 371146768}
   - component: {fileID: 371146772}
+  - component: {fileID: 371146774}
   m_Layer: 0
   m_Name: MainCamera
   m_TagString: MainCamera
@@ -1388,18 +1388,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &371146771
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 371146767}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6ee1ee2cdf1f63b42908c2a55b0fd39b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!82 &371146772
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1512,6 +1500,18 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   m_MaxRayIntersections: 0
+--- !u!114 &371146774
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 371146767}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2becfa5f7feb78146be86f4ca5fcaec0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &393536740
 GameObject:
   m_ObjectHideFlags: 0
@@ -3487,8 +3487,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 371146771}
-        m_TargetAssemblyTypeName: CameraMove, Assembly-CSharp
+      - m_Target: {fileID: 371146774}
+        m_TargetAssemblyTypeName: SchoolCameraMove, Assembly-CSharp
         m_MethodName: OnClickToLeft
         m_Mode: 1
         m_Arguments:
@@ -6866,8 +6866,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 371146771}
-        m_TargetAssemblyTypeName: CameraMove, Assembly-CSharp
+      - m_Target: {fileID: 371146774}
+        m_TargetAssemblyTypeName: SchoolCameraMove, Assembly-CSharp
         m_MethodName: OnClickToRight
         m_Mode: 1
         m_Arguments:
