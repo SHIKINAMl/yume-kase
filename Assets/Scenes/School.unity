@@ -1973,6 +1973,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   numberOfRoom: 8
+  sideList: 0200000002000000020000000200000002000000020000000200000002000000
   numberOfClearFlag: 1
   clearFlagList:
   - flagName: Clear

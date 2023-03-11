@@ -40,9 +40,8 @@ public class CameraMove : MonoBehaviour
 
         if (pos.x == 0)
         {
-            pos.x = 60;
+            pos.x = (stagemanager.sideList[(int)this.transform.position.y/20] - 1) * 20;
         }
-
         else
         {
             pos.x -= 20;
@@ -55,11 +54,10 @@ public class CameraMove : MonoBehaviour
     {
         Vector3 pos = this.transform.position;
 
-        if (pos.x == 60)
+        if (pos.x == (stagemanager.sideList[(int)this.transform.position.y/20] - 1) * 20)
         {
             pos.x = 0;
         }
-
         else
         {
             pos.x += 20;
