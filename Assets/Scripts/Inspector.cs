@@ -10,6 +10,8 @@ using System.Linq;
 [CustomEditor (typeof(StageManager))]
 public class StageManagerEditor : Editor
 {
+    private bool roomSideButton;
+
     private bool clearFlagButton;
 
     private bool eventFlagButton;
@@ -22,7 +24,38 @@ public class StageManagerEditor : Editor
     {
         StageManager stagemanager = target as StageManager;        
 
-        stagemanager.numberOfRoom = EditorGUILayout.IntField("部屋の数", stagemanager.numberOfRoom);
+        EditorGUILayout.BeginHorizontal();
+
+        if (stagemanager.sideList.Length != stagemanager.numberOfRoom)
+        {
+            Array.Resize<int>(ref stagemanager.sideList, stagemanager.numberOfRoom);
+        }
+        else
+        {
+            if (!roomSideButton)
+            {
+                roomSideButton = GUILayout.Button(EditorGUIUtility.TrIconContent("d_forward"), "RL FooterButton", GUILayout.Width(16));
+                stagemanager.numberOfRoom = EditorGUILayout.IntField("部屋の数->", stagemanager.numberOfRoom);
+                EditorGUILayout.EndHorizontal ();
+                EditorGUI.indentLevel++;
+            }
+            else
+            {
+                roomSideButton = !GUILayout.Button(EditorGUIUtility.TrIconContent("icon dropdown"), "RL FooterButton", GUILayout.Width(16));
+                stagemanager.numberOfRoom = EditorGUILayout.IntField("部屋の数->", stagemanager.numberOfRoom);
+                EditorGUILayout.EndHorizontal ();
+                EditorGUI.indentLevel++;
+
+                for (int i = 0; i < stagemanager.sideList.Length; i++)
+                {
+                    EditorGUI.indentLevel++;
+                    stagemanager.sideList[i] = stagemanager.sideList[i] == 0 ? 4 : EditorGUILayout.IntField($"部屋{i+1}の面の数", stagemanager.sideList[i]);
+                    
+                    EditorGUILayout.Space(5);
+                    EditorGUI.indentLevel--;
+                }
+            }
+        }
 
         EditorGUILayout.Space(10);
         EditorGUILayout.LabelField("クリアフラグ");

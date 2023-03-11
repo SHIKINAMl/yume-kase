@@ -8,6 +8,7 @@ public class StageManager : MonoBehaviour
 {
     [SerializeField]
     public int numberOfRoom = 1;
+    public int[] sideList = new int[1];
 
     public int numberOfClearFlag;
 
