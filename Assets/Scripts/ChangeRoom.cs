@@ -6,9 +6,13 @@ using UnityEngine.EventSystems;
 public class ChangeRoom : MonoBehaviour, IPointerClickHandler
 {
     public int destinationRoom = 1;
+    public int destinationSide = 1;
 
     [SerializeField]
     public int numberOfRoom => GameObject.Find("StageManager").GetComponent<StageManager>().numberOfRoom;
+    
+    [SerializeField]
+    public int[] sideList => GameObject.Find("StageManager").GetComponent<StageManager>().sideList;
 
     public bool isFlagType;
     public string flagName;
@@ -39,6 +43,6 @@ public class ChangeRoom : MonoBehaviour, IPointerClickHandler
 
     public void OnPointerClick(PointerEventData pointer)
     {
-        cameramove.OnClickChangeRoom(destinationRoom);
+        cameramove.OnClickChangeRoom(destinationRoom, destinationSide);
     }
 } 
