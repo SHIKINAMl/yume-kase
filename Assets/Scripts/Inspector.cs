@@ -10,6 +10,8 @@ using System.Linq;
 [CustomEditor (typeof(StageManager))]
 public class StageManagerEditor : Editor
 {
+    private bool roomSideButton;
+
     private bool clearFlagButton;
 
     private bool eventFlagButton;
@@ -22,7 +24,37 @@ public class StageManagerEditor : Editor
     {
         StageManager stagemanager = target as StageManager;        
 
-        stagemanager.numberOfRoom = EditorGUILayout.IntField("部屋の数", stagemanager.numberOfRoom);
+        EditorGUILayout.BeginHorizontal();
+
+        if (stagemanager.sideList.Length != stagemanager.numberOfRoom)
+        {
+            Array.Resize<int>(ref stagemanager.sideList, stagemanager.numberOfRoom);
+        }
+        else
+        {
+            if (!roomSideButton)
+            {
+                roomSideButton = GUILayout.Button(EditorGUIUtility.TrIconContent("d_forward"), "RL FooterButton", GUILayout.Width(16));
+                stagemanager.numberOfRoom = EditorGUILayout.IntField("部屋の数->", stagemanager.numberOfRoom);
+                EditorGUILayout.EndHorizontal ();
+                EditorGUI.indentLevel++;
+            }
+            else
+            {
+                roomSideButton = !GUILayout.Button(EditorGUIUtility.TrIconContent("icon dropdown"), "RL FooterButton", GUILayout.Width(16));
+                stagemanager.numberOfRoom = EditorGUILayout.IntField("部屋の数->", stagemanager.numberOfRoom);
+                EditorGUILayout.EndHorizontal ();
+                EditorGUI.indentLevel++;
+
+                for (int i = 0; i < stagemanager.sideList.Length; i++)
+                {
+                    EditorGUI.indentLevel++;
+                    EditorGUILayout.Space(5);
+                    stagemanager.sideList[i] = stagemanager.sideList[i] == 0 ? 4 : EditorGUILayout.IntField($"部屋{i+1}の面の数", stagemanager.sideList[i]);
+                    EditorGUI.indentLevel--;
+                }
+            }
+        }
 
         EditorGUILayout.Space(10);
         EditorGUILayout.LabelField("クリアフラグ");
@@ -513,11 +545,16 @@ public class ChangeRoomEditor : Editor
 
         int[] numberOfRoomInt = Enumerable.Range(1, changeroom.numberOfRoom).ToArray();
         string[] numberOfRoomString = (from i in numberOfRoomInt select i.ToString()).ToArray();
-
-        EditorGUILayout.Space(10);
        
         changeroom.destinationRoom = EditorGUILayout.IntPopup("移動先の部屋番号->", changeroom.destinationRoom, numberOfRoomString, numberOfRoomInt);
        
+        EditorGUILayout.Space(10);
+
+        int[] numberOfSideInt = Enumerable.Range(1, changeroom.sideList[changeroom.destinationRoom-1]).ToArray();
+        string[] numberOfSideString = (from i in numberOfSideInt select i.ToString()).ToArray();
+
+        changeroom.destinationSide = EditorGUILayout.IntPopup("移動先の面番号->", changeroom.destinationSide, numberOfSideString, numberOfSideInt);
+
         EditorGUILayout.Space(10);
 
         changeroom.isFlagType = EditorGUILayout.Toggle("特定のフラグが立つまで非表示->", changeroom.isFlagType);

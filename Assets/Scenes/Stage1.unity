@@ -8100,6 +8100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   numberOfRoom: 1
+  sideList: 04000000
   numberOfClearFlag: 1
   clearFlagList:
   - flagName: stage2

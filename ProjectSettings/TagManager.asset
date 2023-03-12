@@ -42,3 +42,15 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Background
+    uniqueID: 1235442129
+    locked: 0
+  - name: NPC
+    uniqueID: 3076946605
+    locked: 0
+  - name: Item
+    uniqueID: 1997087907
+    locked: 0
+  - name: ChangeRoomButton
+    uniqueID: 2899524341
+    locked: 0
