@@ -21982,6 +21982,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   numberOfRoom: 2
+  sideList: 0000000000000000
   numberOfClearFlag: 3
   clearFlagList:
   - flagName: exit_livingroom
@@ -21990,7 +21991,7 @@ MonoBehaviour:
     flag: 0
   - flagName: root2
     flag: 0
-  numberOfEventFlag: 50
+  numberOfEventFlag: 32
   eventFlagList:
   - flagName: "\u81EA\u5BA4\u3078"
     flag: 1
@@ -22055,42 +22056,6 @@ MonoBehaviour:
   - flagName: break_bear
     flag: 0
   - flagName: use_cokkie
-    flag: 0
-  - flagName: 
-    flag: 0
-  - flagName: 
-    flag: 0
-  - flagName: 
-    flag: 0
-  - flagName: 
-    flag: 0
-  - flagName: 
-    flag: 0
-  - flagName: 
-    flag: 0
-  - flagName: 
-    flag: 0
-  - flagName: 
-    flag: 0
-  - flagName: 
-    flag: 0
-  - flagName: 
-    flag: 0
-  - flagName: 
-    flag: 0
-  - flagName: 
-    flag: 0
-  - flagName: 
-    flag: 0
-  - flagName: 
-    flag: 0
-  - flagName: 
-    flag: 0
-  - flagName: 
-    flag: 0
-  - flagName: 
-    flag: 0
-  - flagName: 
     flag: 0
   numberOfBGM: 1
   BGMList:
@@ -24651,5 +24616,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destinationRoom: 1
+  destinationSide: 1
   isFlagType: 0
   flagName: aaa
