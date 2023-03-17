@@ -40,35 +40,51 @@ public class StageManager : MonoBehaviour
         foreach (var flag in clearFlagList)
         {
             if (flag.flag)
-            {
-                //SceneManager.LoadScene(flag.GetName());
-                Debug.Log(flag.flagName);
+            {   
+                GameObject.Find("SaveManager").GetComponent<SaveManager>().OnSave(flag.flagName, gameObject.scene.name, true);
             }
+        }
+    }
+
+    string[] eventFlags = new string[0];
+    string[] clearFlags = new string[0];
+
+    public void SetFlagByName(FlagData[] flaglist, string flagName, bool boolean)
+    {
+        var flags = new List<string>();
+
+        if (flaglist == this.eventFlagList)
+        {
+            flags = new List<string>(this.eventFlags);
+        }
+        if (flaglist == this.clearFlagList)
+        {
+            flags = new List<string>(this.clearFlags);
+        }
+
+        if (boolean && !flags.Contains(flagName))
+        {
+            flags.Add(flagName);
+        }
+        else if (!boolean && flags.Contains(flagName))
+        {
+            flags.Remove(flagName);
+        }
+
+        if (flaglist == this.eventFlagList)
+        {
+            this.eventFlags = flags.ToArray();
+        }
+        if (flaglist == this.clearFlagList)
+        {
+            this.clearFlags = flags.ToArray();
         }
     }
 
     public bool GetFlagByName(string flagName)
     {
-        foreach(var flag in eventFlagList)
-        {
-            if (flag.flagName == flagName)
-            {
-                return flag.flag;
-            }
-        }
-
-        return false;
-    }
-
-    public void SetFlagByName(FlagData[] flaglist, string flagName, bool boolean)
-    {
-        foreach(var flag in flaglist)
-        {
-            if (flag.flagName == flagName)
-            {
-                flag.flag = boolean;
-            }
-        }
+        var flags = new List<string>(eventFlags);
+        return flags.Contains(flagName);
     }
 
     public bool CheckItemName(string itemName)

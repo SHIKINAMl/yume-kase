@@ -50,6 +50,7 @@ public class Menu : MonoBehaviour
     public void OnClickSaveStage()
     {
         Debug.Log("セーブします。");
+        GameObject.Find("SaveManager").GetComponent<SaveManager>().OnSave(gameObject.scene.name, gameObject.scene.name, false);
     }
 
     public void OnClickBackHome()
