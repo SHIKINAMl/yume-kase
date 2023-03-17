@@ -10217,7 +10217,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
       propertyPath: events.Array.data[1].poppingUpTexts.Array.data[2]
-      value: "\u541B\u306E\u30AF\u30E9\u30B9\u306F2-1\u3060\u3063\u305F\u304B\u306A\uFF1F"
+      value: "\u541B\u306E\u30AF\u30E9\u30B9\u306F2-1\u3060\u3063\u305F\u304B\u306A...\uFF1F"
       objectReference: {fileID: 0}
     - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
       propertyPath: events.Array.data[1].poppingUpTexts.Array.data[3]
@@ -11493,7 +11493,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
       propertyPath: events.Array.data[1].poppingUpTexts.Array.size
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
       propertyPath: events.Array.data[2].poppingUpTexts.Array.size
@@ -11509,11 +11509,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
       propertyPath: events.Array.data[1].poppingUpTexts.Array.data[0]
-      value: "\u306A\u3093\u3067\u3058\u308D\u3058\u308D\u898B\u3066\u308B\u308F\u3051\uFF1F"
+      value: "\u306A\u3093\u3067\u3058\u308D\u3058\u308D\u898B\u3066\u3093\u306E\u3088\uFF1F"
       objectReference: {fileID: 0}
     - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
       propertyPath: events.Array.data[1].poppingUpTexts.Array.data[1]
-      value: "\u3042..\u30CF\u30F3\u30AB\u30C1\u62FE\u3063\u305F\u304B\u3089\u8FD4\u3057\u306B\u3002"
+      value: "\u3042\u3001\u305D\u308C\u79C1\u306E\u30CF\u30F3\u30AB\u30C1\u3002"
       objectReference: {fileID: 0}
     - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
       propertyPath: events.Array.data[1].poppingUpTexts.Array.data[2]
@@ -11521,7 +11521,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
       propertyPath: events.Array.data[1].poppingUpTexts.Array.data[3]
-      value: "\u3046\u3093\u3002"
+      value: "\u3042\u3093\u305F2\u7D44\u3088\u306D\uFF1F"
+      objectReference: {fileID: 0}
+    - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
+      propertyPath: events.Array.data[1].poppingUpTexts.Array.data[4]
+      value: "\u3055\u3063\u3055\u3068\u6D88\u3048\u306A\u3055\u3044\u3002"
       objectReference: {fileID: 0}
     - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
       propertyPath: events.Array.data[2].poppingUpTexts.Array.data[0]
