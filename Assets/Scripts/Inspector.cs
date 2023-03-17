@@ -99,7 +99,7 @@ public class StageManagerEditor : Editor
                 }
             }
         }
-
+        /*
         EditorGUI.indentLevel--;
         EditorGUILayout.Space(10);
         EditorGUILayout.LabelField("イベントフラグ");
@@ -144,6 +144,7 @@ public class StageManagerEditor : Editor
                 }
             }
         }
+        */
 
         EditorGUI.indentLevel--;
         EditorGUILayout.Space(10);

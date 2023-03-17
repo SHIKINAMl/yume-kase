@@ -46,28 +46,45 @@ public class StageManager : MonoBehaviour
         }
     }
 
-    public bool GetFlagByName(string flagName)
-    {
-        foreach(var flag in eventFlagList)
-        {
-            if (flag.flagName == flagName)
-            {
-                return flag.flag;
-            }
-        }
-
-        return false;
-    }
+    string[] eventFlags = new string[0];
+    string[] clearFlags = new string[0];
 
     public void SetFlagByName(FlagData[] flaglist, string flagName, bool boolean)
     {
-        foreach(var flag in flaglist)
+        var flags = new List<string>();
+
+        if (flaglist == this.eventFlagList)
         {
-            if (flag.flagName == flagName)
-            {
-                flag.flag = boolean;
-            }
+            flags = new List<string>(this.eventFlags);
         }
+        if (flaglist == this.clearFlagList)
+        {
+            flags = new List<string>(this.clearFlags);
+        }
+
+        if (boolean && !flags.Contains(flagName))
+        {
+            flags.Add(flagName);
+        }
+        else if (!boolean && flags.Contains(flagName))
+        {
+            flags.Remove(flagName);
+        }
+
+        if (flaglist == this.eventFlagList)
+        {
+            this.eventFlags = flags.ToArray();
+        }
+        if (flaglist == this.clearFlagList)
+        {
+            this.clearFlags = flags.ToArray();
+        }
+    }
+
+    public bool GetFlagByName(string flagName)
+    {
+        var flags = new List<string>(eventFlags);
+        return flags.Contains(flagName);
     }
 
     public bool CheckItemName(string itemName)
