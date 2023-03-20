@@ -163,28 +163,15 @@ public class ItemEditorForStage4 : Editor
 
                         item.events[i].beToAppear = EditorGUILayout.Toggle("このアイテムが現れる/消える", item.events[i].beToAppear);
 
+
                         if (item.events[i].beToAppear)
                         {
                             EditorGUI.indentLevel++; 
                             item.events[i].appearingOption = EditorGUILayout.IntPopup("オプション->", item.events[i].appearingOption, new string[]{"現れる", "消える", "反転する", "フェイドアウト", "フェイドイン", "無効化される", "有効化される"}, new int[]{1, 2, 3, 4, 5, 6, 7});
                             
-                            if(item.events[i].appearingOption == 6){
-                                EditorGUI.indentLevel++; 
-                                
-                                item.events[i].setActiceObject = EditorGUILayout.TextField("特定オブジェクトを有効化する", item.events[i].setActiceObject);
-                                item.events[i].parentName = EditorGUILayout.TextField("そのオブジェクトの親オブジェクトの名前", item.events[i].parentName);
-                                EditorGUI.indentLevel--;
-                            }
-
-                            if(item.events[i].appearingOption == 7){
-
-                                EditorGUI.indentLevel++; 
-                                item.events[i].parentName = EditorGUILayout.TextField("このオブジェクトの親オブジェクトの名前", item.events[i].parentName);
-                                EditorGUI.indentLevel--;
-                            }
-
                             EditorGUI.indentLevel--;        
                         }
+
 
                         item.events[i].beAvailable = EditorGUILayout.Toggle("このアイテムが入手可能になる", item.events[i].beAvailable);
 
@@ -261,6 +248,30 @@ public class ItemEditorForStage4 : Editor
                         {
                             EditorGUI.indentLevel++;
                             item.events[i].soundType = EditorGUILayout.IntPopup("効果音の種類->", item.events[i].soundType, (from j in item.soundEffectList select j.soundName).ToArray(), Enumerable.Range(0, item.soundEffectList.Length).ToArray());
+
+                            EditorGUI.indentLevel--;
+                        }
+
+                        
+                        item.events[i].isSetActive = EditorGUILayout.Toggle("特定のオブジェクトを有効化する/無効化する", item.events[i].isSetActive);
+
+                        if(item.events[i].isSetActive){
+                            EditorGUI.indentLevel++; 
+                            item.events[i].setActiveInt = EditorGUILayout.IntPopup("オプション->", item.events[i].setActiveInt, new string[]{"有効化する", "無効化する"},new int[]{1, 2});
+                            
+                            if(item.events[i].setActiveInt == 1){
+                                EditorGUI.indentLevel++; 
+                                
+                                item.events[i].setActiceObject = EditorGUILayout.TextField("そのオブジェクトの名前", item.events[i].setActiceObject);
+                                item.events[i].parentName = EditorGUILayout.TextField("そのオブジェクトの親オブジェクトの名前", item.events[i].parentName);
+                                EditorGUI.indentLevel--;
+                            }
+
+                            if(item.events[i].setActiveInt == 2){
+                                EditorGUI.indentLevel++; 
+                                item.events[i].setActiceObject = EditorGUILayout.TextField("そのオブジェクトの名前", item.events[i].setActiceObject);
+                                EditorGUI.indentLevel--;
+                            }
 
                             EditorGUI.indentLevel--;
                         }

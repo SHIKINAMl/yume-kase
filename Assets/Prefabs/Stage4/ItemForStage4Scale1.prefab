@@ -221,6 +221,8 @@ MonoBehaviour:
   - eventType: 1
     conditionType: 1
     waittingTime: 0
+    setActiceObject: 
+    parentName: 
     conditions:
     - ifThisClicked: 0
       ifFlag: 0

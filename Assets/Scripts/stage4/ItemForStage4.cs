@@ -290,6 +290,26 @@ public class ItemForStage4 : MonoBehaviour, IPointerClickHandler
                     break;
             }
         }
+
+        if(itemEvent.isSetActive){
+            switch(itemEvent.setActiveInt){
+
+                case 1: //特定オブジェクトを有効化する
+                     if(itemEvent.setActiceObject != null && itemEvent.parentName != null) {
+                        GameObject obj = GameObject.Find(itemEvent.parentName).transform.Find(itemEvent.setActiceObject).gameObject;
+                        obj.GetComponent<ItemForStage4>().disableAttribute = false;
+                        obj.SetActive(true);
+                    }
+                    break;
+
+                case 2: //特定オブジェクトを無効化する
+                    if(itemEvent.setActiceObject != null) {
+                        GameObject.Find(itemEvent.setActiceObject).gameObject.SetActive(false);
+                    }
+                    break;
+
+            }
+        }
                     
         if (itemEvent.beAvailable)
         {
@@ -412,6 +432,8 @@ public class ItemEventForStage4
     public float waittingTime = 0;
 
     [SerializeField]
+    public bool isSetActive = false;
+    public int setActiveInt;
     public string setActiceObject = null;
     public string parentName = null;
 

@@ -385,6 +385,8 @@ MonoBehaviour:
   - eventType: 2
     conditionType: 1
     waittingTime: 0
+    isSetActive: 0
+    setActiveInt: 0
     setActiceObject: Closed
     parentName: ViewOfDoor
     conditions:
@@ -969,6 +971,22 @@ PrefabInstance:
     - target: {fileID: -4828832286246776460, guid: f79b1069705216e489a60c02454652b4, type: 3}
       propertyPath: events.Array.data[0].flagOption
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -4828832286246776460, guid: f79b1069705216e489a60c02454652b4, type: 3}
+      propertyPath: events.Array.data[0].parentName
+      value: ViewOfDoor
+      objectReference: {fileID: 0}
+    - target: {fileID: -4828832286246776460, guid: f79b1069705216e489a60c02454652b4, type: 3}
+      propertyPath: events.Array.data[0].isSetActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -4828832286246776460, guid: f79b1069705216e489a60c02454652b4, type: 3}
+      propertyPath: events.Array.data[0].setActiveInt
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -4828832286246776460, guid: f79b1069705216e489a60c02454652b4, type: 3}
+      propertyPath: events.Array.data[0].setActiceObject
+      value: Closed
       objectReference: {fileID: 0}
     - target: {fileID: -4828832286246776460, guid: f79b1069705216e489a60c02454652b4, type: 3}
       propertyPath: events.Array.data[0].standingFlagName
@@ -2012,6 +2030,22 @@ PrefabInstance:
     - target: {fileID: -4828832286246776460, guid: f79b1069705216e489a60c02454652b4, type: 3}
       propertyPath: events.Array.data[0].flagOption
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -4828832286246776460, guid: f79b1069705216e489a60c02454652b4, type: 3}
+      propertyPath: events.Array.data[0].parentName
+      value: ViewOfDoor
+      objectReference: {fileID: 0}
+    - target: {fileID: -4828832286246776460, guid: f79b1069705216e489a60c02454652b4, type: 3}
+      propertyPath: events.Array.data[0].isSetActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -4828832286246776460, guid: f79b1069705216e489a60c02454652b4, type: 3}
+      propertyPath: events.Array.data[0].setActiveInt
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -4828832286246776460, guid: f79b1069705216e489a60c02454652b4, type: 3}
+      propertyPath: events.Array.data[0].setActiceObject
+      value: Opened
       objectReference: {fileID: 0}
     - target: {fileID: -4828832286246776460, guid: f79b1069705216e489a60c02454652b4, type: 3}
       propertyPath: events.Array.data[0].standingFlagName
@@ -3260,6 +3294,8 @@ MonoBehaviour:
   - eventType: 2
     conditionType: 1
     waittingTime: 0
+    isSetActive: 0
+    setActiveInt: 0
     setActiceObject: Opened
     parentName: ViewOfDoor
     conditions:
