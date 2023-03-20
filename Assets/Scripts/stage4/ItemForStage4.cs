@@ -274,6 +274,20 @@ public class ItemForStage4 : MonoBehaviour, IPointerClickHandler
                     disableAttribute = false;
                     spriterenderer.color -= new Color (0, 0, 0, spriterenderer.color.a);
                     break;
+                case 6:
+                    if(itemEvent.setActiceObject != null) {
+                        GameObject obj = GameObject.Find(itemEvent.parentName).transform.Find(itemEvent.setActiceObject).gameObject;
+                        obj.GetComponent<ItemForStage4>().disableAttribute = false;
+                        obj.SetActive(true);
+                    }
+                    gameObject.SetActive(false);
+
+                    break;
+                case 7:
+                    if(itemEvent.parentName != null){
+                        GameObject.Find(itemEvent.parentName).transform.Find(gameObject.name).gameObject.SetActive(true);
+                    }
+                    break;
             }
         }
                     
@@ -398,6 +412,9 @@ public class ItemEventForStage4
     public float waittingTime = 0;
 
     [SerializeField]
+    public string setActiceObject = null;
+    public string parentName = null;
+
     public ItemConditionForStage4[] conditions;
 
     public bool eventTrigger = true;

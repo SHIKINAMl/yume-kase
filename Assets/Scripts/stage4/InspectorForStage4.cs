@@ -99,6 +99,7 @@ public class ItemEditorForStage4 : Editor
                             {
                                 EditorGUI.indentLevel++;
                                 item.events[i].conditions[j].numberOfFlag = EditorGUILayout.IntField("条件フラグの数->", item.events[i].conditions[j].numberOfFlag);
+                                
 
                                 if (item.events[i].conditions[j].stoodFlagNames.Length != item.events[i].conditions[j].numberOfFlag)
                                 {
@@ -165,7 +166,23 @@ public class ItemEditorForStage4 : Editor
                         if (item.events[i].beToAppear)
                         {
                             EditorGUI.indentLevel++; 
-                            item.events[i].appearingOption = EditorGUILayout.IntPopup("オプション->", item.events[i].appearingOption, new string[]{"現れる", "消える", "反転する", "フェイドアウト", "フェイドイン"}, new int[]{1, 2, 3, 4, 5});
+                            item.events[i].appearingOption = EditorGUILayout.IntPopup("オプション->", item.events[i].appearingOption, new string[]{"現れる", "消える", "反転する", "フェイドアウト", "フェイドイン", "無効化される", "有効化される"}, new int[]{1, 2, 3, 4, 5, 6, 7});
+                            
+                            if(item.events[i].appearingOption == 6){
+                                EditorGUI.indentLevel++; 
+                                
+                                item.events[i].setActiceObject = EditorGUILayout.TextField("特定オブジェクトを有効化する", item.events[i].setActiceObject);
+                                item.events[i].parentName = EditorGUILayout.TextField("そのオブジェクトの親オブジェクトの名前", item.events[i].parentName);
+                                EditorGUI.indentLevel--;
+                            }
+
+                            if(item.events[i].appearingOption == 7){
+
+                                EditorGUI.indentLevel++; 
+                                item.events[i].parentName = EditorGUILayout.TextField("このオブジェクトの親オブジェクトの名前", item.events[i].parentName);
+                                EditorGUI.indentLevel--;
+                            }
+
                             EditorGUI.indentLevel--;        
                         }
 

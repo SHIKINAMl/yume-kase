@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -5784836165965982360}
   - component: {fileID: -4828832286246776460}
   m_Layer: 0
-  m_Name: ItemForStage4
+  m_Name: ItemForStage4Scale1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 8224005722781285823}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.39, y: 1.39, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
