@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8224005722781285818}
   - component: {fileID: 8224005722781285764}
   - component: {fileID: -5784836165965982360}
-  - component: {fileID: -2027834139862896833}
+  - component: {fileID: -4828832286246776460}
   m_Layer: 0
   m_Name: ItemForStage4
   m_TagString: Untagged
@@ -199,7 +199,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
---- !u!114 &-2027834139862896833
+--- !u!114 &-4828832286246776460
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -208,7 +208,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8224005722781285823}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ff8c8729ba76dcf4791ac6f897003e48, type: 3}
+  m_Script: {fileID: 11500000, guid: 8ee72a914b687f042be25b4977f18d06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   disableAttribute: 0
@@ -221,21 +221,9 @@ MonoBehaviour:
   - eventType: 1
     conditionType: 1
     waittingTime: 0
-    loopTime: 0
-    isLoop: 1
-    isBreakLoop: 0
     conditions:
     - ifThisClicked: 0
-      ifDoNoting: 0
       ifFlag: 0
-      isBreakLoop: 0
-      isThisClickedWhileLoop: 0
-      isBeFlaggedWhileLoop: 0
-      isHoldItemWhileLoop: 0
-      numberOfFlagWhileLoop: 0
-      numberOfItemWhileLoop: 0
-      stoodFlagNamesWhileLoop: []
-      holdItemNamesWhileLoop: []
       numberOfFlag: 0
       stoodFlagNames: []
       ifHoldItem: 0
