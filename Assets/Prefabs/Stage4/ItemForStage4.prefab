@@ -221,9 +221,21 @@ MonoBehaviour:
   - eventType: 1
     conditionType: 1
     waittingTime: 0
+    loopTime: 0
+    isLoop: 1
+    isBreakLoop: 0
     conditions:
     - ifThisClicked: 0
+      ifDoNoting: 0
       ifFlag: 0
+      isBreakLoop: 0
+      isThisClickedWhileLoop: 0
+      isBeFlaggedWhileLoop: 0
+      isHoldItemWhileLoop: 0
+      numberOfFlagWhileLoop: 0
+      numberOfItemWhileLoop: 0
+      stoodFlagNamesWhileLoop: []
+      holdItemNamesWhileLoop: []
       numberOfFlag: 0
       stoodFlagNames: []
       ifHoldItem: 0

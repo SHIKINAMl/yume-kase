@@ -215,8 +215,8 @@ public class ItemForStage4 : MonoBehaviour, IPointerClickHandler
           {
 
             Debug.Log("루프가 종료되었습니다");
-            i.isBreakLoop = true;
             StopCoroutine(LoopEvent(i));
+            i.isBreakLoop = true;
           }
 
           sumBool.Add((!j.ifThisClicked || (j.ifThisClicked && isClicked)) &&
@@ -271,12 +271,9 @@ public class ItemForStage4 : MonoBehaviour, IPointerClickHandler
 
     while ((!itemEvent.isBreakLoop))
     {
-
-      if(!itemEvent.isLoop) continue;
-      itemEvent.isLoop = true;
-
       yield return new WaitForSeconds(itemEvent.loopTime);
-      Debug.Log("루프가 실행되었습니다");
+
+      if(itemEvent.isBreakLoop) yield break;
       if (itemEvent.beToAppear)
       {
         switch (itemEvent.appearingOption)
@@ -384,6 +381,8 @@ public class ItemForStage4 : MonoBehaviour, IPointerClickHandler
       {
         isOnEvent = false;
       }
+
+      itemEvent.isLoop = false;
 
     }
   }
@@ -395,124 +394,123 @@ public class ItemForStage4 : MonoBehaviour, IPointerClickHandler
     isOnEvent = true;
     yield return new WaitForSeconds(itemEvent.waittingTime);
 
-    if (itemEvent.eventType == 3)
+    if (itemEvent.eventType == 3 && !itemEvent.isLoop)
     {
-      Debug.Log("스타트 코루틴");
+      itemEvent.isLoop = true;
       StartCoroutine(LoopEvent(itemEvent));
-      yield break;
     }
 
-    if (!itemEvent.isLoop)
+    while(itemEvent.isLoop) yield return null;
+
+    if (itemEvent.beToAppear)
     {
-      if (itemEvent.beToAppear)
+      switch (itemEvent.appearingOption)
       {
-        switch (itemEvent.appearingOption)
-        {
-          case 1:
-            disableAttribute = false;
-            break;
-          case 2:
-            disableAttribute = true;
-            break;
-          case 3:
-            disableAttribute = !disableAttribute;
-            break;
-          case 4:
-            isFadingOut = true;
-            break;
-          case 5:
-            isFadingIn = true;
-            disableAttribute = false;
-            spriterenderer.color -= new Color(0, 0, 0, spriterenderer.color.a);
-            break;
-        }
-      }
-
-      if (itemEvent.beAvailable)
-      {
-        if (itemEvent.gettingOption == 1)
-        {
-          ownableAttribute = true;
-        }
-
-        else
-        {
-          stagemanager.itemList.Add(new ItemData(itemName, spriterenderer.sprite, itemText));
-          getitemwindow.DisplayGetItem(itemName, spriterenderer.sprite);
-          ownableAttribute = false;
+        case 1:
+          disableAttribute = false;
+          break;
+        case 2:
           disableAttribute = true;
-        }
+          break;
+        case 3:
+          disableAttribute = !disableAttribute;
+          break;
+        case 4:
+          isFadingOut = true;
+          break;
+        case 5:
+          isFadingIn = true;
+          disableAttribute = false;
+          spriterenderer.color -= new Color(0, 0, 0, spriterenderer.color.a);
+          break;
       }
-
-      if (itemEvent.beToMove)
-      {
-        initialPosition = (Vector2)this.transform.position;
-        destinationPosition = (Vector2)this.transform.position + itemEvent.moveVector;
-
-        if (itemEvent.moveType == 1)
-        {
-          this.transform.position = destinationPosition;
-        }
-        else
-        {
-          moveSpeed = itemEvent.moveSpeed * Time.deltaTime;
-          isMoving = true;
-        }
-      }
-
-      if (itemEvent.beToChangeSize)
-      {
-        initialScale = (Vector2)this.transform.localScale;
-        changeSizeRate = itemEvent.changeSizeRate;
-
-        if (itemEvent.changeType == 1)
-        {
-          this.transform.localScale *= changeSizeRate;
-        }
-        else
-        {
-          changeSpeed = itemEvent.changeSpeed * Time.deltaTime;
-          isChanging = true;
-        }
-      }
-
-      if (itemEvent.beToPopUpText)
-      {
-        GameObject.Find("TextWindow").GetComponent<TextWindow>().SetTexts(itemEvent.poppingUpTexts);
-      }
-
-      if (itemEvent.beToSoundEffect)
-      {
-        audiosource.PlayOneShot(stagemanager.soundEffectList[itemEvent.soundType].soundEffect);
-      }
-
-      if (itemEvent.beToFlag)
-      {
-        switch (itemEvent.flagOption)
-        {
-          case 1:
-            stagemanager.SetFlagByName(stagemanager.eventFlagList, itemEvent.standingFlagName, true);
-            break;
-          case 2:
-            stagemanager.SetFlagByName(stagemanager.eventFlagList, itemEvent.standingFlagName, false);
-            break;
-          case 3:
-            stagemanager.SetFlagByName(stagemanager.eventFlagList, itemEvent.standingFlagName, !stagemanager.GetFlagByName(itemEvent.standingFlagName));
-            break;
-        }
-      }
-
-      if (itemEvent.beToFlagClear)
-      {
-        stagemanager.SetFlagByName(stagemanager.clearFlagList, itemEvent.standingClearFlagName, true);
-      }
-
-      if (!itemEvent.beToMove && !itemEvent.beToChangeSize && (!itemEvent.beToAppear || !(itemEvent.appearingOption == 4 || itemEvent.appearingOption == 5)))
-      {
-        isOnEvent = false;
-      }
-
     }
+
+    if (itemEvent.beAvailable)
+    {
+      if (itemEvent.gettingOption == 1)
+      {
+        ownableAttribute = true;
+      }
+
+      else
+      {
+        stagemanager.itemList.Add(new ItemData(itemName, spriterenderer.sprite, itemText));
+        getitemwindow.DisplayGetItem(itemName, spriterenderer.sprite);
+        ownableAttribute = false;
+        disableAttribute = true;
+      }
+    }
+
+    if (itemEvent.beToMove)
+    {
+      initialPosition = (Vector2)this.transform.position;
+      destinationPosition = (Vector2)this.transform.position + itemEvent.moveVector;
+
+      if (itemEvent.moveType == 1)
+      {
+        this.transform.position = destinationPosition;
+      }
+      else
+      {
+        moveSpeed = itemEvent.moveSpeed * Time.deltaTime;
+        isMoving = true;
+      }
+    }
+
+    if (itemEvent.beToChangeSize)
+    {
+      initialScale = (Vector2)this.transform.localScale;
+      changeSizeRate = itemEvent.changeSizeRate;
+
+      if (itemEvent.changeType == 1)
+      {
+        this.transform.localScale *= changeSizeRate;
+      }
+      else
+      {
+        changeSpeed = itemEvent.changeSpeed * Time.deltaTime;
+        isChanging = true;
+      }
+    }
+
+    if (itemEvent.beToPopUpText)
+    {
+      GameObject.Find("TextWindow").GetComponent<TextWindow>().SetTexts(itemEvent.poppingUpTexts);
+    }
+
+    if (itemEvent.beToSoundEffect)
+    {
+      audiosource.PlayOneShot(stagemanager.soundEffectList[itemEvent.soundType].soundEffect);
+    }
+
+    if (itemEvent.beToFlag)
+    {
+      switch (itemEvent.flagOption)
+      {
+        case 1:
+          stagemanager.SetFlagByName(stagemanager.eventFlagList, itemEvent.standingFlagName, true);
+          break;
+        case 2:
+          stagemanager.SetFlagByName(stagemanager.eventFlagList, itemEvent.standingFlagName, false);
+          break;
+        case 3:
+          stagemanager.SetFlagByName(stagemanager.eventFlagList, itemEvent.standingFlagName, !stagemanager.GetFlagByName(itemEvent.standingFlagName));
+          break;
+      }
+    }
+
+    if (itemEvent.beToFlagClear)
+    {
+      stagemanager.SetFlagByName(stagemanager.clearFlagList, itemEvent.standingClearFlagName, true);
+    }
+
+    if (!itemEvent.beToMove && !itemEvent.beToChangeSize && (!itemEvent.beToAppear || !(itemEvent.appearingOption == 4 || itemEvent.appearingOption == 5)))
+    {
+      isOnEvent = false;
+    }
+
+
   }
 
   private bool CheckFlags(SetDataForStage4[] flagList)
