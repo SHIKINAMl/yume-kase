@@ -10,11 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 8224005722781285819}
   - component: {fileID: 8224005722781285818}
-  - component: {fileID: 8224005722781285816}
   - component: {fileID: 8224005722781285764}
   - component: {fileID: -5784836165965982360}
+  - component: {fileID: -2027834139862896833}
   m_Layer: 0
-  m_Name: Item
+  m_Name: ItemForStage4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -87,61 +87,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &8224005722781285816
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8224005722781285823}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5c80f2437d863984fa35de87d2eb2ec4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  disableAttribute: 0
-  ownableAttribute: 0
-  eventAttribute: 1
-  itemName: 
-  itemText: 
-  numberOfEvent: 1
-  events:
-  - eventType: 1
-    conditionType: 1
-    waittingTime: 0
-    conditions:
-    - ifThisClicked: 0
-      ifFlag: 0
-      numberOfFlag: 0
-      stoodFlagNames: []
-      ifHoldItem: 0
-      numberOfItem: 0
-      holdItemNames: []
-      ifAffordInventory: 0
-      numberOfEmpty: 1
-    eventTrigger: 0
-    beToAppear: 0
-    appearingOption: 1
-    beAvailable: 0
-    gettingOption: 1
-    beToMove: 0
-    moveVector: {x: 3, y: 4}
-    moveType: 2
-    moveSpeed: 5
-    beToChangeSize: 0
-    changeSizeRate: 3
-    changeType: 2
-    changeSpeed: 5
-    beToPopUpText: 0
-    poppingUpTexts: []
-    beToSoundEffect: 0
-    soundType: 0
-    beToFlag: 0
-    standingFlagName: 
-    flagOption: 1
-    beToFlagClear: 0
-    standingClearFlagName: 
-  waitEvent: 0
 --- !u!82 &8224005722781285764
 AudioSource:
   m_ObjectHideFlags: 0
@@ -254,3 +199,58 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &-2027834139862896833
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8224005722781285823}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff8c8729ba76dcf4791ac6f897003e48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  disableAttribute: 0
+  ownableAttribute: 0
+  eventAttribute: 1
+  itemName: 
+  itemText: 
+  numberOfEvent: 1
+  events:
+  - eventType: 1
+    conditionType: 1
+    waittingTime: 0
+    conditions:
+    - ifThisClicked: 0
+      ifFlag: 0
+      numberOfFlag: 0
+      stoodFlagNames: []
+      ifHoldItem: 0
+      numberOfItem: 0
+      holdItemNames: []
+      ifAffordInventory: 0
+      numberOfEmpty: 1
+    eventTrigger: 0
+    beToAppear: 0
+    appearingOption: 0
+    beAvailable: 0
+    gettingOption: 0
+    beToMove: 0
+    moveVector: {x: 0, y: 0}
+    moveType: 0
+    moveSpeed: 0
+    beToChangeSize: 0
+    changeSizeRate: 0
+    changeType: 0
+    changeSpeed: 0
+    beToPopUpText: 0
+    poppingUpTexts: []
+    beToSoundEffect: 0
+    soundType: 0
+    beToFlag: 0
+    standingFlagName: 
+    flagOption: 0
+    beToFlagClear: 0
+    standingClearFlagName: 
+  waitEvent: 0
