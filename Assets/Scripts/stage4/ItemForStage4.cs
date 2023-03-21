@@ -73,12 +73,13 @@ public class ItemForStage4 : MonoBehaviour, IPointerClickHandler
 
     public void FixedUpdate()
     {
+        
         CheckCondition(events);
         ChangeEnableImage();
         MoveItem();
         ChangeSizeItem();
-        FadeOutItem();
-        fadeInItem();
+        FadeOutItem(events);
+        fadeInItem(events);
 
         if (waitEvent)
         {
@@ -163,13 +164,13 @@ public class ItemForStage4 : MonoBehaviour, IPointerClickHandler
         }
     }
 
-    private void FadeOutItem()
+    private void FadeOutItem(ItemEventForStage4[] iv)
     {
         if (isFadingOut)
         {
             spriterenderer.color -= new Color (0, 0, 0, 0.02f);
 
-            if (spriterenderer.color.a == 0)
+            if (spriterenderer.color.a <= 0)
             {
                 disableAttribute = true;
                 isFadingOut = false;
@@ -178,13 +179,13 @@ public class ItemForStage4 : MonoBehaviour, IPointerClickHandler
         }
     }
 
-    private void fadeInItem()
+    private void fadeInItem(ItemEventForStage4[] iv)
     {
         if (isFadingIn)
         {
             spriterenderer.color += new Color (0, 0, 0, 0.02f);
 
-            if (spriterenderer.color.a == 1)
+            if (spriterenderer.color.a >= 1)
             {
                 isFadingIn = false;
                 isOnEvent = false;
@@ -192,11 +193,12 @@ public class ItemForStage4 : MonoBehaviour, IPointerClickHandler
         }
     }
 
-    private void CheckCondition(ItemEventForStage4[] events)
+    private void CheckCondition(ItemEventForStage4[] e)
     {
         if (eventAttribute)
         {
-            foreach (var i in events)
+               
+            foreach (var i in e)
             {
                 List<bool> sumBool = new List<bool>();
 
@@ -250,7 +252,6 @@ public class ItemForStage4 : MonoBehaviour, IPointerClickHandler
     private IEnumerator RaiseEvent(ItemEventForStage4 itemEvent)
     {
         isOnEvent = true;
-
         yield return new WaitForSeconds(itemEvent.waittingTime);
 
         if (itemEvent.beToAppear)
@@ -275,18 +276,7 @@ public class ItemForStage4 : MonoBehaviour, IPointerClickHandler
                     spriterenderer.color -= new Color (0, 0, 0, spriterenderer.color.a);
                     break;
                 case 6:
-                    if(itemEvent.setActiceObject != null) {
-                        GameObject obj = GameObject.Find(itemEvent.parentName).transform.Find(itemEvent.setActiceObject).gameObject;
-                        obj.GetComponent<ItemForStage4>().disableAttribute = false;
-                        obj.SetActive(true);
-                    }
                     gameObject.SetActive(false);
-
-                    break;
-                case 7:
-                    if(itemEvent.parentName != null){
-                        GameObject.Find(itemEvent.parentName).transform.Find(gameObject.name).gameObject.SetActive(true);
-                    }
                     break;
             }
         }

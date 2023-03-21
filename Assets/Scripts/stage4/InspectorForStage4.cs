@@ -95,7 +95,7 @@ public class ItemEditorForStage4 : Editor
                             item.events[i].conditions[j].ifThisClicked = EditorGUILayout.Toggle("このオブジェクトが押されたら", item.events[i].conditions[j].ifThisClicked);
                             item.events[i].conditions[j].ifFlag = EditorGUILayout.Toggle("特定のフラグがたったら", item.events[i].conditions[j].ifFlag);
 
-                            if (item.events[i].conditions[j].ifFlag)
+                            if (item.events[i].conditions[j].ifFlag && item.events[i].conditions[j].stoodFlagNames != null)
                             {
                                 EditorGUI.indentLevel++;
                                 item.events[i].conditions[j].numberOfFlag = EditorGUILayout.IntField("条件フラグの数->", item.events[i].conditions[j].numberOfFlag);
@@ -121,7 +121,7 @@ public class ItemEditorForStage4 : Editor
 
                             item.events[i].conditions[j].ifHoldItem = EditorGUILayout.Toggle("特定のアイテムを持っていたら", item.events[i].conditions[j].ifHoldItem);
 
-                            if (item.events[i].conditions[j].ifHoldItem)
+                            if (item.events[i].conditions[j].ifHoldItem && item.events[i].conditions[j].holdItemNames != null)
                             {
                                 EditorGUI.indentLevel++; 
                                 item.events[i].conditions[j].numberOfItem = EditorGUILayout.IntField("条件アイテムの数->", item.events[i].conditions[j].numberOfItem);
@@ -167,7 +167,7 @@ public class ItemEditorForStage4 : Editor
                         if (item.events[i].beToAppear)
                         {
                             EditorGUI.indentLevel++; 
-                            item.events[i].appearingOption = EditorGUILayout.IntPopup("オプション->", item.events[i].appearingOption, new string[]{"現れる", "消える", "反転する", "フェイドアウト", "フェイドイン", "無効化される", "有効化される"}, new int[]{1, 2, 3, 4, 5, 6, 7});
+                            item.events[i].appearingOption = EditorGUILayout.IntPopup("オプション->", item.events[i].appearingOption, new string[]{"現れる", "消える", "反転する", "フェイドアウト", "フェイドイン", "無効化される"}, new int[]{1, 2, 3, 4, 5, 6});
                             
                             EditorGUI.indentLevel--;        
                         }
