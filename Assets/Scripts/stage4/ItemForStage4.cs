@@ -205,6 +205,7 @@ public class ItemForStage4 : MonoBehaviour, IPointerClickHandler
                 foreach (var j in i.conditions)
                 {
                     sumBool.Add((!j.ifThisClicked || (j.ifThisClicked && isClicked)) &&
+                        (!j.ifDoNothing || j.ifDoNothing) &&
                         (!j.ifFlag || (j.ifFlag && CheckFlags(j.stoodFlagNames))) &&
                         (!j.ifHoldItem || (j.ifHoldItem && CheckItems(j.holdItemNames))) &&
                         (!j.ifAffordInventory || (j.ifAffordInventory && stagemanager.itemList.Count <= stagemanager.inventorySize - j.numberOfEmpty)));
@@ -467,6 +468,7 @@ public class ItemEventForStage4
 public class ItemConditionForStage4
 {
     public bool ifThisClicked = false;
+    public bool ifDoNothing = false;
 
     public bool ifFlag = false;
     public int numberOfFlag;

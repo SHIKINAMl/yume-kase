@@ -92,6 +92,7 @@ public class ItemEditorForStage4 : Editor
 
                             EditorGUI.indentLevel++; 
 
+                            item.events[i].conditions[j].ifDoNothing = EditorGUILayout.Toggle("何もしなくても実行される", item.events[i].conditions[j].ifDoNothing);
                             item.events[i].conditions[j].ifThisClicked = EditorGUILayout.Toggle("このオブジェクトが押されたら", item.events[i].conditions[j].ifThisClicked);
                             item.events[i].conditions[j].ifFlag = EditorGUILayout.Toggle("特定のフラグがたったら", item.events[i].conditions[j].ifFlag);
 
