@@ -54,3 +54,6 @@ TagManager:
   - name: ChangeRoomButton
     uniqueID: 2899524341
     locked: 0
+  - name: Event
+    uniqueID: 4002009139
+    locked: 0
