@@ -284,11 +284,19 @@ public class ItemEditorForStage4 : Editor
                             EditorGUI.indentLevel++;
                             EditorGUI.indentLevel++;
 
-                            item.events[i].flagCount = EditorGUILayout.IntField("立つフラグの数->", item.events[i].flagCount);
+                            item.events[i].flagCount = EditorGUILayout.IntField("設定するフラグの数->", item.events[i].flagCount);
 
-                            for(int j = 0; j < item.events[i].flagCount; i++){
-                                item.events[i].standingFlagName[j] = EditorGUILayout.TextField("そのフラグの名前->", item.events[i].standingFlagName[j]);
-                                item.events[i].flagOption[j] = EditorGUILayout.IntPopup("オプション->", item.events[i].flagOption[j], new string[]{"立つ", "折れる", "反転する"}, new int[]{1, 2, 3});
+                            if(item.events[i].flagCount > 0){
+                                Array.Resize(ref item.events[i].standingFlagName, item.events[i].flagCount);
+                                Array.Resize(ref item.events[i].flagOption, item.events[i].flagCount);
+                                // item.events[i].standingFlagName = new string[item.events[i].flagCount];
+                                // item.events[i].flagOption = new int[item.events[i].flagCount];
+
+                                for(int j = 0; j < item.events[i].flagCount; j++){
+                                    item.events[i].standingFlagName[j] = EditorGUILayout.TextField("そのフラグの名前->", item.events[i].standingFlagName[j]);
+                                    item.events[i].flagOption[j] = EditorGUILayout.IntPopup("オプション->", item.events[i].flagOption[j], new string[]{"立つ", "折れる", "反転する"}, new int[]{1, 2, 3});
+                                }
+
                             }
 
                             EditorGUI.indentLevel--;

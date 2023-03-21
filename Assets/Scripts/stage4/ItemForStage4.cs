@@ -70,7 +70,6 @@ public class ItemForStage4 : MonoBehaviour, IPointerClickHandler
             i.eventTrigger = true;
         }
         
-        StartCoroutine(ForDebugCheckFlagList(2));
     }
 
     public void FixedUpdate()
@@ -101,12 +100,6 @@ public class ItemForStage4 : MonoBehaviour, IPointerClickHandler
         wasOnEvent = isOnEvent;
     }
 
-    IEnumerator ForDebugCheckFlagList(float time){
-        while(true){
-            yield return new WaitForSeconds(time);
-            Debug.Log(stagemanager.eventFlagList.ToString());
-        }
-    }
 
     public void OnPointerClick(PointerEventData pointer)
     {
