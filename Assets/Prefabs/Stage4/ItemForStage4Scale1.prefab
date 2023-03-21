@@ -227,6 +227,7 @@ MonoBehaviour:
     parentName: 
     conditions:
     - ifThisClicked: 0
+      ifDoNothing: 0
       ifFlag: 0
       numberOfFlag: 0
       stoodFlagNames: []

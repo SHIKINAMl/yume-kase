@@ -69,6 +69,8 @@ public class ItemForStage4 : MonoBehaviour, IPointerClickHandler
         {
             i.eventTrigger = true;
         }
+        
+        StartCoroutine(ForDebugCheckFlagList(2));
     }
 
     public void FixedUpdate()
@@ -97,6 +99,13 @@ public class ItemForStage4 : MonoBehaviour, IPointerClickHandler
         }
 
         wasOnEvent = isOnEvent;
+    }
+
+    IEnumerator ForDebugCheckFlagList(float time){
+        while(true){
+            yield return new WaitForSeconds(time);
+            Debug.Log(stagemanager.eventFlagList.ToString());
+        }
     }
 
     public void OnPointerClick(PointerEventData pointer)
@@ -362,17 +371,20 @@ public class ItemForStage4 : MonoBehaviour, IPointerClickHandler
 
         if (itemEvent.beToFlag)
         {
-            switch (itemEvent.flagOption)
-            {
-                case 1:
-                    stagemanager.SetFlagByName(stagemanager.eventFlagList, itemEvent.standingFlagName, true);
-                    break;
-                case 2:
-                    stagemanager.SetFlagByName(stagemanager.eventFlagList, itemEvent.standingFlagName, false);
-                    break;
-                case 3:
-                    stagemanager.SetFlagByName(stagemanager.eventFlagList, itemEvent.standingFlagName, !stagemanager.GetFlagByName(itemEvent.standingFlagName));
-                    break;
+            for(int i = 0; i < itemEvent.flagCount; i++){
+                switch (itemEvent.flagOption[i])
+                {
+                    case 1:
+                        stagemanager.SetFlagByName(stagemanager.eventFlagList, itemEvent.standingFlagName[i], true);
+                        break;
+                    case 2:
+                        stagemanager.SetFlagByName(stagemanager.eventFlagList, itemEvent.standingFlagName[i], false);
+                        break;
+                    case 3:
+                        stagemanager.SetFlagByName(stagemanager.eventFlagList, itemEvent.standingFlagName[i], !stagemanager.GetFlagByName(itemEvent.standingFlagName[i]));
+                        break;
+                }
+
             }
         }  
 
@@ -455,8 +467,9 @@ public class ItemEventForStage4
     public int soundType; 
 
     public bool beToFlag = false;
-    public string standingFlagName;
-    public int flagOption;
+    public int flagCount = 0;
+    public string[] standingFlagName;
+    public int[] flagOption;
 
     public bool beToFlagClear = false;
     public string standingClearFlagName;
