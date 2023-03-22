@@ -64,6 +64,11 @@ public class ItemEditorForStage4 : Editor
                     EditorGUILayout.HelpBox($"\nイベント{i+1}\n", MessageType.None);
                     EditorGUI.indentLevel++;
 
+                    item.events[i].recordForCoding = EditorGUILayout.TextField("イベントの機能（デバック用）", item.events[i].recordForCoding);
+                    EditorGUI.indentLevel--;
+                    EditorGUILayout.HelpBox("", MessageType.None);
+                    EditorGUI.indentLevel++;
+                    
                     item.events[i].eventType = EditorGUILayout.IntPopup("イベントの実行可能回数", item.events[i].eventType, new string[]{"１回", "無限"}, new int[]{1, 2});
 
                     item.events[i].conditionType = EditorGUILayout.IntPopup("条件のタイプ", item.events[i].conditionType, new string[]{"and条件のみ", "(and条件) or (and条件)", "(and条件) or (and条件) or　(and条件)"}, new int[]{1, 2, 3});
@@ -92,7 +97,6 @@ public class ItemEditorForStage4 : Editor
 
                             EditorGUI.indentLevel++; 
 
-                            item.events[i].conditions[j].ifDoNothing = EditorGUILayout.Toggle("何もしなくても実行される", item.events[i].conditions[j].ifDoNothing);
                             item.events[i].conditions[j].ifThisClicked = EditorGUILayout.Toggle("このオブジェクトが押されたら", item.events[i].conditions[j].ifThisClicked);
                             item.events[i].conditions[j].ifFlag = EditorGUILayout.Toggle("特定のフラグがたったら", item.events[i].conditions[j].ifFlag);
 

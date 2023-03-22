@@ -53,6 +53,11 @@ public class ItemForStage4 : MonoBehaviour, IPointerClickHandler
     private bool isFadingOut = false;
     private bool isFadingIn = false;
 
+    private bool startFadeIn = false;
+    private bool startFadeOut = false;
+
+
+
     public void Start()
     {
         stagemanager = GameObject.Find("StageManager").GetComponent<StageManager>();
@@ -74,13 +79,13 @@ public class ItemForStage4 : MonoBehaviour, IPointerClickHandler
 
     public void FixedUpdate()
     {
-        
+
         CheckCondition(events);
         ChangeEnableImage();
         MoveItem();
         ChangeSizeItem();
-        FadeOutItem(events);
-        fadeInItem(events);
+        FadeOutItem();
+        fadeInItem();
 
         if (waitEvent)
         {
@@ -166,32 +171,36 @@ public class ItemForStage4 : MonoBehaviour, IPointerClickHandler
         }
     }
 
-    private void FadeOutItem(ItemEventForStage4[] iv)
+    private void FadeOutItem()
     {
         if (isFadingOut)
         {
+            startFadeOut = true;
             spriterenderer.color -= new Color (0, 0, 0, 0.02f);
-
             if (spriterenderer.color.a <= 0)
             {
                 disableAttribute = true;
                 isFadingOut = false;
                 isOnEvent = false;
+                startFadeOut = false;
             }
+
         }
     }
 
-    private void fadeInItem(ItemEventForStage4[] iv)
+    private void fadeInItem()
     {
         if (isFadingIn)
         {
+            startFadeIn = true;
             spriterenderer.color += new Color (0, 0, 0, 0.02f);
-
             if (spriterenderer.color.a >= 1)
             {
                 isFadingIn = false;
                 isOnEvent = false;
+                startFadeIn = false;
             }
+
         }
     }
 
@@ -207,7 +216,6 @@ public class ItemForStage4 : MonoBehaviour, IPointerClickHandler
                 foreach (var j in i.conditions)
                 {
                     sumBool.Add((!j.ifThisClicked || (j.ifThisClicked && isClicked)) &&
-                        (!j.ifDoNothing || j.ifDoNothing) &&
                         (!j.ifFlag || (j.ifFlag && CheckFlags(j.stoodFlagNames))) &&
                         (!j.ifHoldItem || (j.ifHoldItem && CheckItems(j.holdItemNames))) &&
                         (!j.ifAffordInventory || (j.ifAffordInventory && stagemanager.itemList.Count <= stagemanager.inventorySize - j.numberOfEmpty)));
@@ -271,12 +279,19 @@ public class ItemForStage4 : MonoBehaviour, IPointerClickHandler
                     disableAttribute = !disableAttribute;
                     break;
                 case 4:
+                    if(startFadeOut) break;
+                    Color color = spriterenderer.color;
+                    color.a = 1f;
+                    spriterenderer.color = color;
                     isFadingOut = true;
                     break;
                 case 5:
+                    if(startFadeIn) break;
+                    Color colors = spriterenderer.color;
+                    colors.a = 0f;
+                    spriterenderer.color = colors;
                     isFadingIn = true;
                     disableAttribute = false;
-                    spriterenderer.color -= new Color (0, 0, 0, spriterenderer.color.a);
                     break;
                 case 6:
                     gameObject.SetActive(false);
@@ -432,6 +447,8 @@ public class ItemEventForStage4
     public int setActiveInt;
     public string setActiceObject = null;
     public string parentName = null;
+    
+    public string recordForCoding;
 
     public ItemConditionForStage4[] conditions;
 
@@ -474,7 +491,6 @@ public class ItemEventForStage4
 public class ItemConditionForStage4
 {
     public bool ifThisClicked = false;
-    public bool ifDoNothing = false;
 
     public bool ifFlag = false;
     public int numberOfFlag;
