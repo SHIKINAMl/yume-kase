@@ -440,12 +440,12 @@ public class ItemCondition
     public bool ifThisClicked = false;
 
     public bool ifFlag = false;
-    public int numberOfFlag;
-    public SetData[] stoodFlagNames;
+    public int numberOfFlag = 1;
+    public SetData[] stoodFlagNames = new SetData[] {};
 
     public bool ifHoldItem = false;
-    public int numberOfItem;
-    public SetData[] holdItemNames;
+    public int numberOfItem = 1;
+    public SetData[] holdItemNames = new SetData[] {};
 
     public bool ifAffordInventory = false;
     public int numberOfEmpty = 1;
