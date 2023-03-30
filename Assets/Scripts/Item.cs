@@ -23,6 +23,8 @@ public class Item : MonoBehaviour, IPointerClickHandler
 
     public bool waitEvent = false;
 
+    public bool isRoopBreak = false;
+
     public SoundEffectData[] soundEffectList => GameObject.Find("StageManager").GetComponent<StageManager>().soundEffectList;
 
     private StageManager stagemanager;
@@ -241,6 +243,11 @@ public class Item : MonoBehaviour, IPointerClickHandler
                                 }
                             }      
                         }
+                    }
+                        
+                    if (isRoopBreak)
+                    {
+                        break;
                     }
                 }
             }
