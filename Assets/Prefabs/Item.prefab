@@ -118,6 +118,7 @@ MonoBehaviour:
       numberOfItem: 0
       holdItemNames: []
       ifAffordInventory: 0
+      numberOfEmpty: 1
     eventTrigger: 0
     beToAppear: 0
     appearingOption: 1
