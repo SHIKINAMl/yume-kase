@@ -47,6 +47,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destinationRoom: 2
+  destinationSide: 1
   isFlagType: 0
   flagName: aaa
 --- !u!212 &5706790169796711505
