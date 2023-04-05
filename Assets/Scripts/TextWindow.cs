@@ -18,7 +18,7 @@ public class TextWindow : MonoBehaviour
     public void Start()
     {
         image = GetComponent<Image>();
-        text = transform.Find("PopUpText").GetComponent<Text>();
+        text = transform.Find("Text").GetComponent<Text>();
 
         blinderPanel = GameObject.Find("BlinderPanel").GetComponent<Image>();
     }

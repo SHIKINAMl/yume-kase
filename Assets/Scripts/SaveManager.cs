@@ -21,18 +21,26 @@ public class SaveManager : MonoBehaviour
 
         saveData.stageName = playingStageName;
 
-
         saveData.clearList[saveData.GetIndexFromName(clearStageName)].isClear = isClear;
 
         json = JsonUtility.ToJson(saveData);
         File.WriteAllText(filePath, json);
+    }
+
+    public SaveData LoadSave()
+    {
+        Debug.Log(filePath);
+
+        string json = File.ReadAllText(filePath);
+
+        return JsonUtility.FromJson<SaveData>(json);
     }
 }
 
 [Serializable]
 public class SaveData
 {
-    public string stageName;
+    public string stageName = "None";
 
     [SerializeField]
     public List<ClearData> clearList;
