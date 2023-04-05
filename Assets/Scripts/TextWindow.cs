@@ -15,6 +15,8 @@ public class TextWindow : MonoBehaviour
     private float timer = 0;
     private bool isOpening = false;
 
+    private int numberOfCharacters;
+
     public void Start()
     {
         image = GetComponent<Image>();
@@ -25,9 +27,9 @@ public class TextWindow : MonoBehaviour
 
     public void Update()
     {
-        timer += Time.deltaTime;
+        timer += Time.unscaledDeltaTime;
 
-        if ((poppingUpTexts != null && timer >= 5) || (isOpening && Input.GetMouseButtonDown(0)))
+        if ((poppingUpTexts != null && timer >= numberOfCharacters / 4) || (isOpening && Input.GetMouseButtonDown(0)))
         {
             DisplayTexts();
         }
@@ -49,6 +51,7 @@ public class TextWindow : MonoBehaviour
         numberOfCurrent = 0;
         poppingUpTexts = texts;
         text.text = poppingUpTexts[0];
+        numberOfCharacters = poppingUpTexts[0].Length;
     }
 
     private void DisplayTexts()
@@ -72,6 +75,7 @@ public class TextWindow : MonoBehaviour
         else
         {
             text.text = poppingUpTexts[numberOfCurrent];
+            numberOfCharacters = poppingUpTexts[0].Length;
         }
     }
 }

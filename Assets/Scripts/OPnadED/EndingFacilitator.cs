@@ -8,22 +8,27 @@ public class EndingFacilitator : MonoBehaviour
     private bool isCutInPart = false;
     private bool isEndrollOPart = false;
 
-    [SerializeField]
     public List<Sprite> images = new List<Sprite>();
 
+    public List<int> noDisappearNumber;
+    private int counter = 0;
+
     private SpriteRenderer spriteRenderer;
+    public GameObject prefab;
+    private SpriteRenderer prefabSpriteRenderer;
 
     private int indexOfImages = 0;
     private float waitingTime = 0;
 
-    private bool isWaiting = true;
+    private bool isWaiting = false;
     private bool isFadingOut = false;
-    private bool isFadingIn = false;
+    private bool isFadingIn = true;
 
     private void Start()
     {
         spriteRenderer = GameObject.Find("BackImage").GetComponent<SpriteRenderer>();
         spriteRenderer.sprite = images[0];
+        spriteRenderer.color = new Color (1, 1, 1, 0);
     }
 
     public void Update()
@@ -36,45 +41,85 @@ public class EndingFacilitator : MonoBehaviour
 
                 if (waitingTime >= 2)
                 {
-                    waitingTime = 0;
-                    isWaiting = false;
-                    isFadingOut = true;
-                }
-            }
-
-            if (isFadingOut)
-            {
-                spriteRenderer.color -= new Color (0, 0, 0, 0.002f);
-            
-                if (spriteRenderer.color.a <= 0)
-                {
                     indexOfImages += 1;
 
                     if (images.Count == indexOfImages)
                     {
                         isFadingPart = false;
-                        isCutInPart = true;
+                        isCutInPart = true;  
                     }
-                    
+                
                     else
                     {
+                        waitingTime = 0;
+                        isWaiting = false;
+                        isFadingOut = true;
+                    }
+                }
+            }
+
+            if (isFadingOut)
+            {
+                if (indexOfImages == noDisappearNumber[counter])
+                {
+                    GameObject prefabObject = Instantiate(prefab);
+                    prefabObject.transform.SetParent(GameObject.Find("BackImage").transform);
+                    prefabSpriteRenderer = prefabObject.GetComponent<SpriteRenderer>();
+                    prefabSpriteRenderer.sprite = images[indexOfImages];
+                    prefabSpriteRenderer.color = new Color (1, 1, 1, 0);
+                    isFadingOut = false;
+                    isFadingIn = true; 
+                }
+
+                else
+                {
+                    spriteRenderer.color -= new Color (0, 0, 0, 0.002f);
+
+                    foreach (Transform prefabImages in GameObject.Find("BackImage").transform)
+                    {
+                        prefabImages.GetComponent<SpriteRenderer>().color -= new Color (0, 0, 0, 0.002f);
+                    }
+            
+                    if (spriteRenderer.color.a <= 0)
+                    {
+                        foreach (Transform prefabImages in GameObject.Find("BackImage").transform)
+                        {
+                            Destroy(prefabImages.gameObject);
+                        }
+
                         spriteRenderer.sprite = images[indexOfImages];
                         isFadingOut = false;
                         isFadingIn = true; 
-                    }
 
+                    }
                 }
             }
 
             if (isFadingIn)
             {
-                spriteRenderer.color += new Color (0, 0, 0, 0.002f);
-            
-                if (spriteRenderer.color.a >= 1)
+                if (indexOfImages == noDisappearNumber[counter])
                 {
-                    isFadingIn = false;
-                    isWaiting = true;
+                    prefabSpriteRenderer.color += new Color (0, 0, 0, 0.001f);
+
+                    if (prefabSpriteRenderer.color.a >= 1)
+                    {
+                        isFadingIn = false;
+                        isWaiting = true;
+                        counter += 1;
+                    }
                 }
+
+                else
+                {
+                    spriteRenderer.color += new Color (0, 0, 0, 0.001f);
+            
+                    if (spriteRenderer.color.a >= 1)
+                    {
+                        isFadingIn = false;
+                        isWaiting = true;
+                    }
+                }
+
             }
         }
 

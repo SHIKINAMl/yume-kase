@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class ButtonManager : MonoBehaviour
@@ -14,12 +15,19 @@ public class ButtonManager : MonoBehaviour
 
     private bool isFirstTime;
 
+    private Image blinderPanel;
+
+    private bool isFadingOut = false;
+
     public void Start()
     {
         saveManager = GameObject.Find("SaveManager").GetComponent<SaveManager>();
 
         firstTime = GameObject.Find("FirstTime");
         afterTime = GameObject.Find("AfterTime");
+
+        blinderPanel = GameObject.Find("BlinderPanel").GetComponent<Image>();
+        blinderPanel.enabled = false;
 
         saveData = saveManager.LoadSave();
         Debug.Log(saveData.stageName);
@@ -37,6 +45,19 @@ public class ButtonManager : MonoBehaviour
         }
     }
 
+    public void Update()
+    {
+        if (isFadingOut)
+        {
+            blinderPanel.color += new Color (0, 0, 0, 0.0005f);
+
+            if (blinderPanel.color.a >= 1)
+            {
+                SceneManager.LoadScene("OP");
+            }
+        }
+    }
+
     public void OnClickStart()
     {
         if (!isFirstTime)
@@ -44,8 +65,8 @@ public class ButtonManager : MonoBehaviour
             Debug.Log("警告");
         }
 
-        Debug.Log("チュートリアル開始");
-        //SceneManager.LoadScene("stage1");
+        blinderPanel.enabled = true;
+        isFadingOut = true;
     }
 
     public void OnClickReturn()

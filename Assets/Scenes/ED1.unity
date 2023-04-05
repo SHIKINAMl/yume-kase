@@ -322,8 +322,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   images:
   - {fileID: 21300000, guid: 43eb3f2500d987f4db6f0a1f52968802, type: 3}
+  - {fileID: 21300000, guid: 347d3de71b6e63b4ea89a786d4382b96, type: 3}
+  - {fileID: 21300000, guid: eea0f3c8af3bbe741b063bfe59a5f256, type: 3}
+  - {fileID: 21300000, guid: 877a937fadf958544a4875d649b605eb, type: 3}
+  - {fileID: 21300000, guid: a0c1e6fd0ee4a8e469a605e0d6958bc9, type: 3}
   - {fileID: 21300000, guid: 245e1fc524f72ef40921b0f519083737, type: 3}
   - {fileID: 21300000, guid: 1a277204becc4d54498f4e0fc1f65c9c, type: 3}
+  - {fileID: 21300000, guid: 245e1fc524f72ef40921b0f519083737, type: 3}
+  noDisappearNumber: 02000000040000000600000007000000
+  prefab: {fileID: 6367371727902003095, guid: 465865c3034915a41a4a7ab350da2d30, type: 3}
 --- !u!4 &682917390
 Transform:
   m_ObjectHideFlags: 0
