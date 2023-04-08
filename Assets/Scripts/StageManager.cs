@@ -38,6 +38,32 @@ public class StageManager : MonoBehaviour
     public string[] eventFlags = new string[0];
     public string[] clearFlags = new string[0];
 
+    private AudioSource audioSource;
+    private AudioClip currentClip;
+
+    public void Start() {
+        gameObject.AddComponent<AudioListener>();
+        audioSource = gameObject.AddComponent<AudioSource>();
+        audioSource.loop = true;
+        currentClip = BGMList[0].BGM;
+        audioSource.clip = currentClip;
+        audioSource.Play();
+    }
+
+    public void Update() {
+        for (var i = 1; i < BGMList.Length; i++)
+        {
+            if (GetFlagByName(BGMList[i].flagName))
+            {
+                currentClip = BGMList[i].BGM;
+            }
+            if (currentClip != audioSource.clip) {
+                audioSource.clip = currentClip;
+                audioSource.Play();
+            }
+        }
+    }
+
     public void SetFlagByName(FlagData[] flaglist, string flagName, bool boolean)
     {
         var flags = new List<string>();

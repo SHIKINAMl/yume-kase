@@ -65,7 +65,7 @@ public class Item : MonoBehaviour, IPointerClickHandler
 
         spriterenderer = GetComponent<SpriteRenderer>();
         collider = GetComponent<Collider2D>();
-        audiosource = GetComponent<AudioSource>();
+        audiosource = gameObject.AddComponent<AudioSource>();
 
         blinderPanel = GameObject.Find("BlinderPanel").GetComponent<Image>();
 
