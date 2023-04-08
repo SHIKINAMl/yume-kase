@@ -15,22 +15,6 @@ public class CameraMove : MonoBehaviour
     public void Start()
     {
         stagemanager = GameObject.Find("StageManager").GetComponent<StageManager>();
-        BGMList = stagemanager.BGMList;
-        GetComponent<AudioSource>().PlayOneShot(BGMList[0].BGM);
-    }
-
-    public void Update()
-    {
-        for (var i = 1; i < BGMList.Length; i++)
-        {
-            if (lastTimeFlagList != currentFlagList)
-            {
-                GetComponent<AudioSource>().PlayOneShot(BGMList[i].BGM);
-            }
-        }
-
-        lastTimeFlagList = currentFlagList;
-        currentFlagList = (from i in BGMList select stagemanager.GetFlagByName(i.flagName)).ToArray();
     }
 
     public void OnClickToLeft()
