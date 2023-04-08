@@ -54,3 +54,6 @@ TagManager:
   - name: Item
     uniqueID: 1997087907
     locked: 0
+  - name: Event
+    uniqueID: 4002009139
+    locked: 0
