@@ -13,7 +13,8 @@ public class TextWindow : MonoBehaviour
     private string[] poppingUpTexts;
     private int numberOfCurrent = 0;
     private float timer = 0;
-    private bool isOpening = false;
+    
+    public bool isOpening = false;
 
     private int numberOfCharacters;
 

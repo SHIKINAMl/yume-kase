@@ -80,4 +80,9 @@ public class CameraMove : MonoBehaviour
     {
         this.transform.position = cameraPosition;
     }
+
+    public void MoveToNikki()
+    {
+        this.transform.position = new Vector3 (-20, 0, -10);
+    }
 }

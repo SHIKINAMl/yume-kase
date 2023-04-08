@@ -17,6 +17,8 @@ public class ItemInventory : MonoBehaviour
 
     public GameObject itemWindow;
 
+    public bool notDisplayItemWindow = false;
+
     private string[] currentItemList;
     private string[] previousItemList;
 
@@ -96,8 +98,13 @@ public class ItemInventory : MonoBehaviour
             {
                 stagemanager.itemList.RemoveAt(stagemanager.GetItemIndex(item1.GetComponent<ItemIcon>().itemName));
                 stagemanager.itemList.RemoveAt(stagemanager.GetItemIndex(item2.GetComponent<ItemIcon>().itemName));
+
+                if (!notDisplayItemWindow)
+                {
+                    getitemwindow.DisplayGetItem(i.combinationItem.itemName, i.combinationItem.itemImage);  
+                }
+
                 stagemanager.itemList.Add(new ItemData(i.combinationItem.itemName, i.combinationItem.itemImage, i.combinationItem.itemText));
-                getitemwindow.DisplayGetItem(i.combinationItem.itemName, i.combinationItem.itemImage);
                 i.eventTrigger = false;
             }
         }

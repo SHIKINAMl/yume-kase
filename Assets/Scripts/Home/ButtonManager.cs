@@ -30,7 +30,6 @@ public class ButtonManager : MonoBehaviour
         blinderPanel.enabled = false;
 
         saveData = saveManager.LoadSave();
-        Debug.Log(saveData.stageName);
 
         if (saveData.stageName == "None")
         {
@@ -49,7 +48,7 @@ public class ButtonManager : MonoBehaviour
     {
         if (isFadingOut)
         {
-            blinderPanel.color += new Color (0, 0, 0, 0.0005f);
+            blinderPanel.color += new Color (0, 0, 0, Time.unscaledDeltaTime/2);
 
             if (blinderPanel.color.a >= 1)
             {

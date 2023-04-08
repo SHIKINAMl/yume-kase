@@ -19,6 +19,11 @@ public class SaveManager : MonoBehaviour
 
         SaveData saveData = JsonUtility.FromJson<SaveData>(json);
 
+        if (clearStageName == "Tutorial")
+        {
+            clearStageName = "Stage1";
+        }
+
         saveData.stageName = playingStageName;
 
         saveData.clearList[saveData.GetIndexFromName(clearStageName)].isClear = isClear;
@@ -29,8 +34,6 @@ public class SaveManager : MonoBehaviour
 
     public SaveData LoadSave()
     {
-        Debug.Log(filePath);
-
         string json = File.ReadAllText(filePath);
 
         return JsonUtility.FromJson<SaveData>(json);

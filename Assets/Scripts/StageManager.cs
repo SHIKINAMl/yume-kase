@@ -35,19 +35,8 @@ public class StageManager : MonoBehaviour
 
     public int inventorySize = 6;
 
-    public void Update()
-    {
-        foreach (var flag in clearFlagList)
-        {
-            if (flag.flag)
-            {   
-                GameObject.Find("SaveManager").GetComponent<SaveManager>().OnSave(flag.flagName, gameObject.scene.name, true);
-            }
-        }
-    }
-
-    string[] eventFlags = new string[0];
-    string[] clearFlags = new string[0];
+    public string[] eventFlags = new string[0];
+    public string[] clearFlags = new string[0];
 
     public void SetFlagByName(FlagData[] flaglist, string flagName, bool boolean)
     {

@@ -18,6 +18,7 @@ public class OpeningFacilitator : MonoBehaviour
     private int numberOfCurrent = 0;
     private float timer = 0;
     private bool isOpening = false;
+    private bool isClicked = false;
 
     public void Start()
     {
@@ -31,62 +32,80 @@ public class OpeningFacilitator : MonoBehaviour
     {
         if (isFadingIn)
         {
-            blinderPanel.color -= new Color (0, 0, 0, 0.005f);
+            blinderPanel.color -= new Color (0, 0, 0, Time.unscaledDeltaTime/2);
             
             if (blinderPanel.color.a <= 0)
             {
-                isTexting = true;
+                Time.timeScale = 0;
+                blinderPanel.enabled = true;
+
+                isAnimating = true;
+                isFadingOut = true;
             }
         }
 
         if (isTexting)
         {
-            Time.timeScale = 0;
 
-            isOpening = true;
-            text.enabled = true;
-
-            blinderPanel.enabled = true;
-            blinderPanel.color = new Color (0, 0, 0, 0.2f);
-
-            timer = 0;
-            numberOfCurrent = 0;
-            text.text = texts[0];
-            text.color = new Color (1, 1, 1, 0);
         }
 
         if (isFadingOut)
         {
-            blinderPanel.color += new Color (0, 0, 0, 0.005f);
+            blinderPanel.color += new Color (0, 0, 0, Time.unscaledDeltaTime/2);
 
             if (blinderPanel.color.a >= 1)
             {
-                SceneManager.LoadScene("Stage1");
+                SceneManager.LoadScene("Tutorial");
             }
         }
     }
 
     public void Update()
     {
+        if (isAnimating)
+        {
+            if (isFadingOut)
+            {
+                blinderPanel.color += new Color (0, 0, 0, Time.unscaledDeltaTime/2);
+    
+                if (blinderPanel.color.a >= 0.5)
+                {
+                    isOpening = true;
+                    text.enabled = true;
+
+                    timer = 0;
+                    numberOfCurrent = 0;
+                    text.text = texts[0];
+                    text.color = new Color (1, 1, 1, 0);
+
+                    isAnimating = false;
+                    isTexting = true;
+
+                    isFadingOut = false;
+                    isFadingIn = true;
+                }
+            }
+        }
+
         if (isTexting)
         {
-            
             timer += Time.unscaledDeltaTime;
 
-            if (isOpening && Input.GetMouseButtonDown(0))
+            if (!isClicked && isOpening && Input.GetMouseButtonDown(0))
             {
                 text.color = new Color (1, 1, 1, 1);
+                isClicked = true;
                 isFadingIn = false;
             }
 
-            if ((texts != null && timer >= 4) || (isOpening && Input.GetMouseButtonDown(0)))
+            if ((texts != null && timer >= 2.5f) || (isOpening && Input.GetMouseButtonDown(0)))
             {
                 isFadingOut = true;
             }
 
             if (isFadingIn)
             {
-                text.color += new Color (0, 0, 0, 0.002f);
+                text.color += new Color (0, 0, 0, Time.unscaledDeltaTime);
 
                 if (text.color.a >= 1)
                 {
@@ -94,13 +113,14 @@ public class OpeningFacilitator : MonoBehaviour
                 }
             }
 
-            if (isTexting && isFadingOut)
+            if (isFadingOut)
             {
-                text.color -= new Color (0, 0, 0, 0.002f);
+                text.color -= new Color (0, 0, 0, Time.unscaledDeltaTime);
 
                 if (text.color.a <= 0)
                 {
                     isFadingOut = false;
+                    isClicked = false;
                     DisplayTexts();
                 }
             }

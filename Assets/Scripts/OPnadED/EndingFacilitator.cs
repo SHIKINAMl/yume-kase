@@ -24,6 +24,8 @@ public class EndingFacilitator : MonoBehaviour
     private bool isFadingOut = false;
     private bool isFadingIn = true;
 
+    private int orderInLayer = 1;
+
     private void Start()
     {
         spriteRenderer = GameObject.Find("BackImage").GetComponent<SpriteRenderer>();
@@ -67,6 +69,9 @@ public class EndingFacilitator : MonoBehaviour
                     prefabSpriteRenderer = prefabObject.GetComponent<SpriteRenderer>();
                     prefabSpriteRenderer.sprite = images[indexOfImages];
                     prefabSpriteRenderer.color = new Color (1, 1, 1, 0);
+                    orderInLayer += 1;
+                    prefabSpriteRenderer.sortingOrder = orderInLayer;
+
                     isFadingOut = false;
                     isFadingIn = true; 
                 }
@@ -85,12 +90,12 @@ public class EndingFacilitator : MonoBehaviour
                         foreach (Transform prefabImages in GameObject.Find("BackImage").transform)
                         {
                             Destroy(prefabImages.gameObject);
+                            orderInLayer = 1;
                         }
 
                         spriteRenderer.sprite = images[indexOfImages];
                         isFadingOut = false;
                         isFadingIn = true; 
-
                     }
                 }
             }
