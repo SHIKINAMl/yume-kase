@@ -537,6 +537,8 @@ public class ItemEditor : Editor
             }
         }
 
+        item.getItemSound = (AudioClip)EditorGUILayout.ObjectField("アイテム入手時の効果音->", item.getItemSound, typeof(AudioClip));
+
         EditorUtility.SetDirty(target);
     }
 }
@@ -559,6 +561,10 @@ public class ChangeRoomEditor : Editor
         string[] numberOfSideString = (from i in numberOfSideInt select i.ToString()).ToArray();
 
         changeroom.destinationSide = EditorGUILayout.IntPopup("移動先の面番号->", changeroom.destinationSide, numberOfSideString, numberOfSideInt);
+
+        EditorGUILayout.Space(10);
+
+        changeroom.changeRoomSound = (AudioClip)EditorGUILayout.ObjectField("移動時の効果音->", changeroom.changeRoomSound, typeof(AudioClip));
 
         EditorGUILayout.Space(10);
 
@@ -637,21 +643,36 @@ public class ItemInventoryEditor : Editor
                 iteminventory.inventoryEvents[i].combinationItem.materialItemName2 = EditorGUILayout.TextField("アイテムの名前->", iteminventory.inventoryEvents[i].combinationItem.materialItemName2);
                 EditorGUI.indentLevel--;
 
-                EditorGUILayout.LabelField($"合成先のアイテム");
-                EditorGUI.indentLevel++;
+                EditorGUILayout.Space(10);
 
-                iteminventory.inventoryEvents[i].combinationItem.itemName = EditorGUILayout.TextField("アイテムの名前->", iteminventory.inventoryEvents[i].combinationItem.itemName);
-                
-                var style = new GUIStyle(EditorStyles.textArea)
+                iteminventory.inventoryEvents[i].combinationItem.isGetNewItem = EditorGUILayout.Toggle("新しいアイテムを入手する->", iteminventory.inventoryEvents[i].combinationItem.isGetNewItem);
+
+                if (iteminventory.inventoryEvents[i].combinationItem.isGetNewItem)
                 {
-                    wordWrap = true
-                };
+                    EditorGUILayout.LabelField("合成先のアイテム");
+                    EditorGUI.indentLevel++;
 
-                EditorGUILayout.LabelField("アイテムの説明");
-                iteminventory.inventoryEvents[i].combinationItem.itemText = EditorGUILayout.TextArea(iteminventory.inventoryEvents[i].combinationItem.itemText, style);
+                    iteminventory.inventoryEvents[i].combinationItem.itemName = EditorGUILayout.TextField("アイテムの名前->", iteminventory.inventoryEvents[i].combinationItem.itemName);
+                
+                    var style = new GUIStyle(EditorStyles.textArea)
+                    {
+                        wordWrap = true
+                    };
 
-                iteminventory.inventoryEvents[i].combinationItem.itemImage = (Sprite)EditorGUILayout.ObjectField("アイテムの画像->", iteminventory.inventoryEvents[i].combinationItem.itemImage, typeof(Sprite));
-            
+                    EditorGUILayout.LabelField("アイテムの説明");
+                    iteminventory.inventoryEvents[i].combinationItem.itemText = EditorGUILayout.TextArea(iteminventory.inventoryEvents[i].combinationItem.itemText, style);
+
+                    iteminventory.inventoryEvents[i].combinationItem.itemImage = (Sprite)EditorGUILayout.ObjectField("アイテムの画像->", iteminventory.inventoryEvents[i].combinationItem.itemImage, typeof(Sprite));
+                }
+
+                else
+                {
+                    EditorGUILayout.LabelField("立てるフラグ");
+                    EditorGUI.indentLevel++;
+
+                    iteminventory.inventoryEvents[i].combinationItem.flagName = EditorGUILayout.TextField("フラグの名前->", iteminventory.inventoryEvents[i].combinationItem.flagName);
+                }
+
                 EditorGUI.indentLevel -= 2;
             }
         }

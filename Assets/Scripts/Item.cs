@@ -33,7 +33,9 @@ public class Item : MonoBehaviour, IPointerClickHandler
 
     private SpriteRenderer spriterenderer;
     private Collider2D collider;
-    private AudioSource audiosource;
+    private AudioSource audioSource;
+
+    public AudioClip getItemSound;
 
     private Image blinderPanel;
 
@@ -65,7 +67,7 @@ public class Item : MonoBehaviour, IPointerClickHandler
 
         spriterenderer = GetComponent<SpriteRenderer>();
         collider = GetComponent<Collider2D>();
-        audiosource = gameObject.AddComponent<AudioSource>();
+        audioSource = gameObject.AddComponent<AudioSource>();
 
         blinderPanel = GameObject.Find("BlinderPanel").GetComponent<Image>();
 
@@ -114,6 +116,9 @@ public class Item : MonoBehaviour, IPointerClickHandler
             {
                 getitemwindow.DisplayGetItem(itemName, spriterenderer.sprite);
             }
+
+            audioSource.clip = getItemSound;
+            audioSource.Play();
 
             ownableAttribute = false;
             disableAttribute = true;
@@ -307,6 +312,9 @@ public class Item : MonoBehaviour, IPointerClickHandler
                     getitemwindow.DisplayGetItem(itemName, spriterenderer.sprite);
                 }
                 
+                audioSource.clip = getItemSound;
+                audioSource.Play();
+
                 ownableAttribute = false;
                 disableAttribute = true;
             }
@@ -351,7 +359,7 @@ public class Item : MonoBehaviour, IPointerClickHandler
 
         if (itemEvent.beToSoundEffect)
         {
-            audiosource.PlayOneShot(stagemanager.soundEffectList[itemEvent.soundType].soundEffect);
+            audioSource.PlayOneShot(stagemanager.soundEffectList[itemEvent.soundType].soundEffect);
         }
 
         if (itemEvent.beToFlag)
