@@ -341,7 +341,6 @@ public class Item : MonoBehaviour, IPointerClickHandler
 
         if (itemEvent.beToPopUpText)
         {
-            Debug.Log(itemEvent.poppingUpTexts[0]);
             GameObject.Find("TextWindow").GetComponent<TextWindow>().SetTexts(itemEvent.poppingUpTexts);
         }
 
