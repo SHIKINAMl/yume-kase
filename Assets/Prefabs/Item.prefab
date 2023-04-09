@@ -143,6 +143,7 @@ MonoBehaviour:
     standingClearFlagName: 
   waitEvent: 0
   isRoopBreak: 0
+  getItemSound: {fileID: 8300000, guid: 626ebf0878ebcb1449e1d22dc50129d0, type: 3}
   notDisplayItemWindow: 0
 --- !u!82 &8224005722781285764
 AudioSource:

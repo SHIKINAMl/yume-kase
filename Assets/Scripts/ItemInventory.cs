@@ -15,6 +15,8 @@ public class ItemInventory : MonoBehaviour
     private GetItemWindow getitemwindow;
     private StageManager stagemanager;
 
+    private AudioSource audioSource;
+
     public GameObject itemWindow;
 
     public bool notDisplayItemWindow = false;
@@ -26,6 +28,8 @@ public class ItemInventory : MonoBehaviour
     {
         getitemwindow = GameObject.Find("GetItemWindow").GetComponent<GetItemWindow>();
         stagemanager = GameObject.Find("StageManager").GetComponent<StageManager>();
+
+        audioSource = this.GetComponent<AudioSource>();
 
         previousItemList = (from i in stagemanager.itemList select i.itemName).ToArray();
 
@@ -99,12 +103,23 @@ public class ItemInventory : MonoBehaviour
                 stagemanager.itemList.RemoveAt(stagemanager.GetItemIndex(item1.GetComponent<ItemIcon>().itemName));
                 stagemanager.itemList.RemoveAt(stagemanager.GetItemIndex(item2.GetComponent<ItemIcon>().itemName));
 
-                if (!notDisplayItemWindow)
+                if (i.combinationItem.isGetNewItem)
                 {
-                    getitemwindow.DisplayGetItem(i.combinationItem.itemName, i.combinationItem.itemImage);  
+                    stagemanager.itemList.Add(new ItemData(i.combinationItem.itemName, i.combinationItem.itemImage, i.combinationItem.itemText));
+
+                    if (!notDisplayItemWindow)
+                    {
+                        getitemwindow.DisplayGetItem(i.combinationItem.itemName, i.combinationItem.itemImage);  
+                    }
+
+                    audioSource.Play();
                 }
 
-                stagemanager.itemList.Add(new ItemData(i.combinationItem.itemName, i.combinationItem.itemImage, i.combinationItem.itemText));
+                else
+                {
+                    stagemanager.SetFlagByName(stagemanager.eventFlagList, i.combinationItem.flagName, true);
+                }
+
                 i.eventTrigger = false;
             }
         }
@@ -128,6 +143,10 @@ public class CombinationItemData
 {
     public string materialItemName1;
     public string materialItemName2;
+
+    public bool isGetNewItem = true;
+
+    public string flagName;
 
     public string itemName;
 

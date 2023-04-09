@@ -8,6 +8,10 @@ public class ChangeRoom : MonoBehaviour, IPointerClickHandler
     public int destinationRoom = 1;
     public int destinationSide = 1;
 
+    public AudioClip changeRoomSound;
+
+    private AudioSource audioSource;
+
     [SerializeField]
     public int numberOfRoom => GameObject.Find("StageManager").GetComponent<StageManager>().numberOfRoom;
     
@@ -22,6 +26,8 @@ public class ChangeRoom : MonoBehaviour, IPointerClickHandler
 
     public void Start()
     {
+        audioSource = this.GetComponent<AudioSource>();
+
         cameramove = GameObject.Find("MainCamera").GetComponent<CameraMove>();
         stagemanager = GameObject.Find("StageManager").GetComponent<StageManager>();
         
@@ -30,6 +36,8 @@ public class ChangeRoom : MonoBehaviour, IPointerClickHandler
             GetComponent<SpriteRenderer>().enabled = false;
             GetComponent<Collider2D>().enabled = false;
         }
+
+        audioSource.clip = changeRoomSound;
     }
 
     public void FixedUpdate()
@@ -44,5 +52,7 @@ public class ChangeRoom : MonoBehaviour, IPointerClickHandler
     public void OnPointerClick(PointerEventData pointer)
     {
         cameramove.OnClickChangeRoom(destinationRoom, destinationSide);
+
+        audioSource.Play();
     }
 } 
