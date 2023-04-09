@@ -1231,19 +1231,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 214450907}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 214450909}
-        m_TargetAssemblyTypeName: TextWindow, Assembly-CSharp
-        m_MethodName: OnClickToNextText
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!1 &258745361 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8224005722781285823, guid: 95b373056364a784396f3c12ebca201d, type: 3}
@@ -2037,9 +2025,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05b3616dc3f6dd244861291633c07cd9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  normalImage: {fileID: 21300000, guid: d59f0302bd3b2744b9f4bb14f45fe4e4, type: 3}
-  hoverImage: {fileID: 21300000, guid: 9da993aee55a97b408a112a026c31e4b, type: 3}
-  adjustPosition: {x: -15, y: 120, z: 0}
+  normalImage: {fileID: 21300000, guid: e05b340deb2461c4c98261fd9a95fabf, type: 3}
+  hoverImage: {fileID: 21300000, guid: 78e187647f45cdf4f9132679fadece3c, type: 3}
 --- !u!114 &580892314
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2095,7 +2082,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -180.00003}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 1920, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &590304113
@@ -4492,9 +4479,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05b3616dc3f6dd244861291633c07cd9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  normalImage: {fileID: 21300000, guid: e84600e6cb9ef7a48baf0688dab15ef9, type: 3}
-  hoverImage: {fileID: 21300000, guid: c3651be114faa504a8c41d3b33a46e7a, type: 3}
-  adjustPosition: {x: 12, y: 120, z: 0}
+  normalImage: {fileID: 21300000, guid: c58203770817b924e97da7bf6443d7e5, type: 3}
+  hoverImage: {fileID: 21300000, guid: ae7e04a8848aa254db9b32b996a14eea, type: 3}
 --- !u!114 &1332604864
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4550,7 +4536,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0.000015258789}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 1920, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1332684711
@@ -5987,9 +5973,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05b3616dc3f6dd244861291633c07cd9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  normalImage: {fileID: 21300000, guid: 5de55add4dffc0a44be0e9d10b6b6415, type: 3}
-  hoverImage: {fileID: 21300000, guid: 4c9aa1fa01078754fb491977e4c8ca51, type: 3}
-  adjustPosition: {x: 0, y: 120, z: 0}
+  normalImage: {fileID: 21300000, guid: 94c804efeacca47429af3a17e06cef50, type: 3}
+  hoverImage: {fileID: 21300000, guid: 7c28963a2b4082642adf458b1355780f, type: 3}
 --- !u!114 &1524240814
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6045,7 +6030,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -540}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 1920, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1524760369 stripped
@@ -6096,7 +6081,7 @@ GameObject:
   - component: {fileID: 1529138905}
   - component: {fileID: 1529138904}
   m_Layer: 5
-  m_Name: PopUpText
+  m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7670,9 +7655,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05b3616dc3f6dd244861291633c07cd9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  normalImage: {fileID: 21300000, guid: 895ef7d62f7900d4bbcc16304a85825c, type: 3}
-  hoverImage: {fileID: 21300000, guid: 4c9aa1fa01078754fb491977e4c8ca51, type: 3}
-  adjustPosition: {x: -2, y: 120, z: 0}
+  normalImage: {fileID: 21300000, guid: 1ce5449d46b1e4d4e873d987102d1fae, type: 3}
+  hoverImage: {fileID: 21300000, guid: 2284dc60303f0554480537b09d2600ee, type: 3}
 --- !u!114 &1898968276
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7728,7 +7712,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -360.00006}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 1920, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!4 &1901665040 stripped
@@ -8144,7 +8128,7 @@ MonoBehaviour:
   numberOfClearFlag: 1
   clearFlagList:
   - flagName: stage2
-    flag: 1
+    flag: 0
   numberOfEventFlag: 14
   eventFlagList:
   - flagName: OpenDoor

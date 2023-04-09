@@ -55,7 +55,8 @@ public class StageManagerEditor : Editor
                 }
             }
         }
-
+        
+        /*
         EditorGUILayout.Space(10);
         EditorGUILayout.LabelField("クリアフラグ");
         EditorGUILayout.BeginHorizontal();
@@ -99,6 +100,8 @@ public class StageManagerEditor : Editor
                 }
             }
         }
+        */
+        
         /*
         EditorGUI.indentLevel--;
         EditorGUILayout.Space(10);
@@ -572,23 +575,23 @@ public class ChangeRoomEditor : Editor
     }
 }
 
-[CustomEditor (typeof(Zoom))]
+[CustomEditor (typeof(ZoomButton))]
 public class ZoomEditor : Editor
 {
     public override void OnInspectorGUI()
     {
-        Zoom zoom = target as Zoom;
+        ZoomButton zoomButton = target as ZoomButton;
        
-        zoom.destinationRoom = EditorGUILayout.IntField("ズーム先のチャンネル->", zoom.destinationRoom);
+        zoomButton.zoomWindow = (GameObject)EditorGUILayout.ObjectField("ズーム先のウィンドウ->", zoomButton.zoomWindow, typeof(GameObject));
        
         EditorGUILayout.Space(10);
 
-        zoom.isFlagType = EditorGUILayout.Toggle("特定のフラグが立つまで非表示->", zoom.isFlagType);
+        zoomButton.isFlagType = EditorGUILayout.Toggle("特定のフラグが立つまで非表示->", zoomButton.isFlagType);
 
-        if (zoom.isFlagType)
+        if (zoomButton.isFlagType)
         {
             EditorGUI.indentLevel++;
-            zoom.flagName = EditorGUILayout.TextField("そのフラグ->", zoom.flagName);
+            zoomButton.flagName = EditorGUILayout.TextField("そのフラグ->", zoomButton.flagName);
             EditorGUI.indentLevel--;
         }
         

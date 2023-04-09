@@ -13,21 +13,24 @@ public class TextWindow : MonoBehaviour
     private string[] poppingUpTexts;
     private int numberOfCurrent = 0;
     private float timer = 0;
-    private bool isOpening = false;
+    
+    public bool isOpening = false;
+
+    private int numberOfCharacters;
 
     public void Start()
     {
         image = GetComponent<Image>();
-        text = transform.Find("PopUpText").GetComponent<Text>();
+        text = transform.GetChild(0).GetComponent<Text>();
 
         blinderPanel = GameObject.Find("BlinderPanel").GetComponent<Image>();
     }
 
     public void Update()
     {
-        timer += Time.deltaTime;
+        timer += Time.unscaledDeltaTime;
 
-        if ((poppingUpTexts != null && timer >= 5) || (isOpening && Input.GetMouseButtonDown(0)))
+        if ((poppingUpTexts != null && timer >= numberOfCharacters / 4) || (isOpening && Input.GetMouseButtonDown(0)))
         {
             DisplayTexts();
         }
@@ -49,6 +52,7 @@ public class TextWindow : MonoBehaviour
         numberOfCurrent = 0;
         poppingUpTexts = texts;
         text.text = poppingUpTexts[0];
+        numberOfCharacters = poppingUpTexts[0].Length;
     }
 
     private void DisplayTexts()
@@ -72,6 +76,7 @@ public class TextWindow : MonoBehaviour
         else
         {
             text.text = poppingUpTexts[numberOfCurrent];
+            numberOfCharacters = poppingUpTexts[0].Length;
         }
     }
 }

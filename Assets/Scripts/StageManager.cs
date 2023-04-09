@@ -35,19 +35,66 @@ public class StageManager : MonoBehaviour
 
     public int inventorySize = 6;
 
+    public string[] eventFlags = new string[0];
+    public string[] clearFlags = new string[0];
+
+    private AudioSource audioSource;
+    private AudioClip currentClip;
+
+    public void Start()
+    {
+        gameObject.AddComponent<AudioListener>();
+        audioSource = gameObject.AddComponent<AudioSource>();
+        audioSource.loop = true;
+        audioSource.volume = 0;
+        currentClip = BGMList[0].BGM;
+        audioSource.clip = currentClip;
+        FadeInBGM(0);
+        audioSource.Play();
+    }
+
     public void Update()
     {
-        foreach (var flag in clearFlagList)
+        for (var i = 1; i < BGMList.Length; i++)
         {
-            if (flag.flag)
-            {   
-                GameObject.Find("SaveManager").GetComponent<SaveManager>().OnSave(flag.flagName, gameObject.scene.name, true);
+            if (GetFlagByName(BGMList[i].flagName))
+            {
+                currentClip = BGMList[i].BGM;
+            }
+            if (currentClip != audioSource.clip)
+            {
+                audioSource.clip = currentClip;
+                audioSource.Play();
             }
         }
     }
 
-    string[] eventFlags = new string[0];
-    string[] clearFlags = new string[0];
+    public void FadeInBGM(float time = 1f)
+    {
+        StartCoroutine(FadeIn(time));
+    }
+    public void FadeOutBGM(float time = 10f)
+    {
+
+        StartCoroutine(FadeOut(time));
+    }
+    IEnumerator FadeIn(float time)
+    {
+        for (int i = 0; i < 10; i++)
+        {
+            yield return new WaitForSeconds(time / 10f);
+            audioSource.volume += 0.1f;
+        }
+    }
+
+    IEnumerator FadeOut(float time)
+    {
+        for (int i = 0; i < 10; i++)
+        {
+            yield return new WaitForSeconds(time / 10f);
+            audioSource.volume -= 0.1f;
+        }
+    }
 
     public void SetFlagByName(FlagData[] flaglist, string flagName, bool boolean)
     {
@@ -89,7 +136,7 @@ public class StageManager : MonoBehaviour
 
     public bool CheckItemName(string itemName)
     {
-        foreach(var itemData in itemList)
+        foreach (var itemData in itemList)
         {
             if (itemData.itemName == itemName)
             {

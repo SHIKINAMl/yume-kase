@@ -55,6 +55,8 @@ public class Item : MonoBehaviour, IPointerClickHandler
     private bool isFadingOut = false;
     private bool isFadingIn = false;
 
+    public bool notDisplayItemWindow = false;
+
     public void Start()
     {
         stagemanager = GameObject.Find("StageManager").GetComponent<StageManager>();
@@ -63,7 +65,7 @@ public class Item : MonoBehaviour, IPointerClickHandler
 
         spriterenderer = GetComponent<SpriteRenderer>();
         collider = GetComponent<Collider2D>();
-        audiosource = GetComponent<AudioSource>();
+        audiosource = gameObject.AddComponent<AudioSource>();
 
         blinderPanel = GameObject.Find("BlinderPanel").GetComponent<Image>();
 
@@ -107,7 +109,12 @@ public class Item : MonoBehaviour, IPointerClickHandler
         if (ownableAttribute && stagemanager.itemList.Count < stagemanager.inventorySize)
         {
             stagemanager.itemList.Add(new ItemData(itemName, spriterenderer.sprite, itemText));
-            getitemwindow.DisplayGetItem(itemName, spriterenderer.sprite);
+
+            if (!notDisplayItemWindow)
+            {
+                getitemwindow.DisplayGetItem(itemName, spriterenderer.sprite);
+            }
+
             ownableAttribute = false;
             disableAttribute = true;
         }
@@ -294,7 +301,12 @@ public class Item : MonoBehaviour, IPointerClickHandler
             else
             {
                 stagemanager.itemList.Add(new ItemData(itemName, spriterenderer.sprite, itemText));
-                getitemwindow.DisplayGetItem(itemName, spriterenderer.sprite);
+
+                if (!notDisplayItemWindow)
+                {
+                    getitemwindow.DisplayGetItem(itemName, spriterenderer.sprite);
+                }
+                
                 ownableAttribute = false;
                 disableAttribute = true;
             }
