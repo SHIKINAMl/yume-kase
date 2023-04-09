@@ -41,26 +41,58 @@ public class StageManager : MonoBehaviour
     private AudioSource audioSource;
     private AudioClip currentClip;
 
-    public void Start() {
+    public void Start()
+    {
         gameObject.AddComponent<AudioListener>();
         audioSource = gameObject.AddComponent<AudioSource>();
         audioSource.loop = true;
+        audioSource.volume = 0;
         currentClip = BGMList[0].BGM;
         audioSource.clip = currentClip;
+        FadeInBGM(0);
         audioSource.Play();
     }
 
-    public void Update() {
+    public void Update()
+    {
         for (var i = 1; i < BGMList.Length; i++)
         {
             if (GetFlagByName(BGMList[i].flagName))
             {
                 currentClip = BGMList[i].BGM;
             }
-            if (currentClip != audioSource.clip) {
+            if (currentClip != audioSource.clip)
+            {
                 audioSource.clip = currentClip;
                 audioSource.Play();
             }
+        }
+    }
+
+    public void FadeInBGM(float time = 1f)
+    {
+        StartCoroutine(FadeIn(time));
+    }
+    public void FadeOutBGM(float time = 10f)
+    {
+
+        StartCoroutine(FadeOut(time));
+    }
+    IEnumerator FadeIn(float time)
+    {
+        for (int i = 0; i < 10; i++)
+        {
+            yield return new WaitForSeconds(time / 10f);
+            audioSource.volume += 0.1f;
+        }
+    }
+
+    IEnumerator FadeOut(float time)
+    {
+        for (int i = 0; i < 10; i++)
+        {
+            yield return new WaitForSeconds(time / 10f);
+            audioSource.volume -= 0.1f;
         }
     }
 
@@ -104,7 +136,7 @@ public class StageManager : MonoBehaviour
 
     public bool CheckItemName(string itemName)
     {
-        foreach(var itemData in itemList)
+        foreach (var itemData in itemList)
         {
             if (itemData.itemName == itemName)
             {
