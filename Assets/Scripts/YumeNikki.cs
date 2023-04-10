@@ -18,6 +18,9 @@ public class YumeNikki : MonoBehaviour
     private bool isWaiting = false;
     private bool isAnimating = false;
 
+    private bool isFirstTime = false;
+    public AudioClip paperSound;
+
     private Image blinderPanel;
     private Text title;
 
@@ -151,11 +154,21 @@ public class YumeNikki : MonoBehaviour
                     blinderPanel.enabled = false;
                     isFadingIn = false;
                     isAnimating = true;
+                    isFirstTime = true;
                 }
             }
 
             if (isAnimating)
             {
+                if (isFirstTime)
+                {
+                    AudioSource soundEffect = this.transform.Find("Base").gameObject.AddComponent<AudioSource>();
+                    soundEffect.clip = paperSound;
+                    soundEffect.Play();
+
+                    isFirstTime = false;
+                }
+
                 timer += Time.unscaledDeltaTime;
 
                 if (timer >= 0.05f)
