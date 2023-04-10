@@ -38,7 +38,7 @@ public class EscapeLoop : MonoBehaviour
                 stageManager.SetFlagByName(stageManager.eventFlagList, flag, false);
             }
         }
-        if (moveHistory.GetRange(orderlength-5, 5).SequenceEqual(flagsOrder) || debug) {
+        if (moveHistory.GetRange(moveHistory.Count-5, 5).SequenceEqual(flagsOrder) || debug) {
             stageManager.SetFlagByName(stageManager.eventFlagList, flagname, true);
         }
         else
