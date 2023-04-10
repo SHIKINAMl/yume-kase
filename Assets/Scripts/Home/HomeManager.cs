@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System;
+using System.IO;
 
 public class HomeManager : MonoBehaviour
 {
@@ -21,9 +23,15 @@ public class HomeManager : MonoBehaviour
 
     private bool isFadingOut = false;
 
+    private string filePath;
+
+    private bool toStart = false;
+    private bool toReturn = false;
+
     public void Start()
     {
         saveManager = GameObject.Find("SaveManager").GetComponent<SaveManager>();
+        saveData = saveManager.LoadSave();
 
         firstTime = GameObject.Find("FirstTime");
         afterTime = GameObject.Find("AfterTime");
@@ -31,9 +39,8 @@ public class HomeManager : MonoBehaviour
         blinderPanel = GameObject.Find("BlinderPanel").GetComponent<Image>();
         blinderPanel.enabled = false;
 
-        audioSource = GetComponent<AudioSource>();
 
-        saveData = saveManager.LoadSave();
+        audioSource = GetComponent<AudioSource>();
 
         if (saveData.stageName == "None")
         {
@@ -57,7 +64,23 @@ public class HomeManager : MonoBehaviour
 
             if (blinderPanel.color.a >= 1)
             {
-                SceneManager.LoadScene("OP");
+                if (toStart)
+                {
+                    SceneManager.LoadScene("OP");
+                }
+
+                else if (toReturn)
+                {
+                    if (saveData.stageName != "ED")
+                    {
+                        SceneManager.LoadScene(saveData.stageName);
+                    }
+
+                    else
+                    {
+                        SceneManager.LoadScene("Stage3");
+                    }
+                }
             }
         }
     }
@@ -69,13 +92,18 @@ public class HomeManager : MonoBehaviour
             Debug.Log("警告");
         }
 
+        toStart = true;
+
         blinderPanel.enabled = true;
         isFadingOut = true;
     }
 
     public void OnClickReturn()
     {
-        SceneManager.LoadScene(saveData.stageName);
+        toReturn = true;
+
+        blinderPanel.enabled = true;
+        isFadingOut = true;
     }
 
     public void OnClickOpenOption()

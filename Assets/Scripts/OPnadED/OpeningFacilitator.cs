@@ -52,7 +52,7 @@ public class OpeningFacilitator : MonoBehaviour
             
                 if (blinderPanel.color.a <= 0)
                 {
-                    Time.timeScale = 0;
+                    //Time.timeScale = 0;
                     blinderPanel.enabled = true;
 
                     isFading = false;

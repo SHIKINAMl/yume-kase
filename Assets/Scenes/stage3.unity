@@ -2713,6 +2713,7 @@ GameObject:
   - component: {fileID: 371146771}
   - component: {fileID: 371146773}
   - component: {fileID: 371146772}
+  - component: {fileID: 371146774}
   m_Layer: 0
   m_Name: MainCamera
   m_TagString: MainCamera
@@ -2902,6 +2903,14 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   m_MaxRayIntersections: 0
+--- !u!81 &371146774
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 371146767}
+  m_Enabled: 1
 --- !u!1 &381778679 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5706790169796711506, guid: b330396cbe6568846a9b7f442b6a9ec0, type: 3}
@@ -12243,7 +12252,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
       propertyPath: events.Array.data[1].standingClearFlagName
-      value: Clear
+      value: ED
       objectReference: {fileID: 0}
     - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
       propertyPath: events.Array.data[0].poppingUpTexts.Array.size

@@ -27,6 +27,8 @@ public class TutorialManager : MonoBehaviour
     public bool isWaiting = false;
     public bool isOnDrag = false;
 
+    private AudioSource audioSource;
+
     public void Start()
     {
         stageManager = GameObject.Find("StageManager").GetComponent<StageManager>();
@@ -43,6 +45,8 @@ public class TutorialManager : MonoBehaviour
         {
             item.GetComponent<Item>().notDisplayItemWindow = true;
         }
+
+        audioSource = GetComponent<AudioSource>();
     }
 
     public void Update()
@@ -160,6 +164,8 @@ public class TutorialManager : MonoBehaviour
             {
                 if (isFirstTime && !isWaiting)
                 {
+                    audioSource.Play();
+
                     AppearImage(6, true);
                     AppearImage(7, true);
                     AppearImage(8, true);
@@ -276,6 +282,8 @@ public class TutorialManager : MonoBehaviour
 
     private void FlashImage(GameObject flashItem, Vector3 initialPosition, float magnification = 1, float adjustmentX = 0, float adjustmentY = 0)
     {
+        Debug.Log(true);
+
         flashItem.transform.localScale += new Vector3 (Time.deltaTime*magnification, Time.deltaTime*magnification, 0);
         flashItem.transform.localPosition += new Vector3 (Time.deltaTime*adjustmentX, Time.deltaTime*adjustmentY, 0);
 
