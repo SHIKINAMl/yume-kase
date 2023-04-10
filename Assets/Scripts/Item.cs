@@ -39,8 +39,6 @@ public class Item : MonoBehaviour, IPointerClickHandler
 
     private Image blinderPanel;
 
-    private bool isClicked = false;
-
     private bool isMoving = false;
     private Vector2 initialPosition;
     private Vector2 destinationPosition;
@@ -79,7 +77,7 @@ public class Item : MonoBehaviour, IPointerClickHandler
 
     public void FixedUpdate()
     {
-        CheckCondition(events);
+        CheckCondition(events, false);
         ChangeEnableImage();
         MoveItem();
         ChangeSizeItem();
@@ -127,12 +125,10 @@ public class Item : MonoBehaviour, IPointerClickHandler
 
     private IEnumerator ClickSwitch()
     {
-        isClicked = true;
-        CheckCondition(events);
+        
+        CheckCondition(events, true);
 
         yield return null;
-
-        isClicked = false;
     }
 
     private void ChangeEnableImage()
@@ -206,7 +202,7 @@ public class Item : MonoBehaviour, IPointerClickHandler
         }
     }
 
-    private void CheckCondition(ItemEvent[] events)
+    private void CheckCondition(ItemEvent[] events, bool isClicked= false)
     {
         if (eventAttribute)
         {
@@ -226,7 +222,6 @@ public class Item : MonoBehaviour, IPointerClickHandler
                     (i.gettingOption != 2 || stagemanager.itemList.Count < stagemanager.inventorySize))
                 {
                     StartCoroutine(RaiseEvent(i));
-
                     if (i.eventType == 1)
                     {
                         i.eventTrigger = false;

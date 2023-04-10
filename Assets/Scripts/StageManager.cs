@@ -43,7 +43,6 @@ public class StageManager : MonoBehaviour
 
     public void Start()
     {
-        gameObject.AddComponent<AudioListener>();
         audioSource = gameObject.AddComponent<AudioSource>();
         audioSource.loop = true;
         audioSource.volume = 0;
