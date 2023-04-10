@@ -10,11 +10,32 @@ public class Menu : MonoBehaviour
 
     private Image blinderPanel;
 
+    private bool isFadingOut;
+
     public void Start()
     {
         stagemanager = GameObject.Find("StageManager").GetComponent<StageManager>();
 
         blinderPanel = GameObject.Find("BlinderPanel").GetComponent<Image>();
+    }
+
+    public void Update()
+    {
+        if (isFadingOut)
+        {
+            blinderPanel.color += new Color (0, 0, 0, Time.unscaledDeltaTime/2);
+            GetComponent<Image>().color -= new Color (0, 0, 0, Time.unscaledDeltaTime/2);
+
+            foreach (Transform button in this.transform)
+            {
+                button.GetComponent<Image>().color -= new Color (0, 0, 0, Time.unscaledDeltaTime/2);
+            }
+
+            if (blinderPanel.color.a >= 1)
+            {
+                SceneManager.LoadScene("Home");
+            }
+        }
     }
 
     public void OnClickOpenMenu()
@@ -49,12 +70,11 @@ public class Menu : MonoBehaviour
 
     public void OnClickSaveStage()
     {
-        Debug.Log("セーブします。");
         GameObject.Find("SaveManager").GetComponent<SaveManager>().OnSave(gameObject.scene.name, gameObject.scene.name, false);
     }
 
     public void OnClickBackHome()
     {
-        Debug.Log("ホームに戻ります。");
+        isFadingOut = true;
     }
 }
