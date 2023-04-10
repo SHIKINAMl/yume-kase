@@ -1188,6 +1188,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e22d304e2e161946a46c4b52928c7bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isOpening: 0
 --- !u!114 &214450910
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1497,6 +1498,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: 40b7d670bcc55e64eaa21797fb6b0017, type: 3}
     - target: {fileID: 8224005722781285818, guid: 95b373056364a784396f3c12ebca201d, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8224005722781285818, guid: 95b373056364a784396f3c12ebca201d, type: 3}
       propertyPath: m_SortingOrder
       value: 2
       objectReference: {fileID: 0}
@@ -1757,7 +1762,6 @@ GameObject:
   m_Component:
   - component: {fileID: 519420032}
   - component: {fileID: 519420031}
-  - component: {fileID: 519420029}
   - component: {fileID: 519420035}
   - component: {fileID: 519420034}
   - component: {fileID: 519420033}
@@ -1768,14 +1772,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &519420029
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 519420028}
-  m_Enabled: 1
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
@@ -2583,7 +2579,7 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: 667b545e3361b2446966bc4b2266f4e2, type: 3}
     - target: {fileID: 8224005722781285818, guid: 95b373056364a784396f3c12ebca201d, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8224005722781285818, guid: 95b373056364a784396f3c12ebca201d, type: 3}
       propertyPath: m_SortingOrder
@@ -3583,7 +3579,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
       propertyPath: events.Array.data[1].standingClearFlagName
-      value: stage2
+      value: Stage2
       objectReference: {fileID: 0}
     - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
       propertyPath: events.Array.data[0].conditions.Array.data[0].ifFlag
@@ -8129,36 +8125,8 @@ MonoBehaviour:
   clearFlagList:
   - flagName: stage2
     flag: 0
-  numberOfEventFlag: 14
-  eventFlagList:
-  - flagName: OpenDoor
-    flag: 0
-  - flagName: PaintingKey1
-    flag: 0
-  - flagName: PaintingKey2
-    flag: 0
-  - flagName: PaintingKey3
-    flag: 0
-  - flagName: PaintingKey4
-    flag: 0
-  - flagName: OpenCurtain
-    flag: 0
-  - flagName: OpenCloset
-    flag: 0
-  - flagName: OpenToolbox
-    flag: 0
-  - flagName: OpenLocker
-    flag: 0
-  - flagName: BreakBottle
-    flag: 0
-  - flagName: GetHammer
-    flag: 0
-  - flagName: GetPaper
-    flag: 0
-  - flagName: DontHaveHammer
-    flag: 1
-  - flagName: DontHaveDriver
-    flag: 1
+  numberOfEventFlag: 0
+  eventFlagList: []
   numberOfBGM: 1
   BGMList:
   - BGM: {fileID: 0}
@@ -8181,6 +8149,8 @@ MonoBehaviour:
     soundName: "\u6249\u3092\u958B\u3051\u308B\u97F3"
   itemList: []
   inventorySize: 6
+  eventFlags: []
+  clearFlags: []
 --- !u!4 &1968048159
 Transform:
   m_ObjectHideFlags: 0
@@ -8257,6 +8227,8 @@ MonoBehaviour:
     combinationItem:
       materialItemName1: "\u30DE\u30A4\u30CA\u30B9\u30C9\u30E9\u30A4\u30D0\u30FC"
       materialItemName2: "\u30C9\u30E9\u30A4\u30D0\u30FC\u30B0\u30EA\u30C3\u30D7"
+      isGetNewItem: 1
+      flagName: 
       itemName: "\u30B0\u30EA\u30C3\u30D7\u4ED8\u304D\u30C9\u30E9\u30A4\u30D0\u30FC"
       itemImage: {fileID: 21300000, guid: 8de4bdb698d08854c9a08bffea51030f, type: 3}
       itemText: "\u30B0\u30EA\u30C3\u30D7\u4ED8\u304D\u30C9\u30E9\u30A4\u30D0\u30FC"
@@ -8264,11 +8236,14 @@ MonoBehaviour:
     combinationItem:
       materialItemName1: "\u7D19\u5207\u308C"
       materialItemName2: "\u7D75\u5177"
+      isGetNewItem: 1
+      flagName: 
       itemName: "\u7D75\u306E\u65AD\u7247\uFF08\u305D\u306E\uFF14\uFF09"
       itemImage: {fileID: 21300000, guid: ba16d154027da7740bc25ba589d2f757, type: 3}
       itemText: "\u7D75\u306E\u65AD\u7247"
   numberOfEvent: 2
   itemWindow: {fileID: 373406008845124206, guid: b63bf42865d413c488409fb7870b83cf, type: 3}
+  notDisplayItemWindow: 0
 --- !u!114 &2005826128
 MonoBehaviour:
   m_ObjectHideFlags: 0

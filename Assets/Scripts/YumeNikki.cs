@@ -21,6 +21,8 @@ public class YumeNikki : MonoBehaviour
     private Image blinderPanel;
     private Text title;
 
+    private AudioSource audioSource;
+
     public string stageNumber;
 
     private string nextStageName;
@@ -49,6 +51,9 @@ public class YumeNikki : MonoBehaviour
         
         NikkiPage = transform.Find("Page").GetComponent<SpriteRenderer>();
         NikkiText = GameObject.Find("NikkiText").GetComponent<Text>();
+
+        audioSource =GetComponent<AudioSource>();
+        audioSource.volume = 0;
 
         //Time.timeScale = 0;
     }
@@ -109,6 +114,7 @@ public class YumeNikki : MonoBehaviour
             if (isFadingOut)
             {
                 blinderPanel.color += new Color (0, 0, 0, Time.unscaledDeltaTime/2);
+                GameObject.Find("StageManager").GetComponent<AudioSource>().volume -= Time.unscaledDeltaTime/2;
 
                 if (blinderPanel.color.a >= 1)
                 {
@@ -138,6 +144,7 @@ public class YumeNikki : MonoBehaviour
             if (isFadingIn)
             {
                 blinderPanel.color -= new Color (0, 0, 0, Time.unscaledDeltaTime/2);
+                audioSource.volume += Time.unscaledDeltaTime/2;
             
                 if (blinderPanel.color.a <= 0)
                 {
@@ -234,6 +241,8 @@ public class YumeNikki : MonoBehaviour
             if (isFadingOut)
             {
                 blinderPanel.color += new Color (0, 0, 0, Time.unscaledDeltaTime/2);
+
+                audioSource.volume -= Time.unscaledDeltaTime/2;
 
                 if (blinderPanel.color.a >= 1)
                 {

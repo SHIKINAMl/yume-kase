@@ -78,11 +78,11 @@ public class EndingFacilitator : MonoBehaviour
 
                 else
                 {
-                    spriteRenderer.color -= new Color (0, 0, 0, 0.002f);
+                    spriteRenderer.color -= new Color (0, 0, 0, Time.unscaledDeltaTime);
 
                     foreach (Transform prefabImages in GameObject.Find("BackImage").transform)
                     {
-                        prefabImages.GetComponent<SpriteRenderer>().color -= new Color (0, 0, 0, 0.002f);
+                        prefabImages.GetComponent<SpriteRenderer>().color -= new Color (0, 0, 0, Time.unscaledDeltaTime);
                     }
             
                     if (spriteRenderer.color.a <= 0)
@@ -104,7 +104,7 @@ public class EndingFacilitator : MonoBehaviour
             {
                 if (indexOfImages == noDisappearNumber[counter])
                 {
-                    prefabSpriteRenderer.color += new Color (0, 0, 0, 0.001f);
+                    prefabSpriteRenderer.color += new Color (0, 0, 0, Time.unscaledDeltaTime/2);
 
                     if (prefabSpriteRenderer.color.a >= 1)
                     {
@@ -116,7 +116,7 @@ public class EndingFacilitator : MonoBehaviour
 
                 else
                 {
-                    spriteRenderer.color += new Color (0, 0, 0, 0.001f);
+                    spriteRenderer.color += new Color (0, 0, 0, Time.unscaledDeltaTime/2);
             
                     if (spriteRenderer.color.a >= 1)
                     {

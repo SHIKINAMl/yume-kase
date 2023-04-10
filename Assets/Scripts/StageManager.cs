@@ -41,6 +41,8 @@ public class StageManager : MonoBehaviour
     private AudioSource audioSource;
     private AudioClip currentClip;
 
+    private int onChangeBGM = 0;
+
     public void Start()
     {
         audioSource = gameObject.AddComponent<AudioSource>();
@@ -48,7 +50,8 @@ public class StageManager : MonoBehaviour
         audioSource.volume = 0;
         currentClip = BGMList[0].BGM;
         audioSource.clip = currentClip;
-        FadeInBGM(0);
+        //FadeInBGM(0);
+        audioSource.volume = 0;
         audioSource.Play();
     }
 
@@ -60,23 +63,56 @@ public class StageManager : MonoBehaviour
             {
                 currentClip = BGMList[i].BGM;
             }
+
             if (currentClip != audioSource.clip)
             {
+                onChangeBGM = 0;
+
+                /*
                 audioSource.clip = currentClip;
+
                 audioSource.Play();
+                */
+            }
+        }
+
+        if (onChangeBGM == 0)
+        {
+            audioSource.volume -= Time.unscaledDeltaTime/2;
+            
+            if (audioSource.volume <= 0)
+            {
+                audioSource.clip = currentClip;
+                
+                audioSource.Play();
+
+                onChangeBGM++;
+            }
+        }
+
+        if (onChangeBGM == 1)
+        {
+            audioSource.volume += Time.unscaledDeltaTime/2;
+
+            if (audioSource.volume >= 1)
+            {
+                onChangeBGM++;
             }
         }
     }
 
+    /*
     public void FadeInBGM(float time = 1f)
     {
         StartCoroutine(FadeIn(time));
     }
+
     public void FadeOutBGM(float time = 10f)
     {
 
         StartCoroutine(FadeOut(time));
     }
+
     IEnumerator FadeIn(float time)
     {
         for (int i = 0; i < 10; i++)
@@ -94,6 +130,7 @@ public class StageManager : MonoBehaviour
             audioSource.volume -= 0.1f;
         }
     }
+    */
 
     public void SetFlagByName(FlagData[] flaglist, string flagName, bool boolean)
     {

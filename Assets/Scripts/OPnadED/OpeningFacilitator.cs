@@ -6,12 +6,16 @@ using UnityEngine.SceneManagement;
 
 public class OpeningFacilitator : MonoBehaviour
 {
-    private bool isFadingIn = true;
+    private bool isFading = true;
     private bool isAnimating = false;
     private bool isTexting = false;
+
+    private bool isFadingIn = true;
     private bool isFadingOut = false;
 
     private Image blinderPanel;
+
+    private AudioSource audioSource;
 
     private Text text;
     public string[] texts;
@@ -26,42 +30,50 @@ public class OpeningFacilitator : MonoBehaviour
         text.enabled = false;
 
         blinderPanel = GameObject.Find("BlinderPanel").GetComponent<Image>();
+
+        audioSource = GetComponent<AudioSource>();
+        audioSource.volume = 0;
     }
 
     public void FixedUpdate()
     {
-        if (isFadingIn)
-        {
-            blinderPanel.color -= new Color (0, 0, 0, Time.unscaledDeltaTime/2);
-            
-            if (blinderPanel.color.a <= 0)
-            {
-                Time.timeScale = 0;
-                blinderPanel.enabled = true;
 
-                isAnimating = true;
-                isFadingOut = true;
-            }
-        }
-
-        if (isTexting)
-        {
-
-        }
-
-        if (isFadingOut)
-        {
-            blinderPanel.color += new Color (0, 0, 0, Time.unscaledDeltaTime/2);
-
-            if (blinderPanel.color.a >= 1)
-            {
-                SceneManager.LoadScene("Tutorial");
-            }
-        }
     }
 
     public void Update()
     {
+        if (isFading)
+        {
+            if (isFadingIn)
+            {
+                blinderPanel.color -= new Color (0, 0, 0, Time.unscaledDeltaTime/2);
+                audioSource.volume += Time.unscaledDeltaTime/2;
+            
+            
+                if (blinderPanel.color.a <= 0)
+                {
+                    //Time.timeScale = 0;
+                    blinderPanel.enabled = true;
+
+                    isFading = false;
+                    isAnimating = true;
+
+                    isFadingOut = true;
+                }
+            }
+
+            if (isFadingOut)
+            {
+                blinderPanel.color += new Color (0, 0, 0, Time.unscaledDeltaTime/4);
+                audioSource.volume -= Time.unscaledDeltaTime/2;
+
+                if (blinderPanel.color.a >= 1)
+                {
+                    SceneManager.LoadScene("Tutorial");
+                }
+            }
+        }
+
         if (isAnimating)
         {
             if (isFadingOut)
@@ -134,13 +146,13 @@ public class OpeningFacilitator : MonoBehaviour
 
         if (texts.Length == numberOfCurrent)
         {
-            Time.timeScale = 1;
-
             isOpening = false;
 
             text.enabled = false;
 
+            isFading = true;
             isTexting = false;
+            
             isFadingOut = true;
         }
         else

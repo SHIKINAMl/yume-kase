@@ -26,7 +26,7 @@ public class SaveManager : MonoBehaviour
 
         saveData.stageName = playingStageName;
 
-        saveData.clearList[saveData.GetIndexFromName(clearStageName)].isClear = isClear;
+        saveData.clearListNames.Add(clearStageName);
 
         json = JsonUtility.ToJson(saveData);
         File.WriteAllText(filePath, json);
@@ -34,9 +34,19 @@ public class SaveManager : MonoBehaviour
 
     public SaveData LoadSave()
     {
-        string json = File.ReadAllText(filePath);
+        try
+        {
+            string json = File.ReadAllText(filePath);
+            return JsonUtility.FromJson<SaveData>(json);
+        }
 
-        return JsonUtility.FromJson<SaveData>(json);
+        catch (System.Exception)
+        {
+            File.WriteAllText(filePath, JsonUtility.ToJson(new SaveData ("None", new List<string>())));
+
+            string json = File.ReadAllText(filePath);
+            return JsonUtility.FromJson<SaveData>(json);
+        }
     }
 }
 
@@ -45,38 +55,11 @@ public class SaveData
 {
     public string stageName = "None";
 
-    [SerializeField]
-    public List<ClearData> clearList;
+    public List<string> clearListNames = new List<string>();
 
-    public SaveData(string stageName, List<ClearData> clearList)
+    public SaveData(string stageName, List<string> clearListNames)
     {
         this.stageName = stageName;
-        this.clearList = clearList;
-    }
-
-    public int GetIndexFromName(string stageName)
-    {
-        for (int i = 0; i < clearList.Count; i++)
-        {
-            if (clearList[i].stageName == stageName)
-            {
-                return i;
-            }
-        }
-
-        return -1;
-    }
-}
-
-[Serializable]
-public class ClearData
-{
-    public string stageName;
-    public bool isClear;
-
-    public ClearData(string stageName, bool isClear)
-    {
-        this.stageName = stageName;
-        this.isClear = isClear;
+        this.clearListNames = clearListNames;
     }
 }
