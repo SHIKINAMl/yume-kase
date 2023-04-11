@@ -26,7 +26,10 @@ public class SaveManager : MonoBehaviour
 
         saveData.stageName = playingStageName;
 
-        saveData.clearListNames.Add(clearStageName);
+        if (isClear)
+        {
+            saveData.clearListNames.Add(clearStageName); 
+        }
 
         json = JsonUtility.ToJson(saveData);
         File.WriteAllText(filePath, json);
@@ -47,6 +50,11 @@ public class SaveManager : MonoBehaviour
             string json = File.ReadAllText(filePath);
             return JsonUtility.FromJson<SaveData>(json);
         }
+    }
+
+    public void ClearSave()
+    {
+        File.WriteAllText(filePath, JsonUtility.ToJson(new SaveData ("None", new List<string>())));
     }
 }
 

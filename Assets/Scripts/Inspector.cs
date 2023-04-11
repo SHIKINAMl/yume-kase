@@ -1,5 +1,7 @@
 #pragma warning disable 0618
 
+#if UNITY_EDITOR
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -684,3 +686,5 @@ public class ItemInventoryEditor : Editor
         EditorUtility.SetDirty(target);
     }
 }
+
+#endif

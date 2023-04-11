@@ -66,6 +66,7 @@ public class HomeManager : MonoBehaviour
             {
                 if (toStart)
                 {
+                    saveManager.ClearSave();
                     SceneManager.LoadScene("OP");
                 }
 
