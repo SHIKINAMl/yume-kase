@@ -179,7 +179,7 @@ public class Item : MonoBehaviour, IPointerClickHandler
         {
             spriterenderer.color -= new Color (0, 0, 0, 0.02f);
 
-            if (spriterenderer.color.a == 0)
+            if (spriterenderer.color.a <= 0)
             {
                 disableAttribute = true;
                 isFadingOut = false;
@@ -194,7 +194,7 @@ public class Item : MonoBehaviour, IPointerClickHandler
         {
             spriterenderer.color += new Color (0, 0, 0, 0.02f);
 
-            if (spriterenderer.color.a == 1)
+            if (spriterenderer.color.a >= 1)
             {
                 isFadingIn = false;
                 isOnEvent = false;
