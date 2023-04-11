@@ -442,6 +442,7 @@ public class ItemEvent
 
     public bool beToPopUpText = false;
     public string[] poppingUpTexts;
+    public string poppingUpText;
     
     public bool beToSoundEffect = false;
     public int soundType; 

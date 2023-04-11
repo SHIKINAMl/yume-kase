@@ -482,7 +482,7 @@ public class ItemEditor : Editor
                         {
                             EditorGUI.indentLevel++;
 
-                            int listSize = item.events[i].poppingUpTexts.Length;
+                            /*int listSize = item.events[i].poppingUpTexts.Length;
 
                             listSize = EditorGUILayout.IntField("文章の数->", listSize);
 
@@ -496,8 +496,12 @@ public class ItemEditor : Editor
                                 {
                                     item.events[i].poppingUpTexts[j] = EditorGUILayout.TextField($"表示する文章（その{j+1}）->", item.events[i].poppingUpTexts[j]);
                                 }
-                            }
-
+                            }*/
+                            List<string> popppingUpTextsList = new List<string>();
+                            popppingUpTextsList = item.events[i].poppingUpTexts.ToList();
+                            EditorGUILayout.LabelField("表示する文章(改行で分割して表示)");
+                            item.events[i].poppingUpText = EditorGUILayout.TextArea(string.Join("\n", popppingUpTextsList));
+                            item.events[i].poppingUpTexts = item.events[i].poppingUpText.Split("\n");
                             EditorGUI.indentLevel--;
                         }
 
