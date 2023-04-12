@@ -13209,6 +13209,7 @@ MonoBehaviour:
     changeSpeed: 0
     beToPopUpText: 0
     poppingUpTexts: []
+    poppingUpText: 
     beToSoundEffect: 0
     soundType: 0
     beToFlag: 0
@@ -14906,6 +14907,7 @@ MonoBehaviour:
     changeSpeed: 0
     beToPopUpText: 0
     poppingUpTexts: []
+    poppingUpText: 
     beToSoundEffect: 0
     soundType: 0
     beToFlag: 0
@@ -16239,6 +16241,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
       propertyPath: waitEvent
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
+      propertyPath: isRoopBreak
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
@@ -16346,6 +16352,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
+      propertyPath: events.Array.data[0].poppingUpText
+      value: "\u300C\u3042\u306E...\u305D\u3053\u306E\u541B\uFF1F\u300D\n\u300C\u79C1\u30017\u7D44\u306E\u53CB\u9054\u306B\u300D\n\u300C\u30CE\u30FC\u30C8\u3092\u8FD4\u3057\u305F\u3044\u3093\u3067\u3059\u3051\u3069...\u300D\n\u300C\u3055\u3063\u304D\u5148\u751F\u306B\u547C\u3070\u308C\u3066\u3057\u307E\u3063\u3066...\u300D\n\u300C\u79C1\u306E\u4EE3\u308F\u308A\u306B\u3053\u306E\u30CE\u30FC\u30C8\u3092\u300D\n\u300C\u8FD4\u3057\u3066\u304A\u3044\u3066\u3082\u3089\u3048\u307E\u305B\u3093\u304B\uFF1F\u300D\n\u300C\u304A\u9858\u3044\u3057\u307E\u3059\uFF01\u300D\n(\u6D41\u308C\u3067\u30CE\u30FC\u30C8\u3092\u62BC\u3057\u4ED8\u3051\u3089\u308C\u305F)"
+      objectReference: {fileID: 0}
+    - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
       propertyPath: events.Array.data[1].beToPopUpText
       value: 0
       objectReference: {fileID: 0}
@@ -16368,6 +16378,10 @@ PrefabInstance:
     - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
       propertyPath: events.Array.data[2].gettingOption
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
+      propertyPath: events.Array.data[2].poppingUpText
+      value: "\u3042\u306E...\n\u3084\u3063\u3071\u308A\u3001\u306A\u3093\u3067\u3082\u306A\u3044\u3067\u3059\u3002"
       objectReference: {fileID: 0}
     - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
       propertyPath: events.Array.data[1].changeSizeRate
