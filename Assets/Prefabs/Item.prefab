@@ -134,6 +134,7 @@ MonoBehaviour:
     changeSpeed: 5
     beToPopUpText: 0
     poppingUpTexts: []
+    poppingUpText: 
     beToSoundEffect: 0
     soundType: 0
     beToFlag: 0
