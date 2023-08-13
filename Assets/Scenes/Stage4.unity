@@ -2265,11 +2265,71 @@ PolygonCollider2D:
       - {x: -8.26875, y: -1.2515625}
       - {x: -8.282812, y: -1.265625}
       - {x: -8.26875, y: -1.321875}
+--- !u!1 &595022154 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8224005722781285823, guid: 95b373056364a784396f3c12ebca201d, type: 3}
+  m_PrefabInstance: {fileID: 1559491674}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &595022155 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8224005722781285819, guid: 95b373056364a784396f3c12ebca201d, type: 3}
   m_PrefabInstance: {fileID: 1559491674}
   m_PrefabAsset: {fileID: 0}
+--- !u!60 &595022160
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 595022154}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 18, y: 10.124999}
+    newSize: {x: 18, y: 10.124999}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.1125, y: -2.3625}
+      - {x: 0.309375, y: -2.1234374}
+      - {x: 0.309375, y: -2.0390625}
+      - {x: 0.57656246, y: -2.1375}
+      - {x: 0.6046875, y: -2.109375}
+      - {x: 0.6046875, y: -2.0671875}
+      - {x: 0.534375, y: -1.9968749}
+      - {x: 0.46406248, y: -1.8703125}
+      - {x: 0.47812498, y: -1.7156249}
+      - {x: 0.3796875, y: -1.659375}
+      - {x: 0.1125, y: -1.6453124}
+      - {x: -0.12656249, y: -1.6453124}
+      - {x: -0.33749998, y: -1.7015624}
+      - {x: -0.6609375, y: -1.828125}
+      - {x: -0.92812496, y: -1.9828124}
+      - {x: -1.0828124, y: -2.1796875}
+      - {x: -1.096875, y: -2.221875}
+      - {x: -1.096875, y: -2.3625}
+      - {x: -0.9421875, y: -2.4890625}
+      - {x: -0.703125, y: -2.4609375}
+      - {x: -0.57656246, y: -2.3765624}
+      - {x: -0.4359375, y: -2.3625}
+      - {x: -0.590625, y: -2.4046874}
+      - {x: -0.78749996, y: -2.5453124}
+      - {x: -0.759375, y: -2.615625}
+      - {x: -0.71718746, y: -2.615625}
+      - {x: -0.590625, y: -2.53125}
+      - {x: -0.1828125, y: -2.4328125}
+      - {x: -0.05625, y: -2.2640624}
+      - {x: 0.042187497, y: -2.2640624}
 --- !u!1 &604122619 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8224005722781285823, guid: 95b373056364a784396f3c12ebca201d, type: 3}
@@ -7075,9 +7135,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1059521569}
     m_Modifications:
+    - target: {fileID: -5784836165965982360, guid: 95b373056364a784396f3c12ebca201d, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
       propertyPath: disableAttribute
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
+      propertyPath: events.Array.data[0].eventType
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
       propertyPath: events.Array.data[0].beToPopUpText
@@ -7145,11 +7213,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8224005722781285819, guid: 95b373056364a784396f3c12ebca201d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.59
+      value: 6.64
       objectReference: {fileID: 0}
     - target: {fileID: 8224005722781285819, guid: 95b373056364a784396f3c12ebca201d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.53
+      value: -3.56
       objectReference: {fileID: 0}
     - target: {fileID: 8224005722781285819, guid: 95b373056364a784396f3c12ebca201d, type: 3}
       propertyPath: m_LocalPosition.z
@@ -7187,7 +7255,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: G
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -5784836165965982360, guid: 95b373056364a784396f3c12ebca201d, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 95b373056364a784396f3c12ebca201d, type: 3}
 --- !u!4 &1581065072 stripped
 Transform:
