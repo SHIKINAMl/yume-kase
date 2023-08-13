@@ -13,6 +13,7 @@ public class SetDirection : MonoBehaviour
     [SerializeField]
     int destinationSide;
     private CameraMove cameramove;
+    private bool isChanged = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,8 +24,9 @@ public class SetDirection : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (stageManager.GetFlagByName(flag)){
+        if (stageManager.GetFlagByName(flag) && !isChanged){
             cameramove.OnClickChangeRoom(destinationRoom, destinationSide);
+            isChanged = true;
         }
     }
 }
