@@ -428,6 +428,10 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
+      propertyPath: events.Array.data[0].beToSoundEffect
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
       propertyPath: events.Array.data[1].appearingOption
       value: 2
       objectReference: {fileID: 0}
@@ -1030,6 +1034,10 @@ PrefabInstance:
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
+      propertyPath: events.Array.data[2].soundType
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
       propertyPath: events.Array.data[0].beToAppear
       value: 0
       objectReference: {fileID: 0}
@@ -1131,6 +1139,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
       propertyPath: events.Array.data[2].appearingOption
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
+      propertyPath: events.Array.data[2].beToSoundEffect
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
@@ -1389,6 +1401,10 @@ PrefabInstance:
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
+      propertyPath: events.Array.data[1].soundType
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
       propertyPath: events.Array.data[1].beToAppear
       value: 1
       objectReference: {fileID: 0}
@@ -1431,6 +1447,10 @@ PrefabInstance:
     - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
       propertyPath: events.Array.data[1].appearingOption
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
+      propertyPath: events.Array.data[1].beToSoundEffect
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
       propertyPath: events.Array.data[0].standingFlagName
@@ -2150,6 +2170,10 @@ PrefabInstance:
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
+      propertyPath: events.Array.data[1].soundType
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
       propertyPath: events.Array.data[2].eventType
       value: 1
       objectReference: {fileID: 0}
@@ -2327,6 +2351,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
       propertyPath: events.Array.data[1].appearingOption
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
+      propertyPath: events.Array.data[1].beToSoundEffect
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
@@ -3146,7 +3174,15 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
+      propertyPath: events.Array.data[0].soundType
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
       propertyPath: events.Array.data[0].beToAppear
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
+      propertyPath: events.Array.data[0].beToSoundEffect
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
@@ -5591,12 +5627,20 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
+      propertyPath: events.Array.data[1].beToPopUpText
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
       propertyPath: events.Array.data[1].conditionType
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
       propertyPath: events.Array.data[1].gettingOption
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
+      propertyPath: events.Array.data[1].poppingUpText
+      value: "\u8131\u51FA\uFF01\uFF01\uFF01\uFF01\u304A\u3081\u3067\u3068\u3046\uFF01\uFF01\uFF01"
       objectReference: {fileID: 0}
     - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
       propertyPath: events.Array.data[1].changeSizeRate
@@ -5617,6 +5661,14 @@ PrefabInstance:
     - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
       propertyPath: events.Array.data[1].standingClearFlagName
       value: escapestage6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
+      propertyPath: events.Array.data[1].poppingUpTexts.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
+      propertyPath: events.Array.data[1].poppingUpTexts.Array.data[0]
+      value: "\u8131\u51FA\uFF01\uFF01\uFF01\uFF01\u304A\u3081\u3067\u3068\u3046\uFF01\uFF01\uFF01"
       objectReference: {fileID: 0}
     - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
       propertyPath: events.Array.data[0].conditions.Array.data[0].ifFlag
@@ -6177,6 +6229,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1336776497}
     m_Modifications:
+    - target: {fileID: 5706790169796711505, guid: b330396cbe6568846a9b7f442b6a9ec0, type: 3}
+      propertyPath: m_SortingOrder
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 5706790169796711506, guid: b330396cbe6568846a9b7f442b6a9ec0, type: 3}
       propertyPath: m_Name
       value: ChangeRoomButton
@@ -8382,12 +8438,20 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
+      propertyPath: events.Array.data[0].soundType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
       propertyPath: events.Array.data[0].beToAppear
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
       propertyPath: events.Array.data[0].appearingOption
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
+      propertyPath: events.Array.data[0].beToSoundEffect
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
       propertyPath: events.Array.data[0].standingFlagName
@@ -8622,7 +8686,19 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
+      propertyPath: events.Array.data[0].beToFlag
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
+      propertyPath: events.Array.data[0].soundType
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
       propertyPath: events.Array.data[0].beToAppear
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
+      propertyPath: events.Array.data[0].beToSoundEffect
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
@@ -8744,7 +8820,15 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
+      propertyPath: events.Array.data[0].soundType
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
       propertyPath: events.Array.data[0].beToAppear
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
+      propertyPath: events.Array.data[0].beToSoundEffect
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
@@ -10342,7 +10426,15 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
+      propertyPath: events.Array.data[0].soundType
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
       propertyPath: events.Array.data[0].beToAppear
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
+      propertyPath: events.Array.data[0].beToSoundEffect
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
@@ -10611,7 +10703,15 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
+      propertyPath: events.Array.data[0].soundType
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
       propertyPath: events.Array.data[0].beToAppear
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
+      propertyPath: events.Array.data[0].beToSoundEffect
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
@@ -11858,6 +11958,10 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
+      propertyPath: events.Array.data[0].soundType
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
       propertyPath: events.Array.data[1].eventType
       value: 1
       objectReference: {fileID: 0}
@@ -11904,6 +12008,10 @@ PrefabInstance:
     - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
       propertyPath: events.Array.data[1].changeSizeRate
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
+      propertyPath: events.Array.data[0].beToSoundEffect
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
       propertyPath: events.Array.data[1].appearingOption
@@ -16157,10 +16265,38 @@ MonoBehaviour:
     flag: 0
   numberOfBGM: 1
   BGMList:
-  - BGM: {fileID: 0}
+  - BGM: {fileID: 8300000, guid: 55ad0e05d8dddd54aaafd4644d5ff1fe, type: 3}
     flagName: 
-  numberOfSoundEffect: 0
-  soundEffectList: []
+  numberOfSoundEffect: 14
+  soundEffectList:
+  - soundEffect: {fileID: 8300000, guid: 939430ea6aae62940a276b68ebea9a1a, type: 3}
+    soundName: "\u690D\u7269\u306B\u6C34\u3092\u3042\u3052\u308B\u97F3"
+  - soundEffect: {fileID: 8300000, guid: ce2b8232a74a4c54b8ed9e45588eebf0, type: 3}
+    soundName: "\u30CF\u30F3\u30C9\u30EB\u3092\u52D5\u304B\u3059\u97F3"
+  - soundEffect: {fileID: 8300000, guid: 90a8fdd57ff880b468f47153223ba49b, type: 3}
+    soundName: "UV\u70B9\u706F"
+  - soundEffect: {fileID: 8300000, guid: cb236347d097d6643889b0c9dd98251f, type: 3}
+    soundName: "\u6238\u68DA\u3092\u958B\u3051\u308B\u97F3"
+  - soundEffect: {fileID: 8300000, guid: f842caf7346a3a041a689c8e9efd79ce, type: 3}
+    soundName: "\u9375\u89E3\u9664"
+  - soundEffect: {fileID: 8300000, guid: e2c7abf58891c1740920fa1df1cc44e2, type: 3}
+    soundName: "\u30C6\u30EC\u30D3\u304C\u3064\u304F\u97F3"
+  - soundEffect: {fileID: 8300000, guid: f877a776a327a544b8db21bdeadcf82a, type: 3}
+    soundName: "\u6C34\u304C\u6E80\u305F\u3055\u308C\u308B\u97F3"
+  - soundEffect: {fileID: 8300000, guid: 47b2355f330e338419fb254e92529a01, type: 3}
+    soundName: "\u5316\u7CA7\u53F0\u304C\u5272\u308C\u308B\u97F3"
+  - soundEffect: {fileID: 8300000, guid: e0db374e418b1154ca541f16bb5255cb, type: 3}
+    soundName: "\u7A93\u304C\u958B\u304F\u97F3"
+  - soundEffect: {fileID: 8300000, guid: e475533144597fd4b9db974100e28ecf, type: 3}
+    soundName: "\u5E03\u56E3\u3092\u307E\u304F\u308B\u97F3"
+  - soundEffect: {fileID: 8300000, guid: f7b7dee171fd5774ab575fe6b25c6e69, type: 3}
+    soundName: "\u30AB\u30CA\u30EA\u30A2\u304C\u9003\u3052\u308B\u97F3"
+  - soundEffect: {fileID: 8300000, guid: 504623ef3d1184f45b80a30f6b1c2772, type: 3}
+    soundName: "\u690D\u7269\u306B\u7070\u3092\u3084\u308B\u97F3"
+  - soundEffect: {fileID: 0}
+    soundName: 
+  - soundEffect: {fileID: 0}
+    soundName: 
   itemList: []
   inventorySize: 6
   eventFlags: []
@@ -16196,7 +16332,15 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
+      propertyPath: events.Array.data[0].soundType
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
       propertyPath: events.Array.data[0].beToAppear
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
+      propertyPath: events.Array.data[0].beToSoundEffect
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
@@ -16968,6 +17112,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
+      propertyPath: events.Array.data[0].soundType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
       propertyPath: events.Array.data[0].beToAppear
       value: 1
       objectReference: {fileID: 0}
@@ -16982,6 +17130,10 @@ PrefabInstance:
     - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
       propertyPath: events.Array.data[0].appearingOption
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
+      propertyPath: events.Array.data[0].beToSoundEffect
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
       propertyPath: events.Array.data[0].standingFlagName
