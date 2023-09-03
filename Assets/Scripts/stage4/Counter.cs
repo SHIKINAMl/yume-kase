@@ -8,6 +8,7 @@ public class Counter : MonoBehaviour
     private int rightCount;
     private int leftCount;
     private StageManager stageManager;
+
     // Start is called before the first frame update
     void Start()
     {
