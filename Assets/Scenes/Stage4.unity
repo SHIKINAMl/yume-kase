@@ -17339,7 +17339,7 @@ MonoBehaviour:
   eventFlagList: []
   numberOfBGM: 1
   BGMList:
-  - BGM: {fileID: 0}
+  - BGM: {fileID: 8300000, guid: 0c043c4879ce33c44a5bd3e758a51162, type: 3}
     flagName: 
   numberOfSoundEffect: 8
   soundEffectList:
