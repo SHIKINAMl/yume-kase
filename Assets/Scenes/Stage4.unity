@@ -1628,6 +1628,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
+      propertyPath: events.Array.data[0].soundType
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
       propertyPath: events.Array.data[0].beToAppear
       value: 1
       objectReference: {fileID: 0}
@@ -1638,6 +1642,10 @@ PrefabInstance:
     - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
       propertyPath: events.Array.data[0].appearingOption
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
+      propertyPath: events.Array.data[0].beToSoundEffect
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
       propertyPath: events.Array.data[0].standingFlagName
@@ -3276,6 +3284,10 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
+      propertyPath: events.Array.data[0].soundType
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
       propertyPath: events.Array.data[1].eventType
       value: 2
       objectReference: {fileID: 0}
@@ -3342,6 +3354,10 @@ PrefabInstance:
     - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
       propertyPath: events.Array.data[0].appearingOption
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
+      propertyPath: events.Array.data[0].beToSoundEffect
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
       propertyPath: events.Array.data[1].appearingOption
@@ -3908,6 +3924,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: "\u524D\u3078"
       objectReference: {fileID: 0}
+    - target: {fileID: 5706790169796711507, guid: b330396cbe6568846a9b7f442b6a9ec0, type: 3}
+      propertyPath: changeRoomSound
+      value: 
+      objectReference: {fileID: 8300000, guid: ac342cee699fb8e49b8e86eacbcc237c, type: 3}
     - target: {fileID: 5706790169796711507, guid: b330396cbe6568846a9b7f442b6a9ec0, type: 3}
       propertyPath: destinationRoom
       value: 4
@@ -5630,6 +5650,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
+      propertyPath: events.Array.data[0].beToSoundEffect
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
       propertyPath: events.Array.data[0].standingFlagName
       value: "\u30CD\u30B8\u53F3\u4E0B\u3068\u308C\u305F"
       objectReference: {fileID: 0}
@@ -6204,6 +6228,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: "\u53F3\u3078"
       objectReference: {fileID: 0}
+    - target: {fileID: 5706790169796711507, guid: b330396cbe6568846a9b7f442b6a9ec0, type: 3}
+      propertyPath: changeRoomSound
+      value: 
+      objectReference: {fileID: 8300000, guid: ac342cee699fb8e49b8e86eacbcc237c, type: 3}
     - target: {fileID: 5706790169796711507, guid: b330396cbe6568846a9b7f442b6a9ec0, type: 3}
       propertyPath: destinationRoom
       value: 5
@@ -6854,6 +6882,10 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
+      propertyPath: events.Array.data[0].soundType
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
       propertyPath: events.Array.data[1].eventType
       value: 2
       objectReference: {fileID: 0}
@@ -6908,6 +6940,10 @@ PrefabInstance:
     - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
       propertyPath: events.Array.data[1].changeSizeRate
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
+      propertyPath: events.Array.data[0].beToSoundEffect
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
       propertyPath: events.Array.data[1].appearingOption
@@ -7437,6 +7473,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
+      propertyPath: events.Array.data[0].soundType
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
       propertyPath: events.Array.data[0].beToAppear
       value: 1
       objectReference: {fileID: 0}
@@ -7451,6 +7491,10 @@ PrefabInstance:
     - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
       propertyPath: events.Array.data[0].appearingOption
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
+      propertyPath: events.Array.data[0].beToSoundEffect
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
       propertyPath: events.Array.data[0].standingFlagName
@@ -9970,6 +10014,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
+      propertyPath: events.Array.data[0].beToSoundEffect
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
       propertyPath: events.Array.data[0].standingFlagName
       value: "\u30CD\u30B8\u5DE6\u4E0A\u3068\u308C\u305F"
       objectReference: {fileID: 0}
@@ -10319,6 +10367,10 @@ PrefabInstance:
     - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
       propertyPath: events.Array.data[1].changeSizeRate
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
+      propertyPath: events.Array.data[0].beToSoundEffect
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
       propertyPath: events.Array.data[1].appearingOption
@@ -11601,6 +11653,10 @@ PrefabInstance:
     - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
       propertyPath: events.Array.data[0].appearingOption
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
+      propertyPath: events.Array.data[0].beToSoundEffect
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
       propertyPath: events.Array.data[1].appearingOption
@@ -13586,6 +13642,14 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
+      propertyPath: events.Array.data[0].soundType
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
+      propertyPath: events.Array.data[0].beToSoundEffect
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
       propertyPath: events.Array.data[0].standingFlagName
       value: "\u6905\u5B50\u304C\u7F6E\u304B\u308C\u305F"
       objectReference: {fileID: 0}
@@ -14751,6 +14815,10 @@ PrefabInstance:
       value: "\u5DE6\u3078"
       objectReference: {fileID: 0}
     - target: {fileID: 5706790169796711507, guid: b330396cbe6568846a9b7f442b6a9ec0, type: 3}
+      propertyPath: changeRoomSound
+      value: 
+      objectReference: {fileID: 8300000, guid: ac342cee699fb8e49b8e86eacbcc237c, type: 3}
+    - target: {fileID: 5706790169796711507, guid: b330396cbe6568846a9b7f442b6a9ec0, type: 3}
       propertyPath: destinationRoom
       value: 5
       objectReference: {fileID: 0}
@@ -15778,6 +15846,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
+      propertyPath: events.Array.data[0].beToSoundEffect
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
       propertyPath: events.Array.data[0].standingFlagName
       value: "\u30CD\u30B8\u5DE6\u4E0B\u3068\u308C\u305F"
       objectReference: {fileID: 0}
@@ -15954,7 +16026,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   destinationRoom: 6
   destinationSide: 1
-  changeRoomSound: {fileID: 0}
+  changeRoomSound: {fileID: 8300000, guid: 682f8a9dbc317cb418970f12865ff046, type: 3}
   isFlagType: 0
   flagName: "\u677F\u304C\u5916\u308C\u305F"
 --- !u!1 &1774449145
@@ -16740,12 +16812,20 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
+      propertyPath: events.Array.data[0].soundType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
       propertyPath: events.Array.data[1].eventType
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
       propertyPath: events.Array.data[1].moveSpeed
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
+      propertyPath: events.Array.data[1].soundType
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
       propertyPath: events.Array.data[2].eventType
@@ -16844,8 +16924,16 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
+      propertyPath: events.Array.data[0].beToSoundEffect
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
       propertyPath: events.Array.data[1].appearingOption
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
+      propertyPath: events.Array.data[1].beToSoundEffect
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
       propertyPath: events.Array.data[2].appearingOption
@@ -17253,8 +17341,24 @@ MonoBehaviour:
   BGMList:
   - BGM: {fileID: 0}
     flagName: 
-  numberOfSoundEffect: 0
-  soundEffectList: []
+  numberOfSoundEffect: 8
+  soundEffectList:
+  - soundEffect: {fileID: 8300000, guid: 4bc3e50a2c2b3ac41948b45fae6aff82, type: 3}
+    soundName: "\u30CD\u30B8\u3068\u308A"
+  - soundEffect: {fileID: 8300000, guid: feb8239d0f9a19245928029d9b250524, type: 3}
+    soundName: "\u30C9\u30A2\u304A\u30FC\u3077\u3093"
+  - soundEffect: {fileID: 8300000, guid: ac342cee699fb8e49b8e86eacbcc237c, type: 3}
+    soundName: "\u530D\u5310\u524D\u9032"
+  - soundEffect: {fileID: 8300000, guid: fd32d67339d55bd408c70d064fdfbe3d, type: 3}
+    soundName: "\u304B\u3079"
+  - soundEffect: {fileID: 8300000, guid: a8f4e737577896d4692108f337a8cea0, type: 3}
+    soundName: "\u63DB\u6C17\u6247"
+  - soundEffect: {fileID: 8300000, guid: b2d8f556de2f0c646a3085f53def10da, type: 3}
+    soundName: "\u3044\u3059"
+  - soundEffect: {fileID: 8300000, guid: 682f8a9dbc317cb418970f12865ff046, type: 3}
+    soundName: "\u304B\u305C"
+  - soundEffect: {fileID: 8300000, guid: 51c3e1291aa3d754c9ac8016529091d4, type: 3}
+    soundName: "\u3081\u3057"
   itemList: []
   inventorySize: 6
   eventFlags: []
@@ -17287,6 +17391,8 @@ GameObject:
   - component: {fileID: 1993530887}
   - component: {fileID: 1993530890}
   - component: {fileID: 1993530892}
+  - component: {fileID: 1993530894}
+  - component: {fileID: 1993530893}
   m_Layer: 0
   m_Name: forest
   m_TagString: Untagged
@@ -17503,6 +17609,77 @@ PolygonCollider2D:
       - {x: -9, y: -5.0625}
       - {x: 9, y: -5.0625}
       - {x: 9, y: 5.0625}
+--- !u!114 &1993530893
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1993530886}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8f356a31a3d90744a2516646aadd895, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1993530894
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1993530886}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c80f2437d863984fa35de87d2eb2ec4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  disableAttribute: 0
+  ownableAttribute: 0
+  eventAttribute: 1
+  itemName: 
+  itemText: 
+  numberOfEvent: 1
+  events:
+  - eventType: 2
+    conditionType: 1
+    waittingTime: 0
+    conditions:
+    - ifThisClicked: 1
+      ifFlag: 0
+      numberOfFlag: 1
+      stoodFlagNames: []
+      ifHoldItem: 0
+      numberOfItem: 1
+      holdItemNames: []
+      ifAffordInventory: 0
+      numberOfEmpty: 1
+    eventTrigger: 0
+    beToAppear: 0
+    appearingOption: 0
+    beAvailable: 0
+    gettingOption: 0
+    beToMove: 0
+    moveVector: {x: 0, y: 0}
+    moveType: 0
+    moveSpeed: 0
+    beToChangeSize: 0
+    changeSizeRate: 0
+    changeType: 0
+    changeSpeed: 0
+    beToPopUpText: 0
+    poppingUpTexts: []
+    poppingUpText: 
+    beToSoundEffect: 0
+    soundType: 0
+    beToFlag: 1
+    standingFlagName: "\u98A8\u306E\u97F3\u30B9\u30C8\u30C3\u30D7"
+    flagOption: 1
+    beToFlagClear: 0
+    standingClearFlagName: 
+  waitEvent: 0
+  isRoopBreak: 0
+  getItemSound: {fileID: 0}
+  notDisplayItemWindow: 0
 --- !u!1 &2005826125
 GameObject:
   m_ObjectHideFlags: 0
@@ -17607,6 +17784,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8224005722781285764, guid: 95b373056364a784396f3c12ebca201d, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
       propertyPath: disableAttribute
       value: 0
@@ -17629,6 +17810,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
       propertyPath: events.Array.data[0].appearingOption
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
+      propertyPath: events.Array.data[0].beToSoundEffect
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
