@@ -98,7 +98,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 519ec68074e666b4a8fd91a33c8adff6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  destinationRoom: 1
+  zoomWindow: {fileID: 0}
   isFlagType: 0
   flagName: 
 --- !u!58 &6720051283101221450
