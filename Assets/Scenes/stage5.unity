@@ -2426,7 +2426,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
       propertyPath: itemText
-      value: "\u4F55\u306E\u5199\u771F\u3060\u308D\u3046\u304B"
+      value: "\u30D0\u30FC\u30EB\u306E\u3088\u3046\u306A\u3082\u306E"
       objectReference: {fileID: 0}
     - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
       propertyPath: ownableAttribute
@@ -4578,7 +4578,7 @@ Transform:
   - {fileID: 249015535}
   - {fileID: 2034199551}
   m_Father: {fileID: 1589034255}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &332651542
 GameObject:
@@ -4856,7 +4856,7 @@ Transform:
   - {fileID: 1295091790}
   - {fileID: 570922577}
   m_Father: {fileID: 1589034255}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &391169164
 GameObject:
@@ -11689,7 +11689,7 @@ Transform:
   - {fileID: 1404586199}
   - {fileID: 1385083683}
   m_Father: {fileID: 1589034255}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &867834445
 GameObject:
@@ -23140,10 +23140,10 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 332651543}
-  - {fileID: 1413540465}
   - {fileID: 390774943}
   - {fileID: 861701842}
   - {fileID: 332550981}
+  - {fileID: 1413540465}
   - {fileID: 425292506}
   - {fileID: 978513825}
   m_Father: {fileID: 93214220}
@@ -28596,6 +28596,14 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
+      propertyPath: events.Array.data[0].beToAppear
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
+      propertyPath: events.Array.data[0].appearingOption
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
       propertyPath: events.Array.data[0].standingFlagName
       value: standbutton_on
       objectReference: {fileID: 0}
@@ -28681,7 +28689,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.11212957, y: 0.48859793}
+  m_Offset: {x: 0.11212957, y: 0.6189314}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -28692,7 +28700,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.4508069, y: 1.413828}
+  m_Size: {x: 1.4508069, y: 1.674495}
   m_EdgeRadius: 0
 --- !u!1001 &2028143203
 PrefabInstance:
