@@ -100,8 +100,31 @@ public class ItemInventory : MonoBehaviour
             if ((i.combinationItem.materialItemName1 == item1.GetComponent<ItemIcon>().itemName && i.combinationItem.materialItemName2 == item2.GetComponent<ItemIcon>().itemName) ||
                 (i.combinationItem.materialItemName1 == item2.GetComponent<ItemIcon>().itemName && i.combinationItem.materialItemName2 == item1.GetComponent<ItemIcon>().itemName))
             {
-                stagemanager.itemList.RemoveAt(stagemanager.GetItemIndex(item1.GetComponent<ItemIcon>().itemName));
-                stagemanager.itemList.RemoveAt(stagemanager.GetItemIndex(item2.GetComponent<ItemIcon>().itemName));
+                if (i.combinationItem.isDelete1)
+                {
+                    if (i.combinationItem.materialItemName1 == item1.GetComponent<ItemIcon>().itemName)
+                    {
+                        stagemanager.itemList.RemoveAt(stagemanager.GetItemIndex(item1.GetComponent<ItemIcon>().itemName));
+                    }
+
+                    else
+                    {
+                        stagemanager.itemList.RemoveAt(stagemanager.GetItemIndex(item2.GetComponent<ItemIcon>().itemName));
+                    }
+                }
+
+                if (i.combinationItem.isDelete2)
+                {
+                    if (i.combinationItem.materialItemName2 == item2.GetComponent<ItemIcon>().itemName)
+                    {
+                        stagemanager.itemList.RemoveAt(stagemanager.GetItemIndex(item2.GetComponent<ItemIcon>().itemName));
+                    }
+
+                    else
+                    {
+                        stagemanager.itemList.RemoveAt(stagemanager.GetItemIndex(item1.GetComponent<ItemIcon>().itemName));
+                    }
+                }
 
                 if (i.combinationItem.isGetNewItem)
                 {
@@ -142,7 +165,11 @@ public class InventoryEvent
 public class CombinationItemData
 {
     public string materialItemName1;
+
+    public bool isDelete1 = true;
     public string materialItemName2;
+
+    public bool isDelete2 = true;
 
     public bool isGetNewItem = true;
 

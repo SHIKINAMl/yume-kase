@@ -642,11 +642,14 @@ public class ItemInventoryEditor : Editor
                 EditorGUILayout.LabelField("合成素材その1");
                 EditorGUI.indentLevel++;
                 iteminventory.inventoryEvents[i].combinationItem.materialItemName1 = EditorGUILayout.TextField("アイテムの名前->", iteminventory.inventoryEvents[i].combinationItem.materialItemName1);
+                iteminventory.inventoryEvents[i].combinationItem.isDelete1 = EditorGUILayout.Toggle("このアイテムを消す->", iteminventory.inventoryEvents[i].combinationItem.isDelete1);
+                
                 EditorGUI.indentLevel--;
                 
                 EditorGUILayout.LabelField("合成素材その2");
                 EditorGUI.indentLevel++;
                 iteminventory.inventoryEvents[i].combinationItem.materialItemName2 = EditorGUILayout.TextField("アイテムの名前->", iteminventory.inventoryEvents[i].combinationItem.materialItemName2);
+                iteminventory.inventoryEvents[i].combinationItem.isDelete2 = EditorGUILayout.Toggle("このアイテムを消す->", iteminventory.inventoryEvents[i].combinationItem.isDelete2);
                 EditorGUI.indentLevel--;
 
                 EditorGUILayout.Space(10);

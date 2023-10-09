@@ -1959,7 +1959,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 260826869}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 40.36277, y: 19.76392, z: -0.008857676}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2647,6 +2647,7 @@ MonoBehaviour:
     changeSpeed: 0
     beToPopUpText: 0
     poppingUpTexts: []
+    poppingUpText: 
     beToSoundEffect: 0
     soundType: 0
     beToFlag: 0
@@ -11218,6 +11219,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
+      propertyPath: events.Array.data[2].poppingUpText
+      value: "\u306A\u3093\u3060\u304B\u6016\u304F\u3066\u8FD1\u3065\u3051\u306A\u3044\u3002"
+      objectReference: {fileID: 0}
+    - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
       propertyPath: events.Array.data[3].beToPopUpText
       value: 0
       objectReference: {fileID: 0}
@@ -12948,6 +12953,7 @@ MonoBehaviour:
     changeSpeed: 0
     beToPopUpText: 0
     poppingUpTexts: []
+    poppingUpText: 
     beToSoundEffect: 0
     soundType: 0
     beToFlag: 1
@@ -14856,8 +14862,12 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
+      propertyPath: isRoopBreak
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
       propertyPath: numberOfEvent
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
       propertyPath: disableAttribute
@@ -14865,7 +14875,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
       propertyPath: events.Array.size
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
       propertyPath: events.Array.data[0].beToFlag
@@ -14885,6 +14895,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
       propertyPath: events.Array.data[2].moveType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
+      propertyPath: events.Array.data[3].beToFlag
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
+      propertyPath: events.Array.data[3].moveType
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
@@ -14912,6 +14930,18 @@ PrefabInstance:
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
+      propertyPath: events.Array.data[3].eventType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
+      propertyPath: events.Array.data[3].moveSpeed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
+      propertyPath: events.Array.data[3].soundType
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
       propertyPath: events.Array.data[0].beToAppear
       value: 1
       objectReference: {fileID: 0}
@@ -14929,7 +14959,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
       propertyPath: events.Array.data[2].beToAppear
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
       propertyPath: events.Array.data[2].changeType
@@ -14937,6 +14967,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
       propertyPath: events.Array.data[2].flagOption
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
+      propertyPath: events.Array.data[3].changeType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
+      propertyPath: events.Array.data[3].flagOption
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
@@ -14945,6 +14983,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
       propertyPath: events.Array.data[2].changeSpeed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
+      propertyPath: events.Array.data[3].changeSpeed
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
@@ -14964,6 +15006,14 @@ PrefabInstance:
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
+      propertyPath: events.Array.data[3].moveVector.x
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
+      propertyPath: events.Array.data[3].moveVector.y
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
       propertyPath: events.Array.data[1].beToPopUpText
       value: 1
       objectReference: {fileID: 0}
@@ -14972,8 +15022,28 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
+      propertyPath: events.Array.data[1].poppingUpText
+      value: "\u30AF\u30DE\u306E\u306C\u3044\u3050\u308B\u307F\u304C\u6016\u304F\u3066\u958B\u3051\u3089\u308C\u306A\u3044\u3002"
+      objectReference: {fileID: 0}
+    - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
+      propertyPath: events.Array.data[2].beToPopUpText
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
       propertyPath: events.Array.data[2].conditionType
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
+      propertyPath: events.Array.data[2].poppingUpText
+      value: "\u30AF\u30DE\u306E\u306C\u3044\u3050\u308B\u307F\u304C\u6016\u304F\u3066\u958B\u3051\u3089\u308C\u306A\u3044\u3002"
+      objectReference: {fileID: 0}
+    - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
+      propertyPath: events.Array.data[3].conditionType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
+      propertyPath: events.Array.data[3].poppingUpText
+      value: "\u30AF\u30DE\u306E\u306C\u3044\u3050\u308B\u307F\u304C\u6016\u304F\u3066\u958B\u3051\u3089\u308C\u306A\u3044\u3002"
       objectReference: {fileID: 0}
     - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
       propertyPath: events.Array.data[1].changeSizeRate
@@ -14981,6 +15051,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
       propertyPath: events.Array.data[2].changeSizeRate
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
+      propertyPath: events.Array.data[3].changeSizeRate
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
@@ -15001,7 +15075,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
       propertyPath: events.Array.data[2].beToSoundEffect
-      value: 1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
+      propertyPath: events.Array.data[3].appearingOption
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
       propertyPath: events.Array.data[0].standingFlagName
@@ -15013,7 +15091,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
       propertyPath: events.Array.data[2].standingFlagName
-      value: open_livingdoor
+      value: NotOpenDoor
+      objectReference: {fileID: 0}
+    - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
+      propertyPath: events.Array.data[3].standingFlagName
+      value: NotOpenDoor
       objectReference: {fileID: 0}
     - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
       propertyPath: events.Array.data[1].conditions.Array.size
@@ -15024,7 +15106,19 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
+      propertyPath: events.Array.data[3].conditions.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
       propertyPath: events.Array.data[1].poppingUpTexts.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
+      propertyPath: events.Array.data[2].poppingUpTexts.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
+      propertyPath: events.Array.data[3].poppingUpTexts.Array.size
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
@@ -15032,11 +15126,43 @@ PrefabInstance:
       value: "\u30AF\u30DE\u306E\u306C\u3044\u3050\u308B\u307F\u304C\u6016\u304F\u3066\u958B\u3051\u3089\u308C\u306A\u3044\u3002"
       objectReference: {fileID: 0}
     - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
+      propertyPath: events.Array.data[2].poppingUpTexts.Array.data[0]
+      value: "\u30AF\u30DE\u306E\u306C\u3044\u3050\u308B\u307F\u304C\u6016\u304F\u3066\u958B\u3051\u3089\u308C\u306A\u3044\u3002"
+      objectReference: {fileID: 0}
+    - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
+      propertyPath: events.Array.data[3].poppingUpTexts.Array.data[0]
+      value: "\u30AF\u30DE\u306E\u306C\u3044\u3050\u308B\u307F\u304C\u6016\u304F\u3066\u958B\u3051\u3089\u308C\u306A\u3044\u3002"
+      objectReference: {fileID: 0}
+    - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
       propertyPath: events.Array.data[0].conditions.Array.data[0].ifFlag
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
+      propertyPath: events.Array.data[1].conditions.Array.data[0].ifFlag
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
+      propertyPath: events.Array.data[2].conditions.Array.data[0].ifFlag
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
+      propertyPath: events.Array.data[3].conditions.Array.data[0].ifFlag
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
       propertyPath: events.Array.data[0].conditions.Array.data[0].numberOfFlag
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
+      propertyPath: events.Array.data[1].conditions.Array.data[0].numberOfFlag
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
+      propertyPath: events.Array.data[2].conditions.Array.data[0].numberOfFlag
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
+      propertyPath: events.Array.data[3].conditions.Array.data[0].numberOfFlag
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
@@ -15049,14 +15175,38 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
       propertyPath: events.Array.data[2].conditions.Array.data[0].ifThisClicked
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
       propertyPath: events.Array.data[0].conditions.Array.data[0].stoodFlagNames.Array.size
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
+      propertyPath: events.Array.data[1].conditions.Array.data[0].stoodFlagNames.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
+      propertyPath: events.Array.data[2].conditions.Array.data[0].stoodFlagNames.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
+      propertyPath: events.Array.data[3].conditions.Array.data[0].stoodFlagNames.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
       propertyPath: events.Array.data[0].conditions.Array.data[0].stoodFlagNames.Array.data[0].name
+      value: use_cokkie
+      objectReference: {fileID: 0}
+    - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
+      propertyPath: events.Array.data[1].conditions.Array.data[0].stoodFlagNames.Array.data[0].name
+      value: NotOpenDoor
+      objectReference: {fileID: 0}
+    - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
+      propertyPath: events.Array.data[2].conditions.Array.data[0].stoodFlagNames.Array.data[0].name
+      value: use_cokkie
+      objectReference: {fileID: 0}
+    - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
+      propertyPath: events.Array.data[3].conditions.Array.data[0].stoodFlagNames.Array.data[0].name
       value: use_cokkie
       objectReference: {fileID: 0}
     - target: {fileID: 8224005722781285818, guid: 95b373056364a784396f3c12ebca201d, type: 3}
@@ -22647,7 +22797,9 @@ MonoBehaviour:
   - eventTrigger: 0
     combinationItem:
       materialItemName1: "\u7802\u7CD6"
+      isDelete1: 1
       materialItemName2: "\u30DC\u30A6\u30EB"
+      isDelete2: 1
       isGetNewItem: 1
       flagName: 
       itemName: "\u30DC\u30A6\u30EB\uFF08\u7802\u7CD6\u5165\u308A\uFF09"
@@ -22656,7 +22808,9 @@ MonoBehaviour:
   - eventTrigger: 0
     combinationItem:
       materialItemName1: "\u30D0\u30BF\u30FC"
+      isDelete1: 1
       materialItemName2: "\u30DC\u30A6\u30EB"
+      isDelete2: 1
       isGetNewItem: 1
       flagName: 
       itemName: "\u30DC\u30A6\u30EB\uFF08\u30D0\u30BF\u30FC\u5165\u308A\uFF09"
@@ -22665,7 +22819,9 @@ MonoBehaviour:
   - eventTrigger: 0
     combinationItem:
       materialItemName1: "\u958B\u5C01\u3057\u305F\u8584\u529B\u7C89\u306E\u888B"
+      isDelete1: 1
       materialItemName2: "\u30DC\u30A6\u30EB"
+      isDelete2: 1
       isGetNewItem: 1
       flagName: 
       itemName: "\u30DC\u30A6\u30EB\uFF08\u8584\u529B\u7C89\u5165\u308A\uFF09"
@@ -22674,7 +22830,9 @@ MonoBehaviour:
   - eventTrigger: 0
     combinationItem:
       materialItemName1: "\u7802\u7CD6"
+      isDelete1: 1
       materialItemName2: "\u30DC\u30A6\u30EB\uFF08\u30D0\u30BF\u30FC\u5165\u308A\uFF09"
+      isDelete2: 1
       isGetNewItem: 1
       flagName: 
       itemName: "\u30DC\u30A6\u30EB\uFF08\u7802\u7CD6\u30FB\u30D0\u30BF\u30FC\u5165\u308A\uFF09"
@@ -22683,7 +22841,9 @@ MonoBehaviour:
   - eventTrigger: 0
     combinationItem:
       materialItemName1: "\u7802\u7CD6"
+      isDelete1: 1
       materialItemName2: "\u30DC\u30A6\u30EB\uFF08\u8584\u529B\u7C89\u5165\u308A\uFF09"
+      isDelete2: 1
       isGetNewItem: 1
       flagName: 
       itemName: "\u30DC\u30A6\u30EB\uFF08\u7802\u7CD6\u30FB\u8584\u529B\u7C89\u5165\u308A\uFF09"
@@ -22692,7 +22852,9 @@ MonoBehaviour:
   - eventTrigger: 0
     combinationItem:
       materialItemName1: "\u30D0\u30BF\u30FC"
+      isDelete1: 1
       materialItemName2: "\u30DC\u30A6\u30EB\uFF08\u7802\u7CD6\u5165\u308A\uFF09"
+      isDelete2: 1
       isGetNewItem: 1
       flagName: 
       itemName: "\u30DC\u30A6\u30EB\uFF08\u7802\u7CD6\u30FB\u30D0\u30BF\u30FC\u5165\u308A\uFF09"
@@ -22701,7 +22863,9 @@ MonoBehaviour:
   - eventTrigger: 0
     combinationItem:
       materialItemName1: "\u30D0\u30BF\u30FC"
+      isDelete1: 1
       materialItemName2: "\u30DC\u30A6\u30EB\uFF08\u8584\u529B\u7C89\u5165\u308A\uFF09"
+      isDelete2: 1
       isGetNewItem: 1
       flagName: 
       itemName: "\u30DC\u30A6\u30EB\uFF08\u30D0\u30BF\u30FC\u30FB\u8584\u529B\u7C89\u5165\u308A\uFF09"
@@ -22710,7 +22874,9 @@ MonoBehaviour:
   - eventTrigger: 0
     combinationItem:
       materialItemName1: "\u958B\u5C01\u3057\u305F\u8584\u529B\u7C89\u306E\u888B"
+      isDelete1: 1
       materialItemName2: "\u30DC\u30A6\u30EB\uFF08\u7802\u7CD6\u5165\u308A\uFF09"
+      isDelete2: 1
       isGetNewItem: 1
       flagName: 
       itemName: "\u30DC\u30A6\u30EB\uFF08\u7802\u7CD6\u30FB\u8584\u529B\u7C89\u5165\u308A\uFF09"
@@ -22719,7 +22885,9 @@ MonoBehaviour:
   - eventTrigger: 0
     combinationItem:
       materialItemName1: "\u958B\u5C01\u3057\u305F\u8584\u529B\u7C89\u306E\u888B"
+      isDelete1: 1
       materialItemName2: "\u30DC\u30A6\u30EB\uFF08\u30D0\u30BF\u30FC\u5165\u308A\uFF09"
+      isDelete2: 1
       isGetNewItem: 1
       flagName: 
       itemName: "\u30DC\u30A6\u30EB\uFF08\u30D0\u30BF\u30FC\u30FB\u8584\u529B\u7C89\u5165\u308A\uFF09"
@@ -22728,7 +22896,9 @@ MonoBehaviour:
   - eventTrigger: 0
     combinationItem:
       materialItemName1: "\u7802\u7CD6"
+      isDelete1: 1
       materialItemName2: "\u30DC\u30A6\u30EB\uFF08\u30D0\u30BF\u30FC\u30FB\u8584\u529B\u7C89\u5165\u308A\uFF09"
+      isDelete2: 1
       isGetNewItem: 1
       flagName: 
       itemName: "\u30DC\u30A6\u30EB\uFF08\u7802\u7CD6\u30FB\u30D0\u30BF\u30FC\u30FB\u8584\u529B\u7C89\u5165\u308A\uFF09"
@@ -22737,7 +22907,9 @@ MonoBehaviour:
   - eventTrigger: 0
     combinationItem:
       materialItemName1: "\u30D0\u30BF\u30FC"
+      isDelete1: 1
       materialItemName2: "\u30DC\u30A6\u30EB\uFF08\u7802\u7CD6\u30FB\u8584\u529B\u7C89\u5165\u308A\uFF09"
+      isDelete2: 1
       isGetNewItem: 1
       flagName: 
       itemName: "\u30DC\u30A6\u30EB\uFF08\u7802\u7CD6\u30FB\u30D0\u30BF\u30FC\u30FB\u8584\u529B\u7C89\u5165\u308A\uFF09"
@@ -22746,7 +22918,9 @@ MonoBehaviour:
   - eventTrigger: 0
     combinationItem:
       materialItemName1: "\u958B\u5C01\u3057\u305F\u8584\u529B\u7C89\u306E\u888B"
+      isDelete1: 1
       materialItemName2: "\u30DC\u30A6\u30EB\uFF08\u7802\u7CD6\u30FB\u30D0\u30BF\u30FC\u5165\u308A\uFF09"
+      isDelete2: 1
       isGetNewItem: 1
       flagName: 
       itemName: "\u30DC\u30A6\u30EB\uFF08\u7802\u7CD6\u30FB\u30D0\u30BF\u30FC\u30FB\u8584\u529B\u7C89\u5165\u308A\uFF09"
@@ -22755,7 +22929,9 @@ MonoBehaviour:
   - eventTrigger: 0
     combinationItem:
       materialItemName1: "\u30CF\u30B5\u30DF"
+      isDelete1: 0
       materialItemName2: "\u8584\u529B\u7C89\u306E\u888B"
+      isDelete2: 1
       isGetNewItem: 1
       flagName: 
       itemName: "\u958B\u5C01\u3057\u305F\u8584\u529B\u7C89\u306E\u888B"
@@ -22764,7 +22940,9 @@ MonoBehaviour:
   - eventTrigger: 0
     combinationItem:
       materialItemName1: "\u7802\u7CD6"
+      isDelete1: 1
       materialItemName2: "\u30DC\u30FC\u30EB"
+      isDelete2: 1
       isGetNewItem: 1
       flagName: 
       itemName: "\u30DC\u30FC\u30EB\uFF08\u7802\u7CD6\u5165\u308A\uFF09"
@@ -22773,7 +22951,9 @@ MonoBehaviour:
   - eventTrigger: 0
     combinationItem:
       materialItemName1: "\u7802\u7CD6"
+      isDelete1: 1
       materialItemName2: "\u30DC\u30FC\u30EB"
+      isDelete2: 1
       isGetNewItem: 1
       flagName: 
       itemName: "\u30DC\u30FC\u30EB\uFF08\u7802\u7CD6\u5165\u308A\uFF09"
@@ -25335,7 +25515,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destinationRoom: 1
-  destinationSide: 1
+  destinationSide: 3
   changeRoomSound: {fileID: 8300000, guid: 8c712f9b75c8cac4e85a1e75ac2c8a05, type: 3}
   isFlagType: 0
   flagName: aaa

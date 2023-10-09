@@ -151,7 +151,7 @@ public class TutorialManager : MonoBehaviour
                     AppearImage(4, true);
                     AppearImage(5, true);
 
-                    tutorialText.DisplayTexts(new string[] {"これは何だろう・・・？"});
+                    tutorialText.DisplayTexts(new string[] {"これは何だろう・・・？", "見覚えがある気がするが・・・"});
 
                     isFirstTime = false;
                     isWaiting = true;
