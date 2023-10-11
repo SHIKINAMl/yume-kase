@@ -28,7 +28,15 @@ public class ZoomWindow : MonoBehaviour, IPointerClickHandler
         this.GetComponent<SpriteRenderer>().enabled = false;
         this.GetComponent<Collider2D>().enabled = false;
         
-        toLeftButton.SetActive(true);
-        toRightButton.SetActive(true);
+        try
+        {
+            toLeftButton.SetActive(true);
+            toRightButton.SetActive(true);
+        }
+
+        catch
+        {
+            
+        }
     }
 }

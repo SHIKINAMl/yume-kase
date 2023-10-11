@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class EndingFacilitator : MonoBehaviour
 {
@@ -20,6 +22,14 @@ public class EndingFacilitator : MonoBehaviour
     private int indexOfImages = 0;
     private float waitingTime = 0;
 
+    private Image blinderPanel;
+    private Text title;
+
+    public string stageNumber;
+
+    private float timer = 0f;
+
+
     private bool isWaiting = false;
     private bool isFadingOut = false;
     private bool isFadingIn = true;
@@ -31,6 +41,15 @@ public class EndingFacilitator : MonoBehaviour
         spriteRenderer = GameObject.Find("BackImage").GetComponent<SpriteRenderer>();
         spriteRenderer.sprite = images[0];
         spriteRenderer.color = new Color (1, 1, 1, 0);
+
+        blinderPanel = GameObject.Find("BlinderPanel").GetComponent<Image>();
+        blinderPanel.enabled = false;
+        blinderPanel.color = new Color (0, 0, 0, 0);
+
+        title = GameObject.Find("Title").GetComponent<Text>();
+        title.color = new Color (1, 1, 1, 0);
+        string formatTitle = string.Join(' ', stageNumber.Split());
+        title.text = $"第 {formatTitle} 夢";
     }
 
     public void Update()
@@ -41,7 +60,7 @@ public class EndingFacilitator : MonoBehaviour
             {
                 waitingTime += Time.deltaTime;
 
-                if (waitingTime >= 2)
+                if (waitingTime >= 1.2f)
                 {
                     indexOfImages += 1;
 
@@ -49,6 +68,8 @@ public class EndingFacilitator : MonoBehaviour
                     {
                         isFadingPart = false;
                         isCutInPart = true;  
+
+                        blinderPanel.enabled = true;
                     }
                 
                     else
@@ -126,27 +147,46 @@ public class EndingFacilitator : MonoBehaviour
                 }
 
             }
+
+            if (Input.GetMouseButtonDown(0))
+            {
+                blinderPanel.enabled = true;
+
+                //isFadingPart = false;
+                isCutInPart = true;
+            }
         }
 
         if (isCutInPart)
         {
-            Debug.Log("CutInPart");
+            if (blinderPanel.color.a < 0.5)
+            {
+                blinderPanel.color += new Color (0, 0, 0, Time.unscaledDeltaTime/4);
+                title.color += new Color (0, 0, 0, Time.unscaledDeltaTime/3);
+            }
 
-            if (true)
+            else 
+            {
+                timer += Time.unscaledDeltaTime;
+
+                if (timer >= 1f)
+                {
+                    blinderPanel.color += new Color (0, 0, 0, Time.unscaledDeltaTime/4);
+                    title.color -= new Color (0, 0, 0, Time.unscaledDeltaTime/3);
+                }
+            }
+
+            if (blinderPanel.color.a >= 1)
             {
                 isCutInPart = false;
                 isEndrollOPart = true;
+
             }
         }
 
         if (isEndrollOPart)
         {
-            Debug.Log("EndrollPart");
-
-            if (true)
-            {
-                isEndrollOPart = false;
-            }
+            SceneManager.LoadScene("ED");
         }
     }
 }

@@ -87,7 +87,6 @@ public class ComingSoon : MonoBehaviour
         {
             if (isWaiting)
             {
-                Debug.Log(true);
                 waitingTime += Time.deltaTime;
 
                 if (waitingTime >= 43)
@@ -107,6 +106,13 @@ public class ComingSoon : MonoBehaviour
                     SceneManager.LoadScene("Home");
                 }
             }
+        }
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            isEndrollOPart = true;
+            isWaiting = false;
+            isFadingOut = true;
         }
     }
 }

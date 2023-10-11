@@ -5,55 +5,73 @@ using UnityEngine;
 
 public class MeshiLoop : MonoBehaviour
 {
-    SpriteRenderer meshi;
     SpriteRenderer guro;
     StageManager stageManager;
-    bool isFade;
-    SpriteRenderer fadeout;
-    SpriteRenderer fadein;
-    // Start is called before the first frame update
+
+    bool isFade = false;
+    bool isFadein = true;
+
     void Start()
     {
-        isFade = false;
-        meshi = this.GetComponent<SpriteRenderer>();
-        guro = GameObject.Find("グロ飯").GetComponent<SpriteRenderer>();
+        guro = this.transform.Find("グロ飯").GetComponent<SpriteRenderer>();
         stageManager = GameObject.Find("StageManager").GetComponent<StageManager>();
+
         guro.color = new Color (1, 1, 1, 0);
-        meshi.color = new Color (0, 0, 0, 0.5f);
+    
         StartCoroutine(loop());
     }
 
     void FixedUpdate()
     {
-        bulkFade();
+        try
+        {
+            bulkFade();
+        }
+
+        catch{}
     }
 
     private IEnumerator loop()
     {
-        Debug.Log("loop");
-        if (!stageManager.GetFlagByName("食った")){
+
+        if (!stageManager.GetFlagByName("食った"))
+        {
             yield return new WaitForSeconds(5);
-            fadein = guro;
-            fadeout = meshi;
+            isFadein = true;
             isFade = true;
             yield return new WaitForSeconds(1);
-            fadein = meshi;
-            fadeout = guro;
+            isFadein = false;
             isFade = true;
+
             StartCoroutine(loop());
         }
     }
 
-    private void bulkFade(){
+    private void bulkFade()
+    {
         if (isFade)
         {
-            fadein.color += new Color (0, 0, 0, 0.02f);
-            fadeout.color -= new Color (0, 0, 0, 0.02f);
-            if (fadein.color.a > 0.5f)
+            Debug.Log(guro.color.a);
+
+            if (isFadein)
             {
-                isFade = false;
+                guro.color += new Color (0, 0, 0, 0.02f);
+
+                if (guro.color.a > 0.5f)
+                {
+                    isFade = false;
+                }
+            }
+
+            else
+            {
+                guro.color -= new Color (0, 0, 0, 0.02f);
+
+                if (guro.color.a < 0f)
+                {
+                    isFade = false;
+                }
             }
         }
-
     }
 }
