@@ -39,6 +39,8 @@ public class YumeNikki : MonoBehaviour
     public Sprite[] PageImages;
     public string[] texts;
 
+    public float textSpeed;
+
     public void Start()
     {
         stageManager = GameObject.Find("StageManager").GetComponent<StageManager>();
@@ -220,7 +222,7 @@ public class YumeNikki : MonoBehaviour
                 isFadingIn = false;
             }
 
-            if ((texts != null && timer >= 2) || Input.GetMouseButtonDown(0))
+            if ((texts != null && timer >= textSpeed * 3) || Input.GetMouseButtonDown(0))
             {
                 isFadingOut = true;
             }  

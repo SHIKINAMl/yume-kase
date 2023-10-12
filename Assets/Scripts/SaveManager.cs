@@ -35,6 +35,18 @@ public class SaveManager : MonoBehaviour
         File.WriteAllText(filePath, json);
     }
 
+    public void OnSaveSetting(List<float> newSettingData)
+    {
+        string json = File.ReadAllText(filePath);
+
+        SaveData saveData = JsonUtility.FromJson<SaveData>(json);
+
+        saveData.settingData = newSettingData;
+
+        json = JsonUtility.ToJson(saveData);
+        File.WriteAllText(filePath, json);
+    }
+
     public SaveData LoadSave()
     {
         try
@@ -45,7 +57,7 @@ public class SaveManager : MonoBehaviour
 
         catch (System.Exception)
         {
-            File.WriteAllText(filePath, JsonUtility.ToJson(new SaveData ("None", new List<string>())));
+            File.WriteAllText(filePath, JsonUtility.ToJson(new SaveData ("None", new List<string>(), new List<float>() {1, 1, 1})));
 
             string json = File.ReadAllText(filePath);
             return JsonUtility.FromJson<SaveData>(json);
@@ -54,7 +66,7 @@ public class SaveManager : MonoBehaviour
 
     public void ClearSave()
     {
-        File.WriteAllText(filePath, JsonUtility.ToJson(new SaveData ("None", new List<string>())));
+        File.WriteAllText(filePath, JsonUtility.ToJson(new SaveData ("None", new List<string>(), new List<float>() {1, 1, 1})));
     }
 }
 
@@ -65,9 +77,12 @@ public class SaveData
 
     public List<string> clearListNames = new List<string>();
 
-    public SaveData(string stageName, List<string> clearListNames)
+    public List<float> settingData = new List<float>() {1, 1, 1};
+
+    public SaveData(string stageName, List<string> clearListNames, List<float> settingData)
     {
         this.stageName = stageName;
         this.clearListNames = clearListNames;
+        this.settingData = settingData;
     }
 }

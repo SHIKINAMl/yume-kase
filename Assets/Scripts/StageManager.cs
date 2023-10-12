@@ -51,7 +51,6 @@ public class StageManager : MonoBehaviour
         currentClip = BGMList[0].BGM;
         audioSource.clip = currentClip;
         //FadeInBGM(0);
-        audioSource.volume = 0;
         audioSource.Play();
     }
 

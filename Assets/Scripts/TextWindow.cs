@@ -18,6 +18,8 @@ public class TextWindow : MonoBehaviour
 
     private int numberOfCharacters;
 
+    public float textSpeed;
+
     public void Start()
     {
         image = GetComponent<Image>();
@@ -30,7 +32,7 @@ public class TextWindow : MonoBehaviour
     {
         timer += Time.unscaledDeltaTime;
 
-        if ((poppingUpTexts != null && timer >= numberOfCharacters / 4) || (isOpening && Input.GetMouseButtonDown(0)))
+        if ((poppingUpTexts != null && timer >= numberOfCharacters / (textSpeed * 6)) || (isOpening && Input.GetMouseButtonDown(0)))
         {
             DisplayTexts();
         }
