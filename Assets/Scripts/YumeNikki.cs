@@ -222,7 +222,7 @@ public class YumeNikki : MonoBehaviour
                 isFadingIn = false;
             }
 
-            if ((texts != null && timer >= textSpeed * 3) || Input.GetMouseButtonDown(0))
+            if ((texts != null && timer >= 1 + (textSpeed*2)) || Input.GetMouseButtonDown(0))
             {
                 isFadingOut = true;
             }  

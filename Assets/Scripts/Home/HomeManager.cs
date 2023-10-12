@@ -28,12 +28,14 @@ public class HomeManager : MonoBehaviour
     private bool toStart = false;
     private bool toReturn = false;
 
-    public void Start()
+    private void Awake()
     {
         saveManager = GameObject.Find("SaveManager").GetComponent<SaveManager>();
 
         saveData = saveManager.LoadSave();
-
+    }
+    public void Start()
+    {
         firstTime = GameObject.Find("FirstTime");
         afterTime = GameObject.Find("AfterTime");
 

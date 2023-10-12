@@ -6,11 +6,11 @@ using System.IO;
 
 public class SaveManager : MonoBehaviour
 {
-    private string filePath;
+    private string filePath => Path.Combine(Application.persistentDataPath, "savedata.json");
 
     public void Awake()
     {
-        filePath = Path.Combine(Application.persistentDataPath, "savedata.json");
+        //filePath = Path.Combine(Application.persistentDataPath, "savedata.json");
     }
 
     public void OnSave(string playingStageName, string clearStageName,  bool isClear)
@@ -28,7 +28,10 @@ public class SaveManager : MonoBehaviour
 
         if (isClear)
         {
-            saveData.clearListNames.Add(clearStageName); 
+            if (saveData.clearListNames.IndexOf(clearStageName) == -1)
+            {
+                saveData.clearListNames.Add(clearStageName);  
+            }
         }
 
         json = JsonUtility.ToJson(saveData);
@@ -52,6 +55,19 @@ public class SaveManager : MonoBehaviour
         try
         {
             string json = File.ReadAllText(filePath);
+
+            SaveData saveData = JsonUtility.FromJson<SaveData>(json);
+            
+            if (saveData.stageName == null || saveData.stageName == "None")
+            {
+                saveData.stageName = "None";
+            }
+
+            if (saveData.settingData.Count != 3)
+            {
+                saveData.settingData = new List<float>() {1, 1, 1};
+            }
+
             return JsonUtility.FromJson<SaveData>(json);
         }
 
@@ -71,7 +87,7 @@ public class SaveManager : MonoBehaviour
         SaveData saveData = JsonUtility.FromJson<SaveData>(json);
 
 
-        saveData.stageName = "none";
+        saveData.stageName = "None";
 
         saveData.clearListNames = new List<string>();
 
