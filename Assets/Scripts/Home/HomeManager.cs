@@ -31,6 +31,7 @@ public class HomeManager : MonoBehaviour
     public void Start()
     {
         saveManager = GameObject.Find("SaveManager").GetComponent<SaveManager>();
+
         saveData = saveManager.LoadSave();
 
         firstTime = GameObject.Find("FirstTime");
@@ -79,7 +80,7 @@ public class HomeManager : MonoBehaviour
 
                     else
                     {
-                        SceneManager.LoadScene("Stage3");
+                        SceneManager.LoadScene("Stage6");
                     }
                 }
             }

@@ -66,7 +66,17 @@ public class SaveManager : MonoBehaviour
 
     public void ClearSave()
     {
-        File.WriteAllText(filePath, JsonUtility.ToJson(new SaveData ("None", new List<string>(), new List<float>() {1, 1, 1})));
+        string json = File.ReadAllText(filePath);
+
+        SaveData saveData = JsonUtility.FromJson<SaveData>(json);
+
+
+        saveData.stageName = "none";
+
+        saveData.clearListNames = new List<string>();
+
+        json = JsonUtility.ToJson(saveData);
+        File.WriteAllText(filePath, json);
     }
 }
 
