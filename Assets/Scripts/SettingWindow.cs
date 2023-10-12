@@ -59,6 +59,20 @@ public class SettingWindow : MonoBehaviour
         mainVolumeSlider.value = currentValues[0];
         SEVolumeSlider.value = currentValues[1];
         textSpeedSlider.value = currentValues[2];
+        
+        AudioListener.volume = currentValues[0];
+
+        foreach (GameObject gameObject in GameObject.FindGameObjectsWithTag("Item"))
+        {
+            AudioSource audioSource = gameObject.GetComponent<AudioSource>();
+            audioSource.volume = currentValues[1];
+        }
+
+        if (!isHome)
+        {
+            textWindow.textSpeed = currentValues[2];
+            yumeNikki.textSpeed = currentValues[2];
+        }
     }
 
     private void Update()
