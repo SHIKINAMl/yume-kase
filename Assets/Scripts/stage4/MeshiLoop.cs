@@ -51,8 +51,6 @@ public class MeshiLoop : MonoBehaviour
     {
         if (isFade)
         {
-            Debug.Log(guro.color.a);
-
             if (isFadein)
             {
                 guro.color += new Color (0, 0, 0, 0.02f);

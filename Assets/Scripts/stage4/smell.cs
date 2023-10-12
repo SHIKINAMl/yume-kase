@@ -31,6 +31,8 @@ public class smell : MonoBehaviour
         yield return new WaitForSeconds(interval);
         if (smellFlag){    
             stageManager.SetFlagByName(stageManager.eventFlagList, "もや発生", true);
+            stageManager.SetFlagByName(stageManager.eventFlagList, "もや発生2", true);
+            stageManager.SetFlagByName(stageManager.eventFlagList, "もや発生3", true);
             StartCoroutine(smellwww());
         }
     }
