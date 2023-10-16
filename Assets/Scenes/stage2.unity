@@ -3709,7 +3709,7 @@ PrefabInstance:
       objectReference: {fileID: 300360378, guid: 861161a4c2d41ff40a6faced5eab2511, type: 3}
     - target: {fileID: 8224005722781285818, guid: 95b373056364a784396f3c12ebca201d, type: 3}
       propertyPath: m_SortingOrder
-      value: 6
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8224005722781285818, guid: 95b373056364a784396f3c12ebca201d, type: 3}
       propertyPath: m_WasSpriteAssigned
@@ -14453,7 +14453,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 089096b1f0b85694e8fd5bad541aa8db, type: 3}
+  m_Sprite: {fileID: 21300000, guid: df18bc861d5e81948bea0f9ab4fd5052, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -15412,7 +15412,7 @@ PrefabInstance:
       objectReference: {fileID: 223090265, guid: 5ad7ff99ae2bf454eb3589cc49187f15, type: 3}
     - target: {fileID: 8224005722781285818, guid: 95b373056364a784396f3c12ebca201d, type: 3}
       propertyPath: m_SortingOrder
-      value: 5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8224005722781285818, guid: 95b373056364a784396f3c12ebca201d, type: 3}
       propertyPath: m_WasSpriteAssigned
@@ -18688,7 +18688,7 @@ PrefabInstance:
       objectReference: {fileID: -908174929, guid: 39c76f04719fc094ea5bff08adb16269, type: 3}
     - target: {fileID: 8224005722781285818, guid: 95b373056364a784396f3c12ebca201d, type: 3}
       propertyPath: m_SortingOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8224005722781285818, guid: 95b373056364a784396f3c12ebca201d, type: 3}
       propertyPath: m_WasSpriteAssigned
@@ -22806,7 +22806,7 @@ PrefabInstance:
       objectReference: {fileID: 1076781794, guid: 525a81b17bdeb924f892eb8a67e0ff2e, type: 3}
     - target: {fileID: 8224005722781285818, guid: 95b373056364a784396f3c12ebca201d, type: 3}
       propertyPath: m_SortingOrder
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8224005722781285818, guid: 95b373056364a784396f3c12ebca201d, type: 3}
       propertyPath: m_WasSpriteAssigned
@@ -23735,7 +23735,7 @@ PrefabInstance:
       objectReference: {fileID: 605428136, guid: 612af0c3b22be5247b51c702068fd4a4, type: 3}
     - target: {fileID: 8224005722781285818, guid: 95b373056364a784396f3c12ebca201d, type: 3}
       propertyPath: m_SortingOrder
-      value: 4
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8224005722781285818, guid: 95b373056364a784396f3c12ebca201d, type: 3}
       propertyPath: m_WasSpriteAssigned
@@ -24241,7 +24241,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
       propertyPath: itemText
-      value: "\u4EBA\u9593\u610F\u5916\u3082\u6B32\u3057\u304C\u308A\u305D\u3046\u306A\u30AF\u30C3\u30AD\u30FC\u3002"
+      value: "\u4EBA\u9593\u4EE5\u5916\u3082\u6B32\u3057\u304C\u308A\u305D\u3046\u306A\u30AF\u30C3\u30AD\u30FC\u3002"
       objectReference: {fileID: 0}
     - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
       propertyPath: m_Enabled
@@ -25449,7 +25449,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -233, y: -465}
+  m_AnchoredPosition: {x: -233, y: -240}
   m_SizeDelta: {x: 666, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2043959261

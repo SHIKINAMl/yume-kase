@@ -2177,7 +2177,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -233, y: -465}
+  m_AnchoredPosition: {x: -233, y: -240}
   m_SizeDelta: {x: 666, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &189793875
@@ -14193,6 +14193,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: "\u914D\u81B3\u30D5\u30A9\u30FC\u30AF\u3042\u308A"
       objectReference: {fileID: 0}
+    - target: {fileID: 8224005722781285823, guid: 95b373056364a784396f3c12ebca201d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 95b373056364a784396f3c12ebca201d, type: 3}
 --- !u!4 &1241048965 stripped
@@ -14842,6 +14846,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 143481}
     m_Modifications:
     - target: {fileID: 2739604926062818332, guid: 47733c3e1ab9fef4f865f48fc4522354, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2739604926062818332, guid: 47733c3e1ab9fef4f865f48fc4522354, type: 3}
       propertyPath: m_SortingLayer
       value: 5
       objectReference: {fileID: 0}
@@ -14852,6 +14860,10 @@ PrefabInstance:
     - target: {fileID: 6137081867307305877, guid: 47733c3e1ab9fef4f865f48fc4522354, type: 3}
       propertyPath: m_Name
       value: "\u914D\u81B3\u30BA\u30FC\u30E0"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6137081867307305877, guid: 47733c3e1ab9fef4f865f48fc4522354, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7013778268335287991, guid: 47733c3e1ab9fef4f865f48fc4522354, type: 3}
       propertyPath: m_RootOrder
@@ -15828,7 +15840,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 089096b1f0b85694e8fd5bad541aa8db, type: 3}
+  m_Sprite: {fileID: 21300000, guid: df18bc861d5e81948bea0f9ab4fd5052, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -18380,6 +18392,10 @@ PrefabInstance:
     - target: {fileID: 8224005722781285823, guid: 95b373056364a784396f3c12ebca201d, type: 3}
       propertyPath: m_Name
       value: "\u914D\u81B3\u3000\u53F3"
+      objectReference: {fileID: 0}
+    - target: {fileID: 8224005722781285823, guid: 95b373056364a784396f3c12ebca201d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 95b373056364a784396f3c12ebca201d, type: 3}
