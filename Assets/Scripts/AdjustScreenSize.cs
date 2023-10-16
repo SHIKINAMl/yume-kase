@@ -22,7 +22,7 @@ public class AdjustScreenSize : MonoBehaviour
             currentScreenHeight = Screen.height;
         }
 
-        if (currentScreenHeight != Screen.height)
+        else if (currentScreenHeight != Screen.height)
         {
             Screen.SetResolution(Screen.height*16/9, Screen.height, false);
             currentScreenWidth = Screen.width;
