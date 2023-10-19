@@ -4931,6 +4931,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 732129728}
     m_Modifications:
+    - target: {fileID: -5784836165965982360, guid: 95b373056364a784396f3c12ebca201d, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
       propertyPath: itemName
       value: "\u30EC\u30B8\u30F3\u9375"
@@ -8362,15 +8366,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -5784836165965982360, guid: 95b373056364a784396f3c12ebca201d, type: 3}
       propertyPath: m_Radius
-      value: 0.621552
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: -5784836165965982360, guid: 95b373056364a784396f3c12ebca201d, type: 3}
       propertyPath: m_Offset.x
-      value: 2.283712
+      value: 2.2
       objectReference: {fileID: 0}
     - target: {fileID: -5784836165965982360, guid: 95b373056364a784396f3c12ebca201d, type: 3}
       propertyPath: m_Offset.y
-      value: 0.5341183
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 8224005722781285764, guid: 95b373056364a784396f3c12ebca201d, type: 3}
       propertyPath: MinDistance
@@ -9929,15 +9933,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -5784836165965982360, guid: 95b373056364a784396f3c12ebca201d, type: 3}
       propertyPath: m_Radius
-      value: 1
+      value: 1.2184173
+      objectReference: {fileID: 0}
+    - target: {fileID: -5784836165965982360, guid: 95b373056364a784396f3c12ebca201d, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -5784836165965982360, guid: 95b373056364a784396f3c12ebca201d, type: 3}
       propertyPath: m_Offset.x
-      value: -2.2
+      value: -1.9815829
       objectReference: {fileID: 0}
     - target: {fileID: -5784836165965982360, guid: 95b373056364a784396f3c12ebca201d, type: 3}
       propertyPath: m_Offset.y
-      value: -1.3
+      value: -1.2999996
       objectReference: {fileID: 0}
     - target: {fileID: 8224005722781285764, guid: 95b373056364a784396f3c12ebca201d, type: 3}
       propertyPath: MinDistance
@@ -15788,6 +15796,27 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7065937779990635634, guid: d806fd0dba1e28542ba50f2cdb0bc8e3, type: 3}
   m_PrefabInstance: {fileID: 1434279551}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1444378191 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8224005722781285823, guid: 95b373056364a784396f3c12ebca201d, type: 3}
+  m_PrefabInstance: {fileID: 843723660}
+  m_PrefabAsset: {fileID: 0}
+--- !u!70 &1444378196
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1444378191}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -1.5000001, y: -1.2}
+  m_Size: {x: 5.000001, y: 2}
+  m_Direction: 1
 --- !u!1 &1447033375
 GameObject:
   m_ObjectHideFlags: 0
@@ -23141,15 +23170,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -5784836165965982360, guid: 95b373056364a784396f3c12ebca201d, type: 3}
       propertyPath: m_Radius
-      value: 0.3649432
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: -5784836165965982360, guid: 95b373056364a784396f3c12ebca201d, type: 3}
       propertyPath: m_Offset.x
-      value: 2.6762443
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: -5784836165965982360, guid: 95b373056364a784396f3c12ebca201d, type: 3}
       propertyPath: m_Offset.y
-      value: 0.7327057
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 8224005722781285764, guid: 95b373056364a784396f3c12ebca201d, type: 3}
       propertyPath: MinDistance
