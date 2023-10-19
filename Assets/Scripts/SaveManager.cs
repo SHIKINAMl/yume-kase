@@ -63,9 +63,13 @@ public class SaveManager : MonoBehaviour
                 saveData.stageName = "None";
             }
 
+            Debug.Log(saveData.settingData.Count);
+
             if (saveData.settingData.Count != 3)
             {
                 saveData.settingData = new List<float>() {1, 1, 1};
+                json = JsonUtility.ToJson(saveData);
+                File.WriteAllText(filePath, json);
             }
 
             return JsonUtility.FromJson<SaveData>(json);

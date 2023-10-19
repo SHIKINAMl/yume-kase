@@ -54,7 +54,14 @@ public class SettingWindow : MonoBehaviour
         SEVolumeSlider = this.transform.Find("SEVolumeSlider").GetComponent<Slider>();
         textSpeedSlider = this.transform.Find("TextSpeedSlider").GetComponent<Slider>();
 
-        currentValues = saveManager.LoadSave().settingData;
+        if (isHome)
+        {
+            currentValues = homeManager.saveData.settingData;
+        }
+        else
+        {
+            currentValues = saveManager.LoadSave().settingData;
+        }
 
         mainVolumeSlider.value = currentValues[0];
         SEVolumeSlider.value = currentValues[1];
@@ -70,6 +77,8 @@ public class SettingWindow : MonoBehaviour
 
         if (!isHome)
         {
+            AudioSource InventorySound = GameObject.Find("ItemInventory").GetComponent<AudioSource>();
+            InventorySound.volume = currentValues[1];
             textWindow.textSpeed = currentValues[2];
             yumeNikki.textSpeed = currentValues[2];
         }
@@ -93,6 +102,12 @@ public class SettingWindow : MonoBehaviour
                 {
                     AudioSource audioSource = gameObject.GetComponent<AudioSource>();
                     audioSource.volume = currentValues[1];
+                }
+
+                if (!isHome)
+                {
+                    AudioSource InventorySound = GameObject.Find("ItemInventory").GetComponent<AudioSource>();
+                    InventorySound.volume = currentValues[1];
                 }
             }               
         

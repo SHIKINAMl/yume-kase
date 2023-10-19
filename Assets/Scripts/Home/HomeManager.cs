@@ -10,7 +10,7 @@ public class HomeManager : MonoBehaviour
 {
     private SaveManager saveManager;
 
-    private SaveData saveData;
+    public SaveData saveData;
 
     private GameObject firstTime;
     private GameObject afterTime;
