@@ -5066,7 +5066,7 @@ MonoBehaviour:
     standingFlagName: "\u30BB\u30EA\u30D5\u30AB\u30A6\u30F3\u30C8"
     flagOption: 1
     beToFlagClear: 1
-    standingClearFlagName: stage5
+    standingClearFlagName: Home
   waitEvent: 0
   isRoopBreak: 0
   getItemSound: {fileID: 0}

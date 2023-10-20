@@ -24,6 +24,7 @@ public class SaveManager : MonoBehaviour
         {
             clearStageName = "Stage1";
         }
+        */
 
         saveData.stageName = playingStageName;
 
@@ -34,7 +35,6 @@ public class SaveManager : MonoBehaviour
                 saveData.clearListNames.Add(clearStageName);  
             }
         }
-        */
 
         json = JsonUtility.ToJson(saveData);
         File.WriteAllText(filePath, json);

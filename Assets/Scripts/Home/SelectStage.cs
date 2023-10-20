@@ -5,9 +5,8 @@ using UnityEngine.UI;
 
 public class SelectStage : MonoBehaviour
 {
+    private HomeManager homeManager;
     private Image window;
-
-    private bool isActive = false;
 
     private Image stageImage;
     public List<Sprite> stageImages = new List<Sprite>();
@@ -16,6 +15,8 @@ public class SelectStage : MonoBehaviour
 
     void Start()
     {
+        homeManager = GameObject.Find("HomeManager").GetComponent<HomeManager>();
+
         window = this.GetComponent<Image>();
         window.enabled = false;
 
@@ -24,9 +25,9 @@ public class SelectStage : MonoBehaviour
             child.gameObject.SetActive(false);
         }
 
-        isActive = false;
-
         stageImage = transform.Find("SelectButton").GetComponent<Image>();
+
+        stageNumber = stageNames.IndexOf(homeManager.saveData.stageName);
     }
 
     public void OnClickOpen()
@@ -38,7 +39,7 @@ public class SelectStage : MonoBehaviour
             child.gameObject.SetActive(true);
         }
 
-        isActive = true;
+        stageImage.sprite = stageImages[stageNumber];
     }
 
     public void OnClickClose()
@@ -49,8 +50,6 @@ public class SelectStage : MonoBehaviour
         {
             child.gameObject.SetActive(false);
         }
-
-        isActive = false;
     }
 
     public void OnClickToStage()
