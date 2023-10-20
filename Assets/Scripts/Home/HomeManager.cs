@@ -31,6 +31,8 @@ public class HomeManager : MonoBehaviour
     private bool toStart = false;
     private bool toReturn = false;
 
+    private GameObject video;
+
     private void Awake()
     {
         saveManager = GameObject.Find("SaveManager").GetComponent<SaveManager>();
@@ -45,6 +47,7 @@ public class HomeManager : MonoBehaviour
         blinderPanel = GameObject.Find("BlinderPanel").GetComponent<Image>();
         blinderPanel.enabled = false;
 
+        video = GameObject.Find("Credit");
 
         audioSource = GetComponent<AudioSource>();
 
@@ -99,6 +102,42 @@ public class HomeManager : MonoBehaviour
                 }
             }
         }
+
+        if (video.GetComponent<VideoPlayer>().isPlaying)
+        {
+            if (Input.GetMouseButtonDown(0))
+            {
+                video.GetComponent<VideoPlayer>().playbackSpeed = 6;
+            }
+
+            if (Input.GetMouseButtonUp(0))
+            {
+                video.GetComponent<VideoPlayer>().playbackSpeed = 2;
+            }
+
+            if (video.GetComponent<SpriteRenderer>().color.a <= 1)
+            {
+                video.GetComponent<SpriteRenderer>().color += new Color (0, 0, 0, 0.005f);
+            }
+
+            foreach (Transform transform in GameObject.Find("FirstTime").transform)
+            {
+                transform.gameObject.SetActive(false);
+            }
+        }
+
+        else
+        {
+            if (video.GetComponent<SpriteRenderer>().color.a >= 0)
+            {
+                video.GetComponent<SpriteRenderer>().color -= new Color (0, 0, 0, 0.005f);
+            }
+
+            foreach (Transform transform in GameObject.Find("FirstTime").transform)
+            {
+                transform.gameObject.SetActive(true);
+            }
+        }
     }
 
     public void OnClickStart()
@@ -131,7 +170,6 @@ public class HomeManager : MonoBehaviour
 
     public void OnClickOpenCredit()
     {
-        GameObject video = GameObject.Find("Credit");
         video.GetComponent<VideoPlayer>().Play();
     }
 }
