@@ -2843,12 +2843,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stageImages:
-  - {fileID: 21300000, guid: f1c9255e5083543458ea9a9b61c31d5f, type: 3}
-  - {fileID: 21300000, guid: 8c02fa4f84deb6e4984c7126a96fe2fd, type: 3}
-  - {fileID: 21300000, guid: 718a6bda5dc6c854d8181356daf2e59e, type: 3}
-  - {fileID: 21300000, guid: acf12dcedcd8a3c4cbb011aecb003d99, type: 3}
+  - {fileID: 21300000, guid: 5cd12e4c1eb822f4e84910289aab2350, type: 3}
+  - {fileID: 21300000, guid: 4a84ed28fe87b934c8b206962d37e73e, type: 3}
+  - {fileID: 21300000, guid: 1915d9f9c676aed42a6fc6b6910ea907, type: 3}
+  - {fileID: 21300000, guid: ce8002ef91521d94eaf8709d7cbff026, type: 3}
   - {fileID: 21300000, guid: 478a3146eff4278459e1023809d316f1, type: 3}
-  - {fileID: 21300000, guid: 19a056bd65794c247bedf482c9859e8b, type: 3}
+  - {fileID: 21300000, guid: ebe2437fd9c45254b829e13d2184f6fd, type: 3}
   stageNames:
   - Tutorial
   - stage2

@@ -12,11 +12,15 @@ public class Menu : MonoBehaviour
 
     private bool isFadingOut;
 
+    private Image checkWindow;
+    private bool isChecking = false;
+
     public void Start()
     {
         stagemanager = GameObject.Find("StageManager").GetComponent<StageManager>();
 
         blinderPanel = GameObject.Find("BlinderPanel").GetComponent<Image>();
+        checkWindow = GameObject.Find("CheckWindow").GetComponent<Image>();
     }
 
     public void Update()
@@ -34,6 +38,14 @@ public class Menu : MonoBehaviour
             if (blinderPanel.color.a >= 1)
             {
                 SceneManager.LoadScene("Home");
+            }
+        }
+
+        if (isChecking)
+        {
+            if(Input.GetMouseButtonDown(0))
+            {
+                checkWindow.GetComponent<Image>().enabled = false;
             }
         }
     }
@@ -71,6 +83,9 @@ public class Menu : MonoBehaviour
     public void OnClickSaveStage()
     {
         GameObject.Find("SaveManager").GetComponent<SaveManager>().OnSave(gameObject.scene.name, gameObject.scene.name, false);
+
+        checkWindow.GetComponent<Image>().enabled = true;
+        isChecking = true;
     }
 
     public void OnClickBackHome()
