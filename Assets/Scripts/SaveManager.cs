@@ -19,6 +19,7 @@ public class SaveManager : MonoBehaviour
 
         SaveData saveData = JsonUtility.FromJson<SaveData>(json);
 
+        /*
         if (clearStageName == "Tutorial")
         {
             clearStageName = "Stage1";
@@ -33,6 +34,7 @@ public class SaveManager : MonoBehaviour
                 saveData.clearListNames.Add(clearStageName);  
             }
         }
+        */
 
         json = JsonUtility.ToJson(saveData);
         File.WriteAllText(filePath, json);
@@ -62,8 +64,6 @@ public class SaveManager : MonoBehaviour
             {
                 saveData.stageName = "None";
             }
-
-            Debug.Log(saveData.settingData.Count);
 
             if (saveData.settingData.Count != 3)
             {

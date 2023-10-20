@@ -3,12 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.Video;
 using System;
 using System.IO;
 
 public class HomeManager : MonoBehaviour
 {
     private SaveManager saveManager;
+
+    private SelectStage selectStage;
 
     public SaveData saveData;
 
@@ -45,6 +48,7 @@ public class HomeManager : MonoBehaviour
 
         audioSource = GetComponent<AudioSource>();
 
+        /*
         if (saveData.stageName == "None")
         {
             afterTime.SetActive(false);
@@ -56,6 +60,10 @@ public class HomeManager : MonoBehaviour
             firstTime.SetActive(false);
             isFirstTime = false;
         }
+        */
+
+        afterTime.SetActive(false);
+        isFirstTime = true;
     }
 
     public void Update()
@@ -75,6 +83,9 @@ public class HomeManager : MonoBehaviour
 
                 else if (toReturn)
                 {
+                    selectStage = GameObject.Find("SelectStageWindow").GetComponent<SelectStage>();
+                    SceneManager.LoadScene(selectStage.stageNames[selectStage.stageNumber]);
+                    /*
                     if (saveData.stageName != "ED")
                     {
                         SceneManager.LoadScene(saveData.stageName);
@@ -84,6 +95,7 @@ public class HomeManager : MonoBehaviour
                     {
                         SceneManager.LoadScene("Stage6");
                     }
+                    */
                 }
             }
         }
@@ -91,10 +103,12 @@ public class HomeManager : MonoBehaviour
 
     public void OnClickStart()
     {
+        /*
         if (!isFirstTime)
         {
             Debug.Log("警告");
         }
+        */
 
         toStart = true;
 
@@ -117,6 +131,7 @@ public class HomeManager : MonoBehaviour
 
     public void OnClickOpenCredit()
     {
-        Debug.Log("クレジットを開く");
+        GameObject video = GameObject.Find("Credit");
+        video.GetComponent<VideoPlayer>().Play();
     }
 }
