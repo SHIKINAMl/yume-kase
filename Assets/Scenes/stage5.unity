@@ -14740,6 +14740,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 1589034255}
     m_Modifications:
     - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
+      propertyPath: events.Array.data[0].eventType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8224005722781285816, guid: 95b373056364a784396f3c12ebca201d, type: 3}
       propertyPath: events.Array.data[0].soundType
       value: 7
       objectReference: {fileID: 0}

@@ -1456,7 +1456,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: f1c9255e5083543458ea9a9b61c31d5f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5cd12e4c1eb822f4e84910289aab2350, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2856,7 +2856,7 @@ MonoBehaviour:
   - stage4
   - stage5
   - stage6
-  stageNumber: 0
+  stageNumber: 1
 --- !u!114 &1294071911
 MonoBehaviour:
   m_ObjectHideFlags: 0
