@@ -72,7 +72,7 @@ public class YumeNikki : MonoBehaviour
                 foreach (var flagName in stageManager.clearFlags)
                 {  
                     GameObject.Find("SaveManager").GetComponent<SaveManager>().OnSave(flagName, gameObject.scene.name, true);
-                    nextStageName = flagName;
+                    nextStageName = "Home";
 
                     blinderPanel.enabled = true;
                     blinderPanel.color = new Color (0, 0, 0, 0);

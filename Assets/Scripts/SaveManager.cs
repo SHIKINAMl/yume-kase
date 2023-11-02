@@ -6,11 +6,11 @@ using System.IO;
 
 public class SaveManager : MonoBehaviour
 {
-    private string filePath => Path.Combine(Application.persistentDataPath, "savedata.json");
+    private string filePath;//. => Path.Combine(Application.persistentDataPath, "savedata.json");
 
     public void Awake()
     {
-        //filePath = Path.Combine(Application.persistentDataPath, "savedata.json");
+        filePath = Path.Combine(Application.persistentDataPath, "savedata.json");
     }
 
     public void OnSave(string playingStageName, string clearStageName,  bool isClear)
