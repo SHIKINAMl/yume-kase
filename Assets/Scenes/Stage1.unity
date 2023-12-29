@@ -1189,6 +1189,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isOpening: 0
+  textSpeed: 0
 --- !u!114 &214450910
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8226,7 +8227,9 @@ MonoBehaviour:
   - eventTrigger: 0
     combinationItem:
       materialItemName1: "\u30DE\u30A4\u30CA\u30B9\u30C9\u30E9\u30A4\u30D0\u30FC"
+      isDelete1: 1
       materialItemName2: "\u30C9\u30E9\u30A4\u30D0\u30FC\u30B0\u30EA\u30C3\u30D7"
+      isDelete2: 1
       isGetNewItem: 1
       flagName: 
       itemName: "\u30B0\u30EA\u30C3\u30D7\u4ED8\u304D\u30C9\u30E9\u30A4\u30D0\u30FC"
@@ -8235,7 +8238,9 @@ MonoBehaviour:
   - eventTrigger: 0
     combinationItem:
       materialItemName1: "\u7D19\u5207\u308C"
+      isDelete1: 1
       materialItemName2: "\u7D75\u5177"
+      isDelete2: 1
       isGetNewItem: 1
       flagName: 
       itemName: "\u7D75\u306E\u65AD\u7247\uFF08\u305D\u306E\uFF14\uFF09"
