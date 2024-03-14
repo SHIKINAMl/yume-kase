@@ -115,13 +115,15 @@ MonoBehaviour:
       numberOfFlag: 0
       stoodFlagNames: []
       ifHoldItem: 0
-      numberOfItem: 0
-      holdItemNames: []
+      numberOfItem: 1
+      holdItemNames:
+      - name: 
+        boolean: 0
       ifAffordInventory: 0
       numberOfEmpty: 1
     eventTrigger: 0
     beToAppear: 0
-    appearingOption: 1
+    appearingOption: 3
     beAvailable: 0
     gettingOption: 1
     beToMove: 0
