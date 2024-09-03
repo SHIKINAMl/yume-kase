@@ -352,6 +352,11 @@ public class Item : MonoBehaviour, IPointerClickHandler
             GameObject.Find("TextWindow").GetComponent<TextWindow>().SetTexts(itemEvent.poppingUpTexts);
         }
 
+        if (itemEvent.beToDeduging)
+        {
+            Debug.Log(itemEvent.debugText);
+        }
+
         if (itemEvent.beToSoundEffect)
         {
             audioSource.PlayOneShot(stagemanager.soundEffectList[itemEvent.soundType].soundEffect);
@@ -443,6 +448,10 @@ public class ItemEvent
     public bool beToPopUpText = false;
     public string[] poppingUpTexts;
     public string poppingUpText;
+
+    
+    public bool beToDeduging = false;
+    public string debugText;
     
     public bool beToSoundEffect = false;
     public int soundType; 

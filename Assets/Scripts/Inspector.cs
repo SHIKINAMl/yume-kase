@@ -507,6 +507,15 @@ public class ItemEditor : Editor
                             EditorGUI.indentLevel--;
                         }
 
+                        item.events[i].beToDeduging = EditorGUILayout.Toggle("デバッグをとる", item.events[i].beToDeduging);
+
+                        if (item.events[i].beToDeduging)
+                        {
+                            EditorGUI.indentLevel++;
+                            item.events[i].debugText = EditorGUILayout.TextField("デバッグ内容->", item.events[i].debugText);
+                            EditorGUI.indentLevel--;
+                        }
+
                         item.events[i].beToSoundEffect = EditorGUILayout.Toggle("効果音を鳴らす", item.events[i].beToSoundEffect);
 
                         if (item.events[i].beToSoundEffect)
