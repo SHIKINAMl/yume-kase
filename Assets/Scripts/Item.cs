@@ -359,18 +359,23 @@ public class Item : MonoBehaviour, IPointerClickHandler
 
         if (itemEvent.beToFlag)
         {
-            switch (itemEvent.flagOption)
+            for (int i = 0; i < itemEvent.numberOfFlags; i++)
             {
-                case 1:
-                    stagemanager.SetFlagByName(stagemanager.eventFlagList, itemEvent.standingFlagName, true);
-                    break;
-                case 2:
-                    stagemanager.SetFlagByName(stagemanager.eventFlagList, itemEvent.standingFlagName, false);
-                    break;
-                case 3:
-                    stagemanager.SetFlagByName(stagemanager.eventFlagList, itemEvent.standingFlagName, !stagemanager.GetFlagByName(itemEvent.standingFlagName));
-                    break;
+                switch (itemEvent.flagOptions[i])
+                {
+                    case 1:
+                        stagemanager.SetFlagByName(stagemanager.eventFlagList, itemEvent.standingFlagNames[i], true);
+                        break;
+                    case 2:
+                        stagemanager.SetFlagByName(stagemanager.eventFlagList, itemEvent.standingFlagNames[i], false);
+                        break;
+                    case 3:
+                        stagemanager.SetFlagByName(stagemanager.eventFlagList, itemEvent.standingFlagNames[i], !stagemanager.GetFlagByName(itemEvent.standingFlagNames[i]));
+                        break;
+                }
             }
+
+
         }  
 
         if (itemEvent.beToFlagClear)
@@ -448,8 +453,10 @@ public class ItemEvent
     public int soundType; 
 
     public bool beToFlag = false;
-    public string standingFlagName;
-    public int flagOption;
+
+    public int numberOfFlags = 1;
+    public string[] standingFlagNames;
+    public int[] flagOptions;
 
     public bool beToFlagClear = false;
     public string standingClearFlagName;
